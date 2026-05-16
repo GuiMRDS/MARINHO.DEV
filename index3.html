@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme Marinho | Soluções Full Stack & Segurança</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5C00',
+                        deep: '#E6E6E6',
+                        surface: '#FFFFFF',
+                        text: '#050505',
+                        muted: '#666666',
+                        dark: '#050505',
+                        'dark-surface': '#121212',
+                    },
+                    fontFamily: {
+                        oswald: ['Oswald', 'sans-serif'],
+                        space: ['Space Grotesk', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'marquee': 'marquee 40s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* --- Custom Animations --- */
+        @keyframes animationIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+        }
+
+        .animate-in {
+            animation: animationIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .animate-shimmer {
+            animation: shimmer 6s infinite linear;
+        }
+
+        .bg-grid {
+            background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .reveal-in {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(10px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-in.active {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        /* --- Backgrounds --- */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- Smart Navbar: Dark Mode --- */
+        nav.scrolled .glass-panel {
+            background: rgba(5, 5, 5, 0.8);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        nav.scrolled .nav-link {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+
+        nav.scrolled .nav-link:hover {
+            color: #FF5C00 !important;
+        }
+
+        nav.scrolled .nav-logo, 
+        nav.scrolled .nav-btn-text {
+            color: white !important;
+        }
+
+        nav.scrolled .nav-accent-bar {
+            background-color: white !important;
+        }
+
+        nav.scrolled .nav-btn {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        nav.scrolled .nav-btn:hover {
+            background: white;
+            color: black !important;
+        }
+
+        /* --- Future UI v5 Integrations --- */
+        @keyframes beam {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .flashlight-card {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .border-beam {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent 0% 70%, #fff 100%);
+            animation: beam 3s linear infinite;
+            opacity: 0.1;
+            transition: opacity 0.3s;
+        }
+        .border-beam-container:hover .border-beam { opacity: 0.5; }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(250%) skewX(-15deg); }
+        }
+        .animate-shimmer {
+            animation: shimmer 6s infinite linear;
+        }
+
+        /* --- Interactive Effects --- */
+        .flashlight-card {
+            position: relative;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .flashlight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0px;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                    rgba(255, 92, 0, 0.1),
+                    transparent 40%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 10;
+            border-radius: inherit;
+        }
+
+        .flashlight-card:hover::before {
+            opacity: 1;
+        }
+
+        .profile-img {
+            filter: grayscale(100%) contrast(110%);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateZ(20px);
+        }
+
+        .flashlight-card:hover .profile-img {
+            filter: grayscale(0%) contrast(100%);
+            transform: translateZ(40px) scale(1.05);
+        }
+
+        /* --- Floating Badges --- */
+        .badge {
+            position: absolute;
+            background: white;
+            padding: 12px 24px;
+            border-radius: 99px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 50;
+            animation: float 6s ease-in-out infinite;
+            white-space: nowrap;
+        }
+
+        .badge-dark {
+            background: #050505;
+            color: white;
+            border: none;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide Scrollbar */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            background-color: #050505;
+            color: #0F172A;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Section 2 Timeline Styles --- */
+        .timeline-container {
+            position: relative;
+            padding: 0 0 100px 0;
+            background-color: #050505;
+            color: #E6E6E6;
+            overflow: hidden;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 92, 0, 0.2), rgba(255, 92, 0, 0.5), rgba(255, 92, 0, 0.2), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-progress {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 0;
+            background: #FF5C00;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px #FF5C00;
+            z-index: 10;
+            transition: height 0.1s linear;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 92, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .timeline-year {
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            color: #FF5C00;
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+        }
+
+        .floating-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+
+            .timeline-line,
+            .timeline-progress {
+                left: 30px;
+                transform: none;
+            }
+        }
+
+        /* --- Section 3 Projects Styles --- */
+        .projects-container {
+            background: linear-gradient(to bottom, #050505, #0a0b10, #08080c);
+            padding: 40px 0 100px 0;
+            position: relative;
+            overflow: hidden;
+            margin-top: -1px;
+            /* Bridge gap */
+        }
+
+        .project-card {
+            position: relative;
+            background: #121212;
+            border-radius: 32px;
+            /* More rounded like Instagram slides */
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transform-style: preserve-3d;
+            perspective: 1200px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(255, 92, 0, 0.3);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: contrast(1.1) saturate(1.1);
+            image-rendering: -webkit-optimize-contrast;
+            border-radius: 32px; /* Restore rounding */
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+            filter: brightness(1) grayscale(0%);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 20;
+            pointer-events: none;
+            border-radius: 32px;
+        }
+
+        .project-content {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: visible !important;
+            transform-style: preserve-3d;
+            pointer-events: auto;
+        }
+
+        .project-card:hover .project-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 99px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 30;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-badge.production {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.3);
+            color: #4ade80;
+        }
+
+        /* --- Slideshow Effect --- */
+        .slideshow-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: contrast(1.1) saturate(1.1);
+            image-rendering: -webkit-optimize-contrast;
+            border-radius: 32px;
+            animation: slideshow 16s infinite;
+        }
+
+        .project-card:hover .slideshow-image {
+            transform: scale(1.1);
+            filter: brightness(1) grayscale(0%);
+        }
+
+        .slideshow-image:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .slideshow-image:nth-child(2) {
+            animation-delay: 4s;
+        }
+
+        .slideshow-image:nth-child(3) {
+            animation-delay: 8s;
+        }
+
+        .slideshow-image:nth-child(4) {
+            animation-delay: 12s;
+        }
+
+        @keyframes slideshow {
+
+            0%,
+            20% {
+                opacity: 1;
+            }
+
+            25%,
+            95% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* --- Striking Card Variations --- */
+        .card-glow-blue:hover {
+            border-color: rgba(0, 157, 255, 0.4) !important;
+            box-shadow: 0 0 30px rgba(0, 157, 255, 0.2) !important;
+        }
+
+        .card-glow-purple:hover {
+            border-color: rgba(187, 0, 255, 0.4) !important;
+            box-shadow: 0 0 30px rgba(187, 0, 255, 0.2) !important;
+        }
+
+        /* --- Slider Styles --- */
+        .highlights-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 24px;
+            padding: 20px 0 40px 0;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .highlights-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .slider-item {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .slider-item {
+                flex: 0 0 45%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .slider-item {
+                flex: 0 0 31%;
+            }
+        }
+
+        .slider-mask {
+            position: relative;
+        }
+
+        .slider-mask::after {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="antialiased overflow-x-hidden">
+    <!-- Background Grid -->
+    <div class="bg-grid"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1300px] transition-all duration-500">
+        <div class="glass-panel px-8 py-4 rounded-full flex items-center justify-between">
+            <div class="flex items-center gap-4 group cursor-pointer">
+                <div class="flex gap-1">
+                    <div class="w-2 h-6 bg-primary rounded-full"></div>
+                    <div class="w-2 h-6 bg-neutral-900 rounded-full nav-accent-bar group-hover:h-4 transition-all duration-300"></div>
+                    <div class="w-2 h-6 bg-primary rounded-full"></div>
+                </div>
+                <span class="font-oswald font-bold uppercase tracking-tighter text-xl nav-logo text-neutral-900 transition-colors">Marinho.dev</span>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-900/60">
+                <a href="#hero" class="nav-link hover:text-primary transition-colors">Início</a>
+                <a href="#sobre" class="nav-link hover:text-primary transition-colors">Sobre</a>
+                <a href="#projetos" class="nav-link hover:text-primary transition-colors">Projetos</a>
+                <a href="#contato" class="nav-link hover:text-primary transition-colors">Contato</a>
+            </div>
+
+            <button
+                class="nav-btn px-6 py-2 border border-black/10 rounded-full font-oswald uppercase text-[10px] tracking-widest nav-btn-text hover:bg-black hover:text-white transition-all">
+                Vamos Conversar
+            </button>
+        </div>
+    </nav>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero"
+            class="min-h-screen relative flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden bg-white">
+            <div class="max-w-[1300px] w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                <!-- Left Content -->
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 bg-black/5 border border-black/10 rounded-full mb-8 animate-in"
+                        style="animation-delay: 0.1s">
+                        <span class="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_#FF5C00]"></span>
+                        <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-muted">Disponível
+                            para novos projetos</span>
+                    </div>
+
+                    <h1 class="text-[10vw] lg:text-[6.5rem] font-oswald font-bold leading-[0.85] uppercase tracking-tighter mb-8 animate-in"
+                        style="animation-delay: 0.2s">
+                        <span class="block">Código que</span>
+                        <span class="block bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">resolve.</span>
+                        <span class="block text-transparent"
+                            style="-webkit-text-stroke: 1.5px #050505;">Segurança</span>
+                        <span class="block">que protege.</span>
+                    </h1>
+
+                    <p class="max-w-lg text-base lg:text-lg text-neutral-600 font-space leading-relaxed mb-10 animate-in"
+                        style="animation-delay: 0.3s">
+                        Eu transformo ideias em soluções full stack robustas, combinando desenvolvimento limpo com
+                        expertise em segurança. Para startups e empresas que precisam de mais que código—precisam de
+                        confiança.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 animate-in" style="animation-delay: 0.4s">
+                        <button
+                            class="group relative px-8 py-4 bg-text text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+                            <span class="relative z-10 font-oswald uppercase text-xs tracking-widest">Ver
+                                Projetos</span>
+                            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity">
+                            </div>
+                        </button>
+
+                        <button
+                            class="px-8 py-4 border border-black/10 rounded-full font-oswald uppercase text-xs tracking-widest hover:bg-black/5 transition-colors flex items-center gap-3">
+                            Meus Serviços
+                            <iconify-icon icon="solar:arrow-right-bold" class="text-lg"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="relative animate-in flex justify-center lg:justify-end" style="animation-delay: 0.5s">
+                    <div
+                        class="flashlight-card glass-panel rounded-[4rem] overflow-visible aspect-[4/5] w-full max-w-[500px] group">
+                        <!-- Main Image Container -->
+                        <div class="w-full h-full rounded-[4rem] overflow-hidden relative">
+                            <img src="raw-files/image.png" class="profile-img w-full h-full object-cover"
+                                alt="Guilherme Marinho">
+
+                            <!-- Decorative Frame -->
+                            <div
+                                class="absolute inset-6 border border-black/10 rounded-[3rem] pointer-events-none group-hover:border-primary/30 transition-colors duration-500 z-20">
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 1 (Top Right) -->
+                        <div class="badge top-[8%] -right-[5%] shadow-2xl scale-90" style="animation-delay: 0s;">
+                            <iconify-icon icon="solar:shield-check-bold"
+                                style="color: #FF5C00; font-size: 18px;"></iconify-icon>
+                            Security Protocol Active
+                        </div>
+
+                        <!-- Floating Badge 2 (Bottom Left) -->
+                        <div class="badge badge-dark bottom-[12%] -left-[8%] shadow-2xl scale-90"
+                            style="animation-delay: -3s;">
+                            <iconify-icon icon="solar:cpu-bold" style="color: #FFFFFF; font-size: 18px;"></iconify-icon>
+                            Full Stack Expert
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Section 2: Timeline -->
+        <section class="timeline-container">
+            <!-- Tech Marquee (Infinite Loop) -->
+            <div class="py-16 border-y border-white/5 bg-white/[0.01] overflow-hidden mb-12 relative">
+                <!-- Edge Masks for smooth fade -->
+                <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-dark to-transparent z-10"></div>
+                <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-dark to-transparent z-10"></div>
+
+                <div class="flex animate-marquee whitespace-nowrap gap-24 items-center w-max">
+                    <!-- Set 1 -->
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:csharp" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">C#</span>
+                    </div>
+
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:microsoftsqlserver" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">SQL Server</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:docker" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Docker</span>
+                    </div>
+
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:microsoftazure" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Azure</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:postgresql" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">PostgreSQL</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:react" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">React</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:nodedotjs" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Node.js</span>
+                    </div>
+
+                    <!-- Set 2 (Identical for seamless loop) -->
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:csharp" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">C#</span>
+                    </div>
+
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:microsoftsqlserver" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">SQL Server</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:docker" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Docker</span>
+                    </div>
+
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:microsoftazure" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Azure</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:postgresql" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">PostgreSQL</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:react" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">React</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:nodedotjs" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Node.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Decorative Blobs -->
+            <div class="floating-blob w-[400px] h-[400px] bg-primary/20 top-0 -left-48"></div>
+            <div class="floating-blob w-[300px] h-[300px] bg-blue-500/10 bottom-0 -right-24"></div>
+
+            <div class="max-w-[1300px] mx-auto px-6 relative z-10">
+                <!-- Headline -->
+                <div class="text-center mb-24 reveal-in">
+                    <h2
+                        class="text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-none mb-6 text-white">
+                        Do design e infraestrutura à <br>
+                        <span class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">Engenharia de Software, IA e Cybersecurity.</span>
+                    </h2>
+                    <p class="text-white/60 text-lg md:text-xl max-w-3xl mx-auto uppercase tracking-widest font-space">
+                        Uma trajetória construída através de evolução contínua, desenvolvimento full stack, automação
+                        inteligente e soluções modernas focadas em performance, experiência e segurança.
+                    </p>
+                </div>
+
+                <!-- Timeline Path -->
+                <div class="relative">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-progress"></div>
+
+                    <!-- Career Phases -->
+                    <div class="space-y-32">
+                        <!-- Phase 1: Freelancer -->
+                        <div class="relative flex flex-col lg:flex-row items-center justify-between group">
+                            <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
+                                <span class="timeline-year">2019 — 2023</span>
+                            </div>
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-primary z-20 group-hover:scale-125 transition-transform hidden lg:block">
+                            </div>
+                            <div class="lg:w-[45%] w-full reveal-in">
+                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
+                                    <div class="flex justify-between items-start mb-6">
+                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Freelancer
+                                            <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">Web & Design</span></h3>
+                                        <span class="lg:hidden timeline-year">2019-2023</span>
+                                    </div>
+                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
+                                        Início da trajetória focado em criação de interfaces modernas, experiência do
+                                        usuário e presença digital para pequenos negócios e clientes independentes.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:wordpress"></iconify-icon>
+                                            WordPress
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:css3"></iconify-icon>
+                                            CSS
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:javascript"></iconify-icon>
+                                            JS
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="solar:palette-bold"></iconify-icon>
+                                            UI/UX
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2: UNIP -->
+                        <div class="relative flex flex-col lg:flex-row-reverse items-center justify-between group">
+                            <div class="lg:w-[45%] text-left hidden lg:block pl-12 reveal-in">
+                                <span class="timeline-year">2023 — 2025</span>
+                            </div>
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-amber-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
+                            </div>
+                            <div class="lg:w-[45%] w-full reveal-in">
+                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
+                                    <div class="flex justify-between items-start mb-6">
+                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Aprendiz
+                                            de <span class="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">Laboratório</span> — UNIP</h3>
+                                        <span class="lg:hidden timeline-year">2023-2025</span>
+                                    </div>
+                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
+                                        Suporte técnico e infraestrutura. Experiência com troubleshooting, manutenção de
+                                        sistemas e fundamentos de redes e segurança.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:linux"></iconify-icon>
+                                            Linux
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="solar:shield-keyhole-bold"></iconify-icon>
+                                            Infra & Security
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 3: Formação Full Stack -->
+                        <div class="relative flex flex-col lg:flex-row items-center justify-between group">
+                            <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
+                                <span class="timeline-year">2024 — 2025</span>
+                            </div>
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-emerald-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
+                            </div>
+                            <div class="lg:w-[45%] w-full reveal-in">
+                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
+                                    <div class="flex justify-between items-start mb-6">
+                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
+                                            Especialização <span class="bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">Full Stack</span></h3>
+                                        <span class="lg:hidden timeline-year">2024-2025</span>
+                                    </div>
+                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
+                                        Evolução técnica em Cloud, IA e Cybersecurity. Bootcamps e projetos práticos em
+                                        arquitetura moderna e automação.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:python"></iconify-icon>
+                                            Python
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:nextdotjs"></iconify-icon>
+                                            Next.js
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="solar:magic-stick-bold"></iconify-icon>
+                                            IA & Automation
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Phase 4: FADI -->
+                        <div class="relative flex flex-col lg:flex-row-reverse items-center justify-between group">
+                            <div class="lg:w-[45%] text-left hidden lg:block pl-12 reveal-in">
+                                <span class="timeline-year">2025 — 2026</span>
+                            </div>
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-cyan-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
+                            </div>
+                            <div class="lg:w-[45%] w-full reveal-in">
+                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
+                                    <div class="flex justify-between items-start mb-6">
+                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Assistente
+                                            de <span class="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">TI</span> — FADI</h3>
+                                        <span class="lg:hidden timeline-year">2025-2026</span>
+                                    </div>
+                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
+                                        Sustentação e evolução de soluções digitais corporativas. Suporte ao ERP Sophia
+                                        e administração de site institucional.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:wordpress"></iconify-icon>
+                                            WordPress
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="solar:database-bold"></iconify-icon>
+                                            ERP Sophia
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="solar:settings-minimalistic-bold"></iconify-icon>
+                                            TI Support
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 5: Software Engineer -->
+                        <div class="relative flex flex-col lg:flex-row items-center justify-between group">
+                            <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
+                                <span class="timeline-year">2026 — Presente</span>
+                            </div>
+                            <div
+                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-indigo-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
+                            </div>
+                            <div class="lg:w-[45%] w-full reveal-in">
+                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
+                                    <div class="flex justify-between items-start mb-6">
+                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Software
+                                            <span class="bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">Engineer</span></h3>
+                                        <span class="lg:hidden timeline-year">2026-Pres.</span>
+                                    </div>
+                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
+                                        Engenharia de Software com foco em Full Stack, IA & Cybersecurity.
+                                        Desenvolvimento de APIs escaláveis e automação inteligente.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="simple-icons:nodedotjs"></iconify-icon>
+                                            Full Stack
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="solar:magic-stick-bold"></iconify-icon>
+                                            GenAI
+                                        </span>
+                                        <span
+                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
+                                            <iconify-icon icon="solar:shield-check-bold"></iconify-icon>
+                                            DevSecOps
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Summary / Competencies -->
+                <div class="mt-48 grid grid-cols-1 md:grid-cols-2 gap-12 reveal-in">
+                    <div class="flashlight-card glass-card p-10 rounded-3xl">
+                        <h4 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-8 font-bold">Competências Técnicas
+                        </h4>
+                        <ul class="space-y-6">
+                            <li class="flex flex-col gap-2 border-b border-white/5 pb-4">
+                                <span class="text-xs uppercase font-space text-white/40">Full Stack & Software
+                                    Engineering</span>
+                                <div class="flex items-center gap-4">
+                                    <iconify-icon icon="simple-icons:csharp"
+                                        class="text-xl text-primary/60"></iconify-icon>
+                                    <iconify-icon icon="simple-icons:nextdotjs"
+                                        class="text-xl text-primary/60"></iconify-icon>
+                                    <iconify-icon icon="simple-icons:python"
+                                        class="text-xl text-primary/60"></iconify-icon>
+                                    <span class="text-sm font-mono text-muted">C#, .NET, Python, React, SOLID</span>
+                                </div>
+                            </li>
+                            <li class="flex flex-col gap-2 border-b border-white/5 pb-4">
+                                <span class="text-xs uppercase font-space text-white/40">IA, Automação &
+                                    Cybersecurity</span>
+                                <div class="flex items-center gap-4">
+                                    <iconify-icon icon="solar:magic-stick-bold"
+                                        class="text-xl text-primary/60"></iconify-icon>
+                                    <iconify-icon icon="solar:shield-check-bold"
+                                        class="text-xl text-primary/60"></iconify-icon>
+                                    <iconify-icon icon="simple-icons:docker"
+                                        class="text-xl text-primary/60"></iconify-icon>
+                                    <span class="text-sm font-mono text-muted">GenAI, LLMs, Ethical Hacking,
+                                        DevSecOps</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flashlight-card glass-card p-10 rounded-3xl flex flex-col justify-center">
+                        <h4 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-6 font-bold">Formação Acadêmica
+                        </h4>
+                        <p class="text-xl font-oswald uppercase tracking-tight mb-2">Análise e Desenvolvimento de
+                            Sistemas</p>
+                        <p class="text-sm text-muted uppercase tracking-widest mb-6">Universidade Paulista (UNIP) —
+                            Concluído</p>
+                        <div class="border-t border-white/5 pt-6 flex flex-wrap gap-2">
+                            <span
+                                class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] uppercase font-mono text-muted italic">Cibersegurança
+                                — DIO</span>
+                            <span
+                                class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] uppercase font-mono text-muted italic">Analista
+                                Segurança — Cisco</span>
+                            <span
+                                class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] uppercase font-mono text-muted italic">AI
+                                Fundamentals — Google</span>
+                        </div>
+                    </div>
+        </section>
+
+        <!-- Section 3: Projects -->
+        <section id="projetos" class="projects-container">
+            <div class="max-w-[1300px] mx-auto px-6 relative z-10">
+                <!-- Headline -->
+                <div class="mb-16 reveal-in">
+                    <h2
+                    class="text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-none mb-6 text-white">
+                    Projetos que demonstram <span class="bg-gradient-to-r from-white via-white/90 to-white/40 bg-clip-text text-transparent">capacidade técnica,</span> <br>
+                    <span class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">inovação e engenharia real.</span>
+                </h2>
+                    <p class="text-white/60 text-lg md:text-xl max-w-2xl uppercase tracking-widest font-space">
+                        Portfólio prático com soluções full stack em produção, segurança ofensiva/defensiva e engenharia
+                        de software sólida.
+                    </p>
+                </div>
+
+                <!-- Projects Content -->
+                <div class="flex flex-col gap-16">
+
+                    <!-- WEBPRIME MOTORS: THE MASTERPIECE DESTAQUE -->
+                    <div class="mb-24 reveal-in">
+                        <div class="project-card group border-primary/20 bg-[#08080c] h-[500px] md:h-[650px]">
+                            <span class="status-badge production">🌐 Principal Project</span>
+
+                            <!-- Full-Bleed Image Container -->
+                            <div class="absolute inset-0">
+                                <img src="raw-files/Screenshot 2026-05-12 192758.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-110"
+                                    style="image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);"
+                                    alt="WebPrimeMotors">
+
+                                <!-- Ambient Atmosphere Glow -->
+                                <div
+                                    class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,92,0,0.15),transparent_80%)]">
+                                </div>
+
+                                <!-- Premium Glass Reflection Overlay -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.05)_45%,transparent_50%)] bg-[length:200%_100%] animate-shimmer pointer-events-none">
+                                </div>
+
+                                <!-- Dark Vignette for Text Legibility -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-transparent">
+                                </div>
+                            </div>
+
+                            <!-- SAME OVERLAY EFFECT AS BELOW CARDS -->
+                            <div
+                                class="project-overlay opacity-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                                <div class="project-content w-full">
+                                    <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+                                        <div class="max-w-2xl">
+                                            <span
+                                                class="text-primary font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">//
+                                                MASTERPIECE ARCHITECTURE</span>
+                                            <h3
+                                                class="text-4xl md:text-7xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
+                                                WebPrime <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic">Motors</span>
+                                            </h3>
+                                            <p
+                                                class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
+                                                Ecossistema de gestão automotiva enterprise. Alta performance em .NET
+                                                Core MVC com arquitetura de dados escalável e segurança robusta.
+                                            </p>
+                                            <div class="flex flex-wrap gap-3">
+                                                <span
+                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
+                                                    <iconify-icon icon="simple-icons:dotnet"></iconify-icon> ASP.NET MVC
+                                                </span>
+                                                <span
+                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
+                                                    <iconify-icon icon="simple-icons:microsoftsqlserver"></iconify-icon>
+                                                    SQL Server
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <a href="https://webprimemotors.somee.com/" target="_blank"
+                                            class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform shadow-[0_0_30px_rgba(255,92,0,0.4)] mb-2">
+                                            <iconify-icon icon="solar:arrow-right-up-bold"
+                                                class="text-2xl"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Header for Slider -->
+                    <div class="mb-12 reveal-in">
+                        <h4 class="text-xs font-mono text-white/20 uppercase tracking-[0.5em] mb-4">// Outros Destaques
+                        </h4>
+                        <div class="h-[1px] w-full bg-gradient-to-r from-white/10 to-transparent"></div>
+                    </div>
+
+                    <!-- HIGHLIGHTS SLIDER: The Featured 5 -->
+                    <div class="slider-mask reveal-in">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.4em] font-bold">// FEATURED HIGHLIGHTS
+                            </h3>
+                            <div class="flex gap-2">
+                                <button
+                                    onclick="document.getElementById('highlights-slider').scrollBy({left: -300, behavior: 'smooth'})"
+                                    class="p-2 border border-white/10 rounded-full hover:bg-white/5 transition-colors">
+                                    <iconify-icon icon="solar:alt-arrow-left-bold" class="text-white"></iconify-icon>
+                                </button>
+                                <button
+                                    onclick="document.getElementById('highlights-slider').scrollBy({left: 300, behavior: 'smooth'})"
+                                    class="p-2 border border-white/10 rounded-full hover:bg-white/5 transition-colors">
+                                    <iconify-icon icon="solar:alt-arrow-right-bold" class="text-white"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="highlights-slider" class="highlights-slider">
+                            <!-- HIGHLIGHT: Xedit -->
+                            <div class="slider-item">
+                                <div class="project-card group card-glow-blue aspect-[3/4]">
+                                    <span class="status-badge">🛠️ Highlight</span>
+                                    <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=2070&auto=format&fit=crop"
+                                        class="project-image" alt="Xedit">
+                                    <div class="project-overlay">
+                                        <div class="project-content">
+                                            <span
+                                                class="text-[#009dff] font-mono text-[10px] uppercase tracking-widest mb-2 block">[
+                                                02 // NEXT.JS ]</span>
+                                            <h3
+                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
+                                                Xedit</h3>
+                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
+                                                Ecossistema de conteúdo de alto desempenho inspirado no TabNews.
+                                            </p>
+                                            <a href="https://github.com/GuiMRDS/clone-tabnews" target="_blank"
+                                                class="text-[10px] font-bold uppercase tracking-widest text-[#009dff] flex items-center gap-2">
+                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HIGHLIGHT: Lapzeira -->
+                            <div class="slider-item">
+                                <div class="project-card group aspect-[3/4]">
+                                    <span class="status-badge">✨ Highlight</span>
+                                    <div class="absolute inset-0">
+                                        <img src="assets/lapzeira-2.png" class="project-image" alt="Lapzeira">
+                                    </div>
+                                    <div class="project-overlay">
+                                        <div class="project-content">
+                                            <span
+                                                class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
+                                                03 // DESIGN ]</span>
+                                            <h3
+                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
+                                                Lapzeira</h3>
+                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
+                                                Masterpiece landing page com foco em precisão e ergonomia.
+                                            </p>
+                                            <a href="https://github.com/GuiMRDS/Lapzeira" target="_blank"
+                                                class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HIGHLIGHT: Infinity Spark -->
+                            <div class="slider-item">
+                                <div class="project-card group card-glow-purple aspect-[3/4] bg-[#050505] project-card-highlight">
+                                    <span class="status-badge">⚡ Highlight</span>
+                                    <!-- Clean Cloud/Edge visual -->
+                                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+                                        class="project-image"
+                                        alt="Infinity Spark">
+
+                                    <div class="project-overlay opacity-100 bg-transparent">
+                                        <div class="project-content">
+                                            <div class="mb-4">
+                                                <span
+                                                    class="text-[#bb00ff] font-mono text-[10px] uppercase tracking-[0.4em] mb-2 block">[
+                                                    04 // VERCEL ]</span>
+                                                <h3
+                                                    class="text-3xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
+                                                    Infinity Spark</h3>
+                                                <p
+                                                    class="text-white/50 text-[10px] mb-8 uppercase leading-relaxed font-space max-w-[200px]">
+                                                    Testes avançados de Vercel Edge e Continuous Deployment em escala
+                                                    global.
+                                                </p>
+                                            </div>
+
+                                            <a href="https://github.com/GuiMRDS/PrimeiroTeste-Vercel" target="_blank"
+                                                class="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#d480ff] group/link">
+                                                View Repo
+                                                <iconify-icon icon="solar:arrow-right-bold"
+                                                    class="group-hover/link:translate-x-1 transition-transform"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Decorative Vercel-style geometric element -->
+                                    <div
+                                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-[#bb00ff]/10 blur-[80px] pointer-events-none">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HIGHLIGHT: Ransomware Shield -->
+                            <div class="slider-item">
+                                <div class="project-card group aspect-[3/4] project-card-highlight">
+                                    <span class="status-badge">🔒 Cyber</span>
+                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+                                        class="project-image" alt="Ransomware Shield">
+                                    <div class="project-overlay">
+                                        <div class="project-content">
+                                            <span
+                                                class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
+                                                05 // SECURITY ]</span>
+                                            <h3
+                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
+                                                Ransomware Shield</h3>
+                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
+                                                Simulação de malware e contramedidas defensivas ativas.
+                                            </p>
+                                            <a href="https://github.com/GuiMRDS/Ransomware_and_Keylogger_Shield"
+                                                target="_blank"
+                                                class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HIGHLIGHT: Brute Force Study -->
+                            <div class="slider-item">
+                                <div class="project-card group aspect-[3/4]">
+                                    <span class="status-badge">🛡️ Cyber</span>
+                                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop"
+                                        class="project-image" alt="Brute Force Study">
+                                    <div class="project-overlay">
+                                        <div class="project-content">
+                                            <span
+                                                class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
+                                                06 // HACKING ]</span>
+                                            <h3
+                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
+                                                Brute Force Study</h3>
+                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
+                                                Estudo técnico de vulnerabilidades e força bruta em redes.
+                                            </p>
+                                            <a href="https://github.com/GuiMRDS/Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux"
+                                                target="_blank"
+                                                class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Call to Action (Model style empty/minimal space) -->
+                <div
+                    class="flex flex-col justify-center items-center text-center p-8 border border-white/5 border-dashed rounded-3xl reveal-in">
+                    <iconify-icon icon="solar:add-circle-bold" class="text-4xl text-white/10 mb-4"></iconify-icon>
+                    <p class="text-muted text-[10px] uppercase tracking-[0.2em]">Explore more on GitHub</p>
+                    <a href="https://github.com/GuiMRDS" target="_blank"
+                        class="text-white font-oswald uppercase text-lg mt-2 hover:text-primary transition-colors">@GuiMRDS</a>
+                </div>
+
+            </div>
+
+            <!-- ARCHIVE: Secondary Projects -->
+            <div class="pt-32 pb-40 border-t border-white/5 reveal-in max-w-6xl mx-auto px-6">
+                <div class="flex items-center gap-4 mb-16 justify-center">
+                    <div class="h-[1px] w-12 bg-white/10"></div>
+                    <span class="text-[10px] font-mono text-white/40 uppercase tracking-[0.6em] font-bold">Archive & Academic
+                        Labs</span>
+                    <div class="h-[1px] w-12 bg-white/10"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Archive Project 1: Biblioteca Virtual -->
+                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                <iconify-icon icon="solar:library-bold" class="text-xl text-primary/60"></iconify-icon>
+                            </div>
+                            <a href="https://github.com/GuiMRDS/Bibloteca_Vitual" target="_blank"
+                                class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                            </a>
+                        </div>
+                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Biblioteca Virtual</h4>
+                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">C# .NET · Academic</p>
+                    </div>
+
+                    <!-- Archive Project 2: BancoDigitalJava -->
+                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,92,0,0.1)]">
+                                <iconify-icon icon="logos:java" class="text-2xl"></iconify-icon>
+                            </div>
+                            <a href="https://github.com/GuiMRDS/BancoDigitalJava" target="_blank"
+                                class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                            </a>
+                        </div>
+                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Digital Bank Java</h4>
+                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java POO · Educational</p>
+                    </div>
+
+                    <!-- Archive Project 3: About-me -->
+                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                <iconify-icon icon="solar:user-bold" class="text-xl text-primary/60"></iconify-icon>
+                            </div>
+                            <a href="https://github.com/GuiMRDS/About-me" target="_blank"
+                                class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                            </a>
+                        </div>
+                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Professional Profile</h4>
+                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Markdown · GitHub</p>
+                    </div>
+
+                    <!-- Archive Project 4: ContaBancaria-java -->
+                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                <iconify-icon icon="solar:code-bold" class="text-xl text-primary/60"></iconify-icon>
+                            </div>
+                            <a href="https://github.com/GuiMRDS/ContaBancaria-java" target="_blank"
+                                class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                            </a>
+                        </div>
+                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Banking Fundamentals</h4>
+                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java · Foundations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4/5: CONTACT MASTERPIECE (Inspired by Future UI v5) -->
+        <section id="contato" class="min-h-screen py-24 flex items-center px-6 bg-[#050505] overflow-hidden reveal-in relative z-20">
+                <!-- Advanced Transition Mask -->
+                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[500px] bg-primary/5 blur-[120px] rounded-[100%] -translate-y-1/2 pointer-events-none -z-10"></div>
+                
+                <!-- Ambient Glows -->
+                <div class="absolute bottom-1/4 right-1/4 w-[800px] h-[800px] bg-primary/5 blur-[180px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
+                
+                <div class="max-w-[1300px] mx-auto relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                        
+                        <!-- Left: Large Typography & CTA -->
+                        <div class="flex flex-col gap-10">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-12 h-[1px] bg-primary"></span>
+                                    <span class="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-primary">Pronto para o Próximo Nível?</span>
+                                </div>
+                                <h2 class="font-oswald text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-[0.85] text-white">
+                                    Vamos elevar <br/>
+                                    <span class="bg-gradient-to-r from-primary via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_30px_rgba(255,92,0,0.5)]">sua visão.</span>
+                                </h2>
+                            </div>
+
+                            <p class="font-space text-lg text-white/40 leading-relaxed uppercase tracking-widest max-w-xl">
+                                Do desenvolvimento full stack à segurança ofensiva, eu transformo desafios complexos em soluções digitais imbatíveis.
+                            </p>
+
+                            <div class="flex flex-wrap gap-8">
+                                <!-- Premium Border Beam Button -->
+                                <div class="border-beam-container group">
+                                    <div class="border-beam"></div>
+                                    <a href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank"
+                                       class="relative z-10 bg-white/5 backdrop-blur-xl px-12 py-6 rounded-full border border-white/10 flex items-center gap-4 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                                        <span class="text-xs font-bold uppercase tracking-[0.2em]">Me chame no LinkedIn</span>
+                                        <iconify-icon icon="solar:arrow-right-up-bold" class="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
+                                    </a>
+                                </div>
+
+                                <!-- Secondary Action -->
+                                <a href="https://github.com/GuiMRDS" target="_blank"
+                                   class="relative overflow-hidden px-12 py-6 rounded-full border border-white/10 group flex items-center gap-4 hover:border-primary/40 transition-colors">
+                                    <div class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                                    <span class="relative z-10 text-xs font-bold uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">GitHub Archive</span>
+                                    <iconify-icon icon="simple-icons:github" class="relative z-10 text-xl text-white/40 group-hover:text-white"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right: Interactive Visual (Flashlight Reveal Style) -->
+                        <div class="relative flex justify-center lg:justify-end">
+                            <div class="flashlight-card bg-[#0A0A0A] border-white/10 rounded-[3rem] p-12 max-w-md w-full group cursor-crosshair shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:border-primary/40 transition-colors">
+                                <div class="relative z-10 flex flex-col gap-8">
+                                    <div class="w-20 h-20 rounded-3xl bg-primary shadow-[0_0_40px_rgba(255,77,0,0.3)] flex items-center justify-center group-hover:scale-110 transition-all duration-700">
+                                        <iconify-icon icon="solar:mailbox-bold" class="text-4xl text-white"></iconify-icon>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center gap-3">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                            <h4 class="font-oswald text-4xl uppercase font-bold text-white tracking-tighter">Status: Ativo</h4>
+                                        </div>
+                                        <p class="font-space text-sm text-white/30 uppercase tracking-[0.2em] leading-relaxed">
+                                            Monitorando novas oportunidades de engenharia de software e cibersegurança em tempo real.
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- Decorative Tech Info -->
+                                    <div class="pt-8 border-t border-white/10 flex flex-col gap-6">
+                                        <div class="flex justify-between items-center group/item">
+                                            <span class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Protocolo</span>
+                                            <span class="text-[11px] font-mono text-primary uppercase font-bold tracking-wider">Secure_Connect.v5</span>
+                                        </div>
+                                        <div class="flex justify-between items-center group/item">
+                                            <span class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Disponibilidade</span>
+                                            <span class="text-[11px] font-mono text-emerald-400 uppercase font-bold tracking-wider px-3 py-1 bg-emerald-500/10 rounded-full">100% ONLINE</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Background grid reveal on hover -->
+                                <div class="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none" 
+                                     style="background-image: radial-gradient(circle at 1px 1px, #FF5C00 1px, transparent 0); background-size: 32px 32px; transform: translateZ(10px);"></div>
+                                
+                                <!-- Internal Glow -->
+                                <div class="absolute -inset-20 bg-primary/5 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer: Premium Anchor -->
+                    <div class="mt-40 pt-20 border-t border-white/5 relative">
+                        <!-- Top Shadow/Fade -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-30"></div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+                            <!-- Column 1: Brand & Creds -->
+                            <div class="flex flex-col gap-6">
+                                <div class="flex flex-col gap-2">
+                                    <span class="font-oswald text-3xl tracking-tighter uppercase font-bold text-white">Marinho<span class="text-primary italic">.dev</span></span>
+                                    <p class="font-space text-[10px] text-white/30 uppercase tracking-[0.3em] leading-relaxed">
+                                        Software Engineer & Security Researcher. <br/>
+                                        Transformando complexidade em elegância.
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
+                                    <span class="font-mono text-[9px] text-white/20 uppercase tracking-widest">© 2026 Engineered by Antigravity</span>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Quick Links / Navigation -->
+                            <div class="flex flex-col gap-8 md:items-center">
+                                <div class="flex flex-col gap-4">
+                                    <span class="text-[9px] font-mono text-primary uppercase font-bold tracking-[0.5em]">// Navegação</span>
+                                    <div class="flex flex-wrap gap-x-8 gap-y-4">
+                                        <a href="#hero" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Início</a>
+                                        <a href="#sobre" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Sobre</a>
+                                        <a href="#projetos" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Projetos</a>
+                                        <a href="#contato" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Contato</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Column 3: Social Connectivity -->
+                            <div class="flex flex-col gap-8 md:items-end">
+                                <div class="flex flex-col gap-6 md:items-end w-full">
+                                    <span class="text-[9px] font-mono text-primary uppercase font-bold tracking-[0.5em]">// Connect</span>
+                                    <div class="flex gap-4">
+                                        <a href="#" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                            <iconify-icon icon="simple-icons:linkedin" class="text-xl"></iconify-icon>
+                                        </a>
+                                        <a href="#" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                            <iconify-icon icon="simple-icons:github" class="text-xl"></iconify-icon>
+                                        </a>
+                                        <a href="#" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                            <iconify-icon icon="simple-icons:instagram" class="text-xl"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Big Back to Top Trigger -->
+                        <div class="mt-32 flex justify-center">
+                            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+                                    class="group flex flex-col items-center gap-4 cursor-pointer">
+                                <div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent group-hover:h-20 transition-all duration-700"></div>
+                                <span class="text-[9px] font-mono text-white/20 uppercase tracking-[0.8em] group-hover:text-primary transition-colors">Back to Top</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Flashlight effect and 3D Rotation
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.flashlight-card, .project-card');
+
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Set mouse coordinates for flashlight gradient
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
+                // Check if mouse is over the card or nearby for a more responsive feel
+                if (e.clientX >= rect.left - 100 && e.clientX <= rect.right + 100 && 
+                    e.clientY >= rect.top - 100 && e.clientY <= rect.bottom + 100) {
+                    
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const moveX = (e.clientX - centerX) / 25;
+                    const moveY = (e.clientY - centerY) / 25;
+
+                    card.style.transform = `rotateX(${-moveY}deg) rotateY(${moveX}deg) ${card.classList.contains('project-card') ? 'translateY(-15px)' : ''}`;
+                    
+                    // Removido efeito 3D interno
+                    const elements = card.querySelectorAll('.badge, .project-content, .status-badge, .floating-trigger, h3, p, a, .w-16, .w-20');
+                    elements.forEach(el => {
+                        el.style.transform = `translate3d(0, 0, 0)`;
+                    });
+                }
+            });
+        });
+
+        // Reset rotation when mouse leaves
+        const allInteractiveCards = document.querySelectorAll('.flashlight-card, .project-card');
+        allInteractiveCards.forEach(card => {
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+                const elements = card.querySelectorAll('.badge, .project-content, .status-badge');
+                elements.forEach(el => {
+                    el.style.transform = `translate3d(0, 0, 0)`;
+                });
+            });
+        });
+
+        // Intersection Observer for Scroll Reveals
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-in').forEach(el => revealObserver.observe(el));
+
+        // Smart Navbar Toggle
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Timeline Scroll Progress
+        window.addEventListener('scroll', () => {
+            const timeline = document.querySelector('.timeline-container');
+            const progress = document.querySelector('.timeline-progress');
+            if (timeline && progress) {
+                const rect = timeline.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    const totalHeight = rect.height;
+                    const scrolled = windowHeight - rect.top;
+                    const percent = Math.min(Math.max((scrolled / totalHeight) * 100, 0), 100);
+                    progress.style.height = `${percent}%`;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

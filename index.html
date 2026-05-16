@@ -19,6 +19,10 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Smooth Scroll (Lenis) -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -167,6 +171,68 @@
             color: black !important;
         }
 
+        /* --- Loading Screen & Reveal --- */
+        #preloader {
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+        }
+
+        .reveal-stagger > * {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(10px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-stagger.active > * {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        /* Generate stagger delays */
+        .reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
+        .reveal-stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
+        .reveal-stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
+        .reveal-stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
+        .reveal-stagger.active > *:nth-child(5) { transition-delay: 0.5s; }
+
+        .image-reveal {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .image-reveal.active {
+            clip-path: inset(0 0 0 0);
+        }
+
+        /* --- Interactive Smoothness & Click Feedback --- */
+        button, a, .flashlight-card, .project-card, .nav-btn {
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        button:active, a:active {
+            transform: scale(0.95);
+            transition-duration: 0.1s;
+        }
+
+        .click-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0);
+            animation: ripple-animation 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+
+
         /* --- Future UI v5 Integrations --- */
         @keyframes beam {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
@@ -214,14 +280,16 @@
             position: absolute;
             inset: 0px;
             background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-                    rgba(255, 92, 0, 0.1),
-                    transparent 40%);
+                    rgba(255, 92, 0, 0.15),
+                    rgba(255, 92, 0, 0.05) 30%,
+                    transparent 60%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
             z-index: 10;
             border-radius: inherit;
         }
+
 
         .flashlight-card:hover::before {
             opacity: 1;
@@ -276,8 +344,8 @@
             background-color: #050505;
             color: #0F172A;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
+
 
         /* --- Section 2 Timeline Styles --- */
         .timeline-container {
@@ -308,8 +376,11 @@
             transform: translateX(-50%);
             box-shadow: 0 0 20px #FF5C00;
             z-index: 10;
-            transition: height 0.1s linear;
+            transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
+
+
+
 
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
@@ -551,20 +622,34 @@
 </head>
 
 <body class="antialiased overflow-x-hidden">
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center">
+        <div class="relative">
+            <div class="font-oswald text-5xl md:text-7xl font-bold text-white tracking-tighter uppercase mb-4 overflow-hidden">
+                <span id="loader-logo" class="block translate-y-full transition-transform duration-1000 pr-4">Marinho<span class="text-primary italic">.dev</span></span>
+            </div>
+            <div class="h-[2px] w-0 bg-primary transition-all duration-1500 ease-in-out shadow-[0_0_15px_#FF5C00]" id="loader-bar"></div>
+        </div>
+        <div class="mt-8 font-mono text-[9px] text-white/20 uppercase tracking-[0.5em] overflow-hidden">
+            <span id="loader-status" class="block translate-y-full transition-transform duration-700">System.Initialize()</span>
+        </div>
+    </div>
+
     <!-- Background Grid -->
     <div class="bg-grid"></div>
+
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1300px] transition-all duration-500">
         <div class="glass-panel px-8 py-4 rounded-full flex items-center justify-between">
-            <div class="flex items-center gap-4 group cursor-pointer">
+            <a href="#hero" class="flex items-center gap-4 group cursor-pointer">
                 <div class="flex gap-1">
                     <div class="w-2 h-6 bg-primary rounded-full"></div>
                     <div class="w-2 h-6 bg-neutral-900 rounded-full nav-accent-bar group-hover:h-4 transition-all duration-300"></div>
                     <div class="w-2 h-6 bg-primary rounded-full"></div>
                 </div>
                 <span class="font-oswald font-bold uppercase tracking-tighter text-xl nav-logo text-neutral-900 transition-colors">Marinho.dev</span>
-            </div>
+            </a>
 
             <div class="hidden lg:flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-900/60">
                 <a href="#hero" class="nav-link hover:text-primary transition-colors">Início</a>
@@ -573,10 +658,12 @@
                 <a href="#contato" class="nav-link hover:text-primary transition-colors">Contato</a>
             </div>
 
-            <button
-                class="nav-btn px-6 py-2 border border-black/10 rounded-full font-oswald uppercase text-[10px] tracking-widest nav-btn-text hover:bg-black hover:text-white transition-all">
-                Vamos Conversar
-            </button>
+            <a href="https://wa.me/5515991195225" target="_blank"
+                class="nav-btn px-6 py-2 border border-black/10 rounded-full font-oswald uppercase text-[10px] tracking-widest nav-btn-text hover:bg-black hover:text-white transition-all text-center">
+                Fale Comigo
+            </a>
+
+
         </div>
     </nav>
 
@@ -589,58 +676,84 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        // Click Ripple Effect
+        document.addEventListener('mousedown', (e) => {
+            const target = e.target.closest('button, a, .flashlight-card');
+            if (!target) return;
+
+            const ripple = document.createElement('div');
+            ripple.className = 'click-ripple';
+            
+            const rect = target.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            
+            // Ensure container can contain the ripple
+            if (getComputedStyle(target).position === 'static') {
+                target.style.position = 'relative';
+            }
+            target.style.overflow = 'hidden';
+            
+            target.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 700);
+        });
     </script>
+
 
     <main>
         <!-- Hero Section -->
         <section id="hero"
             class="min-h-screen relative flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden bg-white">
             <div class="max-w-[1300px] w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
                 <!-- Left Content -->
-                <div class="relative z-10">
-                    <div class="inline-flex items-center gap-3 px-4 py-2 bg-black/5 border border-black/10 rounded-full mb-8 animate-in"
-                        style="animation-delay: 0.1s">
+                <div class="relative z-10 reveal-stagger" id="hero-content">
+
+                    <div class="inline-flex items-center gap-3 px-4 py-2 bg-black/5 border border-black/10 rounded-full mb-8">
                         <span class="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_#FF5C00]"></span>
                         <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-muted">Disponível
                             para novos projetos</span>
                     </div>
 
-                    <h1 class="text-[10vw] lg:text-[6.5rem] font-oswald font-bold leading-[0.85] uppercase tracking-tighter mb-8 animate-in"
-                        style="animation-delay: 0.2s">
+                    <h1 class="text-[10vw] lg:text-[6.5rem] font-oswald font-bold leading-[0.85] uppercase tracking-tighter mb-8">
                         <span class="block">Código que</span>
                         <span class="block bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">resolve.</span>
-                        <span class="block text-transparent"
+                        <span class="block text-transparent py-2"
                             style="-webkit-text-stroke: 1.5px #050505;">Segurança</span>
                         <span class="block">que protege.</span>
                     </h1>
 
-                    <p class="max-w-lg text-base lg:text-lg text-neutral-600 font-space leading-relaxed mb-10 animate-in"
-                        style="animation-delay: 0.3s">
+                    <p class="max-w-lg text-base lg:text-lg text-neutral-600 font-space leading-relaxed mb-10">
                         Eu transformo ideias em soluções full stack robustas, combinando desenvolvimento limpo com
                         expertise em segurança. Para startups e empresas que precisam de mais que código—precisam de
                         confiança.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 animate-in" style="animation-delay: 0.4s">
-                        <button
-                            class="group relative px-8 py-4 bg-text text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projetos"
+                            class="group relative px-8 py-4 bg-text text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex items-center justify-center">
                             <span class="relative z-10 font-oswald uppercase text-xs tracking-widest">Ver
                                 Projetos</span>
                             <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity">
                             </div>
-                        </button>
+                        </a>
 
-                        <button
+                        <a href="#sobre"
                             class="px-8 py-4 border border-black/10 rounded-full font-oswald uppercase text-xs tracking-widest hover:bg-black/5 transition-colors flex items-center gap-3">
                             Meus Serviços
                             <iconify-icon icon="solar:arrow-right-bold" class="text-lg"></iconify-icon>
-                        </button>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Right Visual -->
-                <div class="relative animate-in flex justify-center lg:justify-end" style="animation-delay: 0.5s">
+                <div class="relative flex justify-center lg:justify-end image-reveal" id="hero-image">
                     <div
                         class="flashlight-card glass-panel rounded-[4rem] overflow-visible aspect-[4/5] w-full max-w-[500px] group">
                         <!-- Main Image Container -->
@@ -673,7 +786,8 @@
             </div>
         </section>
         <!-- Section 2: Timeline -->
-        <section class="timeline-container">
+        <section id="sobre" class="timeline-container">
+
             <!-- Tech Marquee (Infinite Loop) -->
             <div class="py-16 border-y border-white/5 bg-white/[0.01] overflow-hidden mb-12 relative">
                 <!-- Edge Masks for smooth fade -->
@@ -787,7 +901,8 @@
                     <!-- Career Phases -->
                     <div class="space-y-32">
                         <!-- Phase 1: Freelancer -->
-                        <div class="relative flex flex-col lg:flex-row items-center justify-between group">
+                        <div id="timeline-start" class="relative flex flex-col lg:flex-row items-center justify-between group">
+
                             <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
                                 <span class="timeline-year">2019 — 2023</span>
                             </div>
@@ -948,7 +1063,8 @@
                         </div>
 
                         <!-- Phase 5: Software Engineer -->
-                        <div class="relative flex flex-col lg:flex-row items-center justify-between group">
+                        <div id="timeline-end" class="relative flex flex-col lg:flex-row items-center justify-between group">
+
                             <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
                                 <span class="timeline-year">2026 — Presente</span>
                             </div>
@@ -1109,7 +1225,7 @@
                                                 MASTERPIECE ARCHITECTURE</span>
                                             <h3
                                                 class="text-4xl md:text-7xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
-                                                WebPrime <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic">Motors</span>
+                                                WebPrime <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">Motors</span>
                                             </h3>
                                             <p
                                                 class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
@@ -1170,8 +1286,9 @@
                             <div class="slider-item">
                                 <div class="project-card group card-glow-blue aspect-[3/4]">
                                     <span class="status-badge">🛠️ Highlight</span>
-                                    <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=2070&auto=format&fit=crop"
+                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
                                         class="project-image" alt="Xedit">
+
                                     <div class="project-overlay">
                                         <div class="project-content">
                                             <span
@@ -1224,9 +1341,10 @@
                                 <div class="project-card group card-glow-purple aspect-[3/4] bg-[#050505] project-card-highlight">
                                     <span class="status-badge">⚡ Highlight</span>
                                     <!-- Clean Cloud/Edge visual -->
-                                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+                                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop"
                                         class="project-image"
                                         alt="Infinity Spark">
+
 
                                     <div class="project-overlay opacity-100 bg-transparent">
                                         <div class="project-content">
@@ -1317,87 +1435,85 @@
                     </div>
                 </div>
 
-                <!-- Small Call to Action (Model style empty/minimal space) -->
-                <div
-                    class="flex flex-col justify-center items-center text-center p-8 border border-white/5 border-dashed rounded-3xl reveal-in">
-                    <iconify-icon icon="solar:add-circle-bold" class="text-4xl text-white/10 mb-4"></iconify-icon>
-                    <p class="text-muted text-[10px] uppercase tracking-[0.2em]">Explore more on GitHub</p>
-                    <a href="https://github.com/GuiMRDS" target="_blank"
-                        class="text-white font-oswald uppercase text-lg mt-2 hover:text-primary transition-colors">@GuiMRDS</a>
-                </div>
-
-            </div>
-
-            <!-- ARCHIVE: Secondary Projects -->
-            <div class="pt-32 pb-40 border-t border-white/5 reveal-in max-w-6xl mx-auto px-6">
-                <div class="flex items-center gap-4 mb-16 justify-center">
-                    <div class="h-[1px] w-12 bg-white/10"></div>
-                    <span class="text-[10px] font-mono text-white/40 uppercase tracking-[0.6em] font-bold">Archive & Academic
-                        Labs</span>
-                    <div class="h-[1px] w-12 bg-white/10"></div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Archive Project 1: Biblioteca Virtual -->
-                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                                <iconify-icon icon="solar:library-bold" class="text-xl text-primary/60"></iconify-icon>
-                            </div>
-                            <a href="https://github.com/GuiMRDS/Bibloteca_Vitual" target="_blank"
-                                class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                            </a>
-                        </div>
-                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Biblioteca Virtual</h4>
-                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">C# .NET · Academic</p>
+                <!-- ARCHIVE: Secondary Projects -->
+                <div class="pt-32 pb-40 border-t border-white/5 reveal-in max-w-6xl mx-auto px-6">
+                    <div class="flex items-center gap-4 mb-16 justify-center">
+                        <div class="h-[1px] w-12 bg-white/10"></div>
+                        <span class="text-[10px] font-mono text-white/40 uppercase tracking-[0.6em] font-bold">Archive & Academic Labs</span>
+                        <div class="h-[1px] w-12 bg-white/10"></div>
                     </div>
 
-                    <!-- Archive Project 2: BancoDigitalJava -->
-                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,92,0,0.1)]">
-                                <iconify-icon icon="logos:java" class="text-2xl"></iconify-icon>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+                        <!-- Archive Project 1: Biblioteca Virtual -->
+                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                    <iconify-icon icon="solar:library-bold" class="text-xl text-primary/60"></iconify-icon>
+                                </div>
+                                <a href="https://github.com/GuiMRDS/Bibloteca_Vitual" target="_blank"
+                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                                </a>
                             </div>
-                            <a href="https://github.com/GuiMRDS/BancoDigitalJava" target="_blank"
-                                class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                            </a>
+                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Biblioteca Virtual</h4>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">C# .NET · Academic</p>
                         </div>
-                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Digital Bank Java</h4>
-                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java POO · Educational</p>
+
+                        <!-- Archive Project 2: BancoDigitalJava -->
+                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,92,0,0.1)]">
+                                    <iconify-icon icon="logos:java" class="text-2xl"></iconify-icon>
+                                </div>
+                                <a href="https://github.com/GuiMRDS/BancoDigitalJava" target="_blank"
+                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                                </a>
+                            </div>
+                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Digital Bank Java</h4>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java POO · Educational</p>
+                        </div>
+
+                        <!-- Archive Project 3: About-me -->
+                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                    <iconify-icon icon="solar:user-bold" class="text-xl text-primary/60"></iconify-icon>
+                                </div>
+                                <a href="https://github.com/GuiMRDS/About-me" target="_blank"
+                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                                </a>
+                            </div>
+                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Professional Profile</h4>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Markdown · GitHub</p>
+                        </div>
+
+                        <!-- Archive Project 4: ContaBancaria-java -->
+                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
+                                    <iconify-icon icon="solar:code-bold" class="text-xl text-primary/60"></iconify-icon>
+                                </div>
+                                <a href="https://github.com/GuiMRDS/ContaBancaria-java" target="_blank"
+                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
+                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
+                                </a>
+                            </div>
+                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Banking Fundamentals</h4>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java · Foundations</p>
+                        </div>
                     </div>
 
-                    <!-- Archive Project 3: About-me -->
-                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                                <iconify-icon icon="solar:user-bold" class="text-xl text-primary/60"></iconify-icon>
-                            </div>
-                            <a href="https://github.com/GuiMRDS/About-me" target="_blank"
-                                class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                            </a>
-                        </div>
-                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Professional Profile</h4>
-                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Markdown · GitHub</p>
-                    </div>
-
-                    <!-- Archive Project 4: ContaBancaria-java -->
-                    <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                        <div class="flex justify-between items-start mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                                <iconify-icon icon="solar:code-bold" class="text-xl text-primary/60"></iconify-icon>
-                            </div>
-                            <a href="https://github.com/GuiMRDS/ContaBancaria-java" target="_blank"
-                                class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                            </a>
-                        </div>
-                        <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Banking Fundamentals</h4>
-                        <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java · Foundations</p>
+                    <!-- Small Call to Action (Move to bottom) -->
+                    <div class="flex flex-col justify-center items-center text-center p-12 border border-white/5 border-dashed rounded-[3rem] reveal-in hover:bg-white/[0.02] transition-colors group">
+                        <iconify-icon icon="solar:add-circle-bold" class="text-5xl text-white/10 mb-6 group-hover:text-primary/30 transition-colors"></iconify-icon>
+                        <p class="text-muted text-xs uppercase tracking-[0.4em]">Explore more on GitHub</p>
+                        <a href="https://github.com/GuiMRDS" target="_blank"
+                            class="text-white font-oswald uppercase text-2xl mt-4 hover:text-primary transition-colors">@GuiMRDS</a>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -1421,9 +1537,10 @@
                                     <span class="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-primary">Pronto para o Próximo Nível?</span>
                                 </div>
                                 <h2 class="font-oswald text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-[0.85] text-white">
-                                    Vamos elevar <br/>
+                                    Vou elevar <br/>
                                     <span class="bg-gradient-to-r from-primary via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_30px_rgba(255,92,0,0.5)]">sua visão.</span>
                                 </h2>
+
                             </div>
 
                             <p class="font-space text-lg text-white/40 leading-relaxed uppercase tracking-widest max-w-xl">
@@ -1431,24 +1548,26 @@
                             </p>
 
                             <div class="flex flex-wrap gap-8">
-                                <!-- Premium Border Beam Button -->
+                                <!-- WhatsApp Button -->
                                 <div class="border-beam-container group">
                                     <div class="border-beam"></div>
-                                    <a href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank"
-                                       class="relative z-10 bg-white/5 backdrop-blur-xl px-12 py-6 rounded-full border border-white/10 flex items-center gap-4 group-hover:bg-white group-hover:text-black transition-all duration-500">
-                                        <span class="text-xs font-bold uppercase tracking-[0.2em]">Me chame no LinkedIn</span>
-                                        <iconify-icon icon="solar:arrow-right-up-bold" class="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></iconify-icon>
+                                    <a href="https://wa.me/5515991195225" target="_blank"
+                                       class="flashlight-card relative z-10 bg-white/5 backdrop-blur-xl px-12 py-6 rounded-full border border-white/10 flex items-center gap-4 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-white/90 group-hover:text-black transition-colors">WhatsApp</span>
+                                        <iconify-icon icon="logos:whatsapp-icon" class="text-xl"></iconify-icon>
                                     </a>
+
                                 </div>
 
-                                <!-- Secondary Action -->
-                                <a href="https://github.com/GuiMRDS" target="_blank"
-                                   class="relative overflow-hidden px-12 py-6 rounded-full border border-white/10 group flex items-center gap-4 hover:border-primary/40 transition-colors">
+                                <!-- Email Button -->
+                                <a href="mailto:guimars22@gmail.com"
+                                   class="flashlight-card relative overflow-hidden px-12 py-6 rounded-full border border-white/10 group flex items-center gap-4 hover:border-primary/40 transition-colors">
                                     <div class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                                    <span class="relative z-10 text-xs font-bold uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">GitHub Archive</span>
-                                    <iconify-icon icon="simple-icons:github" class="relative z-10 text-xl text-white/40 group-hover:text-white"></iconify-icon>
+                                    <span class="relative z-10 text-xs font-bold uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">Enviar E-mail</span>
+                                    <iconify-icon icon="solar:letter-bold" class="relative z-10 text-xl text-white/40 group-hover:text-white"></iconify-icon>
                                 </a>
                             </div>
+
                         </div>
 
                         <!-- Right: Interactive Visual (Flashlight Reveal Style) -->
@@ -1529,16 +1648,17 @@
                                 <div class="flex flex-col gap-6 md:items-end w-full">
                                     <span class="text-[9px] font-mono text-primary uppercase font-bold tracking-[0.5em]">// Connect</span>
                                     <div class="flex gap-4">
-                                        <a href="#" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                        <a href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
                                             <iconify-icon icon="simple-icons:linkedin" class="text-xl"></iconify-icon>
                                         </a>
-                                        <a href="#" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                        <a href="https://github.com/GuiMRDS" target="_blank" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
                                             <iconify-icon icon="simple-icons:github" class="text-xl"></iconify-icon>
                                         </a>
-                                        <a href="#" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                        <a href="https://www.instagram.com/Gui.MRDS" target="_blank" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
                                             <iconify-icon icon="simple-icons:instagram" class="text-xl"></iconify-icon>
                                         </a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -1600,9 +1720,6 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = `rotateX(0deg) rotateY(0deg)`;
                 const elements = card.querySelectorAll('.badge, .project-content, .status-badge');
-                elements.forEach(el => {
-                    el.style.transform = `translate3d(0, 0, 0)`;
-                });
             });
         });
 
@@ -1620,35 +1737,107 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.reveal-in').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal-in, .reveal-stagger, .image-reveal').forEach(el => revealObserver.observe(el));
 
-        // Smart Navbar Toggle
-        const nav = document.getElementById('main-nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const logo = document.getElementById('loader-logo');
+            const bar = document.getElementById('loader-bar');
+            const status = document.getElementById('loader-status');
+
+            // Sequence
+            setTimeout(() => {
+                logo.style.transform = 'translateY(0)';
+                status.style.transform = 'translateY(0)';
+                bar.style.width = '100%';
+            }, 200);
+
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                
+                // Trigger Hero animations manually for instant feel after load
+                document.getElementById('hero-content').classList.add('active');
+                document.getElementById('hero-image').classList.add('active');
+            }, 2000);
+        });
+
+        // Initialize Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expoOut
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Handle Anchor Links with Lenis
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = this.getAttribute('href');
+                if (target === '#hero') {
+                    lenis.scrollTo(0);
+                } else {
+                    lenis.scrollTo(target, {
+                        offset: -50,
+                        duration: 1.5
+                    });
+                }
+            });
+        });
+
+        // Sync scroll logic with Lenis
+        lenis.on('scroll', (e) => {
+            // Timeline Scroll Progress
+            const timeline = document.querySelector('.timeline-container');
+            const progress = document.querySelector('.timeline-progress');
+            const startTrigger = document.getElementById('timeline-start');
+            const endTrigger = document.getElementById('timeline-end');
+            
+            if (timeline && progress && startTrigger && endTrigger) {
+                const startRect = startTrigger.getBoundingClientRect();
+                const endRect = endTrigger.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                // The "Playhead" is the center of the screen
+                const scrollPoint = windowHeight * 0.5;
+                
+                // Distance from start card to center of screen
+                const currentDist = scrollPoint - startRect.top;
+                
+                // Total distance between the two cards
+                const totalDist = endRect.top - startRect.top;
+                
+                // Calculate percentage (0 to 100)
+                const percent = Math.min(Math.max((currentDist / totalDist) * 100, 0), 100);
+                progress.style.height = `${percent}%`;
+            }
+
+            // Navbar Scrolled State
+
+            const nav = document.getElementById('main-nav');
+            if (e.scroll > 50) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
             }
         });
 
-        // Timeline Scroll Progress
-        window.addEventListener('scroll', () => {
-            const timeline = document.querySelector('.timeline-container');
-            const progress = document.querySelector('.timeline-progress');
-            if (timeline && progress) {
-                const rect = timeline.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-
-                if (rect.top < windowHeight && rect.bottom > 0) {
-                    const totalHeight = rect.height;
-                    const scrolled = windowHeight - rect.top;
-                    const percent = Math.min(Math.max((scrolled / totalHeight) * 100, 0), 100);
-                    progress.style.height = `${percent}%`;
-                }
-            }
-        });
     </script>
 </body>
+
 
 </html>

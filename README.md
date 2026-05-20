@@ -1,4 +1,4 @@
-# 🚀 MARINHO.DEV
+# MARINHO.DEV
 
 Meu portfólio pessoal desenvolvido para apresentar meus projetos, experiências, habilidades e trajetória como desenvolvedor.
 

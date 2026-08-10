@@ -785,7 +785,7 @@
                         confiança.
                     </p>
 
-                    <div class="flex flex-wrap gap-4">
+                    <div class="flex flex-wrap gap-4 mb-10">
                         <a href="#projetos"
                             class="group relative px-8 py-4 bg-text text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex items-center justify-center">
                             <span class="relative z-10 font-oswald uppercase text-xs tracking-widest">Ver
@@ -796,10 +796,12 @@
 
                         <a href="#sobre"
                             class="px-8 py-4 border border-black/10 rounded-full font-oswald uppercase text-xs tracking-widest hover:bg-black/5 transition-colors flex items-center gap-3">
-                            Meus Serviços
+                            Sobre Mim
                             <iconify-icon icon="solar:arrow-right-bold" class="text-lg"></iconify-icon>
                         </a>
                     </div>
+
+
                 </div>
 
                 <!-- Right Visual -->
@@ -1527,99 +1529,205 @@
                     </div>
                 </div>
 
-                <!-- ARCHIVE: Secondary Projects -->
-                <div class="pt-32 pb-40 border-t border-white/5 reveal-in max-w-6xl mx-auto px-6">
-                    <div class="flex items-center gap-4 mb-16 justify-center">
-                        <div class="h-[1px] w-12 bg-white/10"></div>
-                        <span class="text-[10px] font-mono text-white/40 uppercase tracking-[0.6em] font-bold">Archive &
-                            Academic Labs</span>
-                        <div class="h-[1px] w-12 bg-white/10"></div>
+                <!-- Small Call to Action (GitHub Link) -->
+                <div
+                    class="mb-16 md:mb-24 flex flex-col justify-center items-center text-center p-8 md:p-12 border border-white/5 border-dashed rounded-[2.5rem] md:rounded-[3rem] reveal-in hover:bg-white/[0.02] transition-colors group">
+                    <iconify-icon icon="solar:add-circle-bold"
+                        class="text-4xl md:text-5xl text-white/10 mb-4 md:mb-6 group-hover:text-primary/30 transition-colors"></iconify-icon>
+                    <p class="text-muted text-xs uppercase tracking-[0.4em]">Explore mais no GitHub</p>
+                    <a href="https://github.com/GuiMRDS" target="_blank"
+                        class="text-white font-oswald uppercase text-xl md:text-2xl mt-3 md:mt-4 hover:text-primary transition-colors">@GuiMRDS</a>
+                </div>
+
+                <!-- ARCHIVE: Evidence Metrics -->
+                <div
+                    class="pt-12 md:pt-16 pb-24 md:pb-36 border-t border-white/5 reveal-in max-w-6xl mx-auto px-4 sm:px-6">
+                    <div class="flex items-center gap-4 mb-12 md:mb-16 justify-center text-center">
+                        <div class="h-[1px] w-8 md:w-12 bg-white/10"></div>
+                        <span
+                            class="text-[10px] font-mono text-white/40 uppercase tracking-[0.4em] md:tracking-[0.6em] font-bold">Evidências
+                            Técnicas & Trajetória</span>
+                        <div class="h-[1px] w-8 md:w-12 bg-white/10"></div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-                        <!-- Archive Project 1: Biblioteca Virtual -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Evidence Card 1: Projetos Publicados -->
                         <div
-                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                                    <iconify-icon icon="solar:library-bold"
-                                        class="text-xl text-primary/60"></iconify-icon>
-                                </div>
-                                <a href="https://github.com/GuiMRDS/Bibloteca_Vitual" target="_blank"
-                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                                </a>
+                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
+                            <!-- Top accent bar -->
+                            <div
+                                class="w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-full mb-6">
                             </div>
-                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Biblioteca Virtual
-                            </h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">C# .NET ·
-                                Academic</p>
+
+                            <div class="relative z-10 flex flex-col gap-5">
+                                <div class="flex justify-between items-center">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
+                                        <iconify-icon icon="solar:rocket-bold"
+                                            class="text-2xl text-primary group-hover:text-white transition-colors"></iconify-icon>
+                                    </div>
+                                    <span
+                                        class="font-oswald text-4xl font-bold text-primary tracking-tighter">+10</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">
+                                        Projetos Publicados</h4>
+                                    <p
+                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
+                                        Soluções web, automações e APIs deployed e funcionais no GitHub e nuvem.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Footer Tag -->
+                            <div
+                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span
+                                    class="text-[9px] font-mono text-primary uppercase font-bold tracking-widest px-2.5 py-1 bg-primary/10 rounded-full border border-primary/20">Production
+                                    Ready</span>
+                                <iconify-icon icon="solar:arrow-right-up-linear"
+                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
+                            </div>
+
+                            <!-- Background ambient glow -->
+                            <div
+                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                            </div>
                         </div>
 
-                        <!-- Archive Project 2: BancoDigitalJava -->
+                        <!-- Evidence Card 2: Trajetória Prática -->
                         <div
-                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                            <div class="flex justify-between items-start mb-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,92,0,0.1)]">
-                                    <iconify-icon icon="logos:java" class="text-2xl"></iconify-icon>
-                                </div>
-                                <a href="https://github.com/GuiMRDS/BancoDigitalJava" target="_blank"
-                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                                </a>
+                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
+                            <!-- Top accent bar -->
+                            <div
+                                class="w-full h-1 bg-gradient-to-r from-white/30 via-white/10 to-transparent rounded-full mb-6">
                             </div>
-                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Digital Bank Java</h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java POO ·
-                                Educational</p>
+
+                            <div class="relative z-10 flex flex-col gap-5">
+                                <div class="flex justify-between items-center">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
+                                        <iconify-icon icon="solar:code-circle-bold"
+                                            class="text-2xl text-white/80 group-hover:text-white transition-colors"></iconify-icon>
+                                    </div>
+                                    <span class="font-oswald text-4xl font-bold text-white tracking-tighter">+5
+                                        Anos</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">Criando
+                                        Soluções</h4>
+                                    <p
+                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
+                                        Atuação contínua desde 2019 evoluindo de web design a engenharia de software.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Footer Tag -->
+                            <div
+                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span
+                                    class="text-[9px] font-mono text-white/40 uppercase font-bold tracking-widest px-2.5 py-1 bg-white/5 rounded-full border border-white/10">Desde
+                                    2019</span>
+                                <iconify-icon icon="solar:arrow-right-up-linear"
+                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
+                            </div>
+
+                            <!-- Background ambient glow -->
+                            <div
+                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                            </div>
                         </div>
 
-                        <!-- Archive Project 3: About-me -->
+                        <!-- Evidence Card 3: Stack de Desenvolvimento -->
                         <div
-                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                                    <iconify-icon icon="solar:user-bold" class="text-xl text-primary/60"></iconify-icon>
-                                </div>
-                                <a href="https://github.com/GuiMRDS/About-me" target="_blank"
-                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                                </a>
+                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
+                            <!-- Top accent bar -->
+                            <div
+                                class="w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-full mb-6">
                             </div>
-                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Professional Profile
-                            </h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Markdown ·
-                                GitHub</p>
+
+                            <div class="relative z-10 flex flex-col gap-5">
+                                <div class="flex justify-between items-center">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
+                                        <iconify-icon icon="solar:cpu-bold"
+                                            class="text-2xl text-primary group-hover:text-white transition-colors"></iconify-icon>
+                                    </div>
+                                    <span class="font-oswald text-2xl font-bold text-white tracking-tighter">Full
+                                        Stack</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">.NET •
+                                        Python • GenAI</h4>
+                                    <p
+                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
+                                        Desenvolvimento com C#, Next.js, LangChain e modelos Gemini.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Footer Tag -->
+                            <div
+                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span
+                                    class="text-[9px] font-mono text-primary uppercase font-bold tracking-widest px-2.5 py-1 bg-primary/10 rounded-full border border-primary/20">AI
+                                    & Automation</span>
+                                <iconify-icon icon="solar:arrow-right-up-linear"
+                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
+                            </div>
+
+                            <!-- Background ambient glow -->
+                            <div
+                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                            </div>
                         </div>
 
-                        <!-- Archive Project 4: ContaBancaria-java -->
+                        <!-- Evidence Card 4: Infraestrutura Real -->
                         <div
-                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                                    <iconify-icon icon="solar:code-bold" class="text-xl text-primary/60"></iconify-icon>
-                                </div>
-                                <a href="https://github.com/GuiMRDS/ContaBancaria-java" target="_blank"
-                                    class="text-white/20 group-hover:text-primary transition-colors p-2">
-                                    <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
-                                </a>
+                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
+                            <!-- Top accent bar -->
+                            <div
+                                class="w-full h-1 bg-gradient-to-r from-white/30 via-white/10 to-transparent rounded-full mb-6">
                             </div>
-                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Banking Fundamentals
-                            </h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java ·
-                                Foundations</p>
+
+                            <div class="relative z-10 flex flex-col gap-5">
+                                <div class="flex justify-between items-center">
+                                    <div
+                                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
+                                        <iconify-icon icon="solar:server-bold"
+                                            class="text-2xl text-white/80 group-hover:text-white transition-colors"></iconify-icon>
+                                    </div>
+                                    <span class="font-oswald text-2xl font-bold text-white tracking-tighter">Infra &
+                                        Cloud</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">
+                                        Experiência Prática</h4>
+                                    <p
+                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
+                                        Vivência em servidores, Linux, redes, suporte corporativo e Cloudflare.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Footer Tag -->
+                            <div
+                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                                <span
+                                    class="text-[9px] font-mono text-emerald-400 uppercase font-bold tracking-widest px-2.5 py-1 bg-emerald-500/10 rounded-full border border-emerald-500/20">Linux
+                                    & Networking</span>
+                                <iconify-icon icon="solar:arrow-right-up-linear"
+                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
+                            </div>
+
+                            <!-- Background ambient glow -->
+                            <div
+                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Small Call to Action (Move to bottom) -->
-                    <div
-                        class="flex flex-col justify-center items-center text-center p-12 border border-white/5 border-dashed rounded-[3rem] reveal-in hover:bg-white/[0.02] transition-colors group">
-                        <iconify-icon icon="solar:add-circle-bold"
-                            class="text-5xl text-white/10 mb-6 group-hover:text-primary/30 transition-colors"></iconify-icon>
-                        <p class="text-muted text-xs uppercase tracking-[0.4em]">Explore more on GitHub</p>
-                        <a href="https://github.com/GuiMRDS" target="_blank"
-                            class="text-white font-oswald uppercase text-2xl mt-4 hover:text-primary transition-colors">@GuiMRDS</a>
-                    </div>
                 </div>
 
             </div>
@@ -1700,7 +1808,7 @@
                     <!-- Right: Interactive Visual (Flashlight Reveal Style) -->
                     <div class="relative flex justify-center lg:justify-end">
                         <div
-                            class="flashlight-card bg-[#0A0A0A] border-white/10 rounded-[3rem] p-12 max-w-md w-full group cursor-crosshair shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:border-primary/40 transition-colors">
+                            class="flashlight-card glass-panel bg-[#0A0A0A] border-white/10 rounded-[3rem] p-12 max-w-md w-full group cursor-crosshair shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:border-primary/40 transition-all">
                             <div class="relative z-10 flex flex-col gap-8">
                                 <div
                                     class="w-20 h-20 rounded-3xl bg-primary shadow-[0_0_40px_rgba(255,77,0,0.3)] flex items-center justify-center group-hover:scale-110 transition-all duration-700">

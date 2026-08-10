@@ -19,7 +19,7 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Smooth Scroll (Lenis) -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
 
@@ -153,7 +153,7 @@
             color: #FF5C00 !important;
         }
 
-        nav.scrolled .nav-logo, 
+        nav.scrolled .nav-logo,
         nav.scrolled .nav-btn-text {
             color: white !important;
         }
@@ -176,40 +176,60 @@
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
         }
 
-        .reveal-stagger > * {
+        .reveal-stagger>* {
             opacity: 0;
             transform: translateY(30px);
             filter: blur(10px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .reveal-stagger.active > * {
+        .reveal-stagger.active>* {
             opacity: 1;
             transform: translateY(0);
             filter: blur(0px);
         }
 
         /* Generate stagger delays */
-        .reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; }
-        .reveal-stagger.active > *:nth-child(2) { transition-delay: 0.2s; }
-        .reveal-stagger.active > *:nth-child(3) { transition-delay: 0.3s; }
-        .reveal-stagger.active > *:nth-child(4) { transition-delay: 0.4s; }
-        .reveal-stagger.active > *:nth-child(5) { transition-delay: 0.5s; }
+        .reveal-stagger.active>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-stagger.active>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-stagger.active>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-stagger.active>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .reveal-stagger.active>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
 
         .image-reveal {
             clip-path: inset(0 100% 0 0);
             transition: clip-path 1.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
+
         .image-reveal.active {
             clip-path: inset(0 0 0 0);
         }
 
         /* --- Interactive Smoothness & Click Feedback --- */
-        button, a, .flashlight-card, .project-card, .nav-btn {
+        button,
+        a,
+        .flashlight-card,
+        .project-card,
+        .nav-btn {
             transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        button:active, a:active {
+        button:active,
+        a:active {
             transform: scale(0.95);
             transition-duration: 0.1s;
         }
@@ -235,9 +255,15 @@
 
         /* --- Future UI v5 Integrations --- */
         @keyframes beam {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
         }
+
         .flashlight-card {
             position: relative;
             overflow: hidden;
@@ -246,6 +272,7 @@
             transform-style: preserve-3d;
             perspective: 1000px;
         }
+
         .border-beam {
             position: absolute;
             top: 50%;
@@ -257,12 +284,21 @@
             opacity: 0.1;
             transition: opacity 0.3s;
         }
-        .border-beam-container:hover .border-beam { opacity: 0.5; }
+
+        .border-beam-container:hover .border-beam {
+            opacity: 0.5;
+        }
 
         @keyframes shimmer {
-            0% { transform: translateX(-100%) skewX(-15deg); }
-            100% { transform: translateX(250%) skewX(-15deg); }
+            0% {
+                transform: translateX(-100%) skewX(-15deg);
+            }
+
+            100% {
+                transform: translateX(250%) skewX(-15deg);
+            }
         }
+
         .animate-shimmer {
             animation: shimmer 6s infinite linear;
         }
@@ -458,7 +494,8 @@
             transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             filter: contrast(1.1) saturate(1.1);
             image-rendering: -webkit-optimize-contrast;
-            border-radius: 32px; /* Restore rounding */
+            border-radius: 32px;
+            /* Restore rounding */
         }
 
         .project-card:hover .project-image {
@@ -625,13 +662,18 @@
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center">
         <div class="relative">
-            <div class="font-oswald text-5xl md:text-7xl font-bold text-white tracking-tighter uppercase mb-4 overflow-hidden">
-                <span id="loader-logo" class="block translate-y-full transition-transform duration-1000 pr-4">Marinho<span class="text-primary italic">.dev</span></span>
+            <div
+                class="font-oswald text-5xl md:text-7xl font-bold text-white tracking-tighter uppercase mb-4 overflow-hidden">
+                <span id="loader-logo"
+                    class="block translate-y-full transition-transform duration-1000 pr-4">Marinho<span
+                        class="text-primary italic">.dev</span></span>
             </div>
-            <div class="h-[2px] w-0 bg-primary transition-all duration-1500 ease-in-out shadow-[0_0_15px_#FF5C00]" id="loader-bar"></div>
+            <div class="h-[2px] w-0 bg-primary transition-all duration-1500 ease-in-out shadow-[0_0_15px_#FF5C00]"
+                id="loader-bar"></div>
         </div>
         <div class="mt-8 font-mono text-[9px] text-white/20 uppercase tracking-[0.5em] overflow-hidden">
-            <span id="loader-status" class="block translate-y-full transition-transform duration-700">System.Initialize()</span>
+            <span id="loader-status"
+                class="block translate-y-full transition-transform duration-700">System.Initialize()</span>
         </div>
     </div>
 
@@ -640,18 +682,23 @@
 
 
     <!-- Navigation -->
-    <nav id="main-nav" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1300px] transition-all duration-500">
+    <nav id="main-nav"
+        class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1300px] transition-all duration-500">
         <div class="glass-panel px-8 py-4 rounded-full flex items-center justify-between">
             <a href="#hero" class="flex items-center gap-4 group cursor-pointer">
                 <div class="flex gap-1">
                     <div class="w-2 h-6 bg-primary rounded-full"></div>
-                    <div class="w-2 h-6 bg-neutral-900 rounded-full nav-accent-bar group-hover:h-4 transition-all duration-300"></div>
+                    <div
+                        class="w-2 h-6 bg-neutral-900 rounded-full nav-accent-bar group-hover:h-4 transition-all duration-300">
+                    </div>
                     <div class="w-2 h-6 bg-primary rounded-full"></div>
                 </div>
-                <span class="font-oswald font-bold uppercase tracking-tighter text-xl nav-logo text-neutral-900 transition-colors">Marinho.dev</span>
+                <span
+                    class="font-oswald font-bold uppercase tracking-tighter text-xl nav-logo text-neutral-900 transition-colors">Marinho.dev</span>
             </a>
 
-            <div class="hidden lg:flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-900/60">
+            <div
+                class="hidden lg:flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-900/60">
                 <a href="#hero" class="nav-link hover:text-primary transition-colors">Início</a>
                 <a href="#sobre" class="nav-link hover:text-primary transition-colors">Sobre</a>
                 <a href="#projetos" class="nav-link hover:text-primary transition-colors">Projetos</a>
@@ -684,24 +731,24 @@
 
             const ripple = document.createElement('div');
             ripple.className = 'click-ripple';
-            
+
             const rect = target.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
             const x = e.clientX - rect.left - size / 2;
             const y = e.clientY - rect.top - size / 2;
-            
+
             ripple.style.width = ripple.style.height = `${size}px`;
             ripple.style.left = `${x}px`;
             ripple.style.top = `${y}px`;
-            
+
             // Ensure container can contain the ripple
             if (getComputedStyle(target).position === 'static') {
                 target.style.position = 'relative';
             }
             target.style.overflow = 'hidden';
-            
+
             target.appendChild(ripple);
-            
+
             setTimeout(() => ripple.remove(), 700);
         });
     </script>
@@ -715,15 +762,18 @@
                 <!-- Left Content -->
                 <div class="relative z-10 reveal-stagger" id="hero-content">
 
-                    <div class="inline-flex items-center gap-3 px-4 py-2 bg-black/5 border border-black/10 rounded-full mb-8">
+                    <div
+                        class="inline-flex items-center gap-3 px-4 py-2 bg-black/5 border border-black/10 rounded-full mb-8">
                         <span class="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_#FF5C00]"></span>
                         <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-muted">Disponível
                             para novos projetos</span>
                     </div>
 
-                    <h1 class="text-[10vw] lg:text-[6.5rem] font-oswald font-bold leading-[0.85] uppercase tracking-tighter mb-8">
+                    <h1
+                        class="text-[10vw] lg:text-[6.5rem] font-oswald font-bold leading-[0.85] uppercase tracking-tighter mb-8">
                         <span class="block">Código que</span>
-                        <span class="block bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">resolve.</span>
+                        <span
+                            class="block bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">resolve.</span>
                         <span class="block text-transparent py-2"
                             style="-webkit-text-stroke: 1.5px #050505;">Segurança</span>
                         <span class="block">que protege.</span>
@@ -885,7 +935,9 @@
                     <h2
                         class="text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-none mb-6 text-white">
                         Do design e infraestrutura à <br>
-                        <span class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">Engenharia de Software, IA e Cybersecurity.</span>
+                        <span
+                            class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">
+                            Engenharia de Software, IA e Automação.</span>
                     </h2>
                     <p class="text-white/60 text-lg md:text-xl max-w-3xl mx-auto uppercase tracking-widest font-space">
                         Uma trajetória construída através de evolução contínua, desenvolvimento full stack, automação
@@ -901,7 +953,8 @@
                     <!-- Career Phases -->
                     <div class="space-y-32">
                         <!-- Phase 1: Freelancer -->
-                        <div id="timeline-start" class="relative flex flex-col lg:flex-row items-center justify-between group">
+                        <div id="timeline-start"
+                            class="relative flex flex-col lg:flex-row items-center justify-between group">
 
                             <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
                                 <span class="timeline-year">2019 — 2023</span>
@@ -912,8 +965,13 @@
                             <div class="lg:w-[45%] w-full reveal-in">
                                 <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
                                     <div class="flex justify-between items-start mb-6">
-                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Freelancer
-                                            <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">Web & Design</span></h3>
+                                        <h3
+                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
+                                            Freelancer
+                                            <span
+                                                class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">Web
+                                                & Design</span>
+                                        </h3>
                                         <span class="lg:hidden timeline-year">2019-2023</span>
                                     </div>
                                     <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
@@ -957,8 +1015,12 @@
                             <div class="lg:w-[45%] w-full reveal-in">
                                 <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
                                     <div class="flex justify-between items-start mb-6">
-                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Aprendiz
-                                            de <span class="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">Laboratório</span> — UNIP</h3>
+                                        <h3
+                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
+                                            Aprendiz
+                                            de <span
+                                                class="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">Laboratório</span>
+                                            — UNIP</h3>
                                         <span class="lg:hidden timeline-year">2023-2025</span>
                                     </div>
                                     <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
@@ -992,8 +1054,11 @@
                             <div class="lg:w-[45%] w-full reveal-in">
                                 <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
                                     <div class="flex justify-between items-start mb-6">
-                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
-                                            Especialização <span class="bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">Full Stack</span></h3>
+                                        <h3
+                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
+                                            Especialização <span
+                                                class="bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">Full
+                                                Stack</span></h3>
                                         <span class="lg:hidden timeline-year">2024-2025</span>
                                     </div>
                                     <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
@@ -1033,8 +1098,12 @@
                             <div class="lg:w-[45%] w-full reveal-in">
                                 <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
                                     <div class="flex justify-between items-start mb-6">
-                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Assistente
-                                            de <span class="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">TI</span> — FADI</h3>
+                                        <h3
+                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
+                                            Assistente
+                                            de <span
+                                                class="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">TI</span>
+                                            — FADI</h3>
                                         <span class="lg:hidden timeline-year">2025-2026</span>
                                     </div>
                                     <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
@@ -1063,7 +1132,8 @@
                         </div>
 
                         <!-- Phase 5: Software Engineer -->
-                        <div id="timeline-end" class="relative flex flex-col lg:flex-row items-center justify-between group">
+                        <div id="timeline-end"
+                            class="relative flex flex-col lg:flex-row items-center justify-between group">
 
                             <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
                                 <span class="timeline-year">2026 — Presente</span>
@@ -1074,13 +1144,17 @@
                             <div class="lg:w-[45%] w-full reveal-in">
                                 <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
                                     <div class="flex justify-between items-start mb-6">
-                                        <h3 class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">Software
-                                            <span class="bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">Engineer</span></h3>
+                                        <h3
+                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
+                                            Software
+                                            <span
+                                                class="bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">Engineer</span>
+                                        </h3>
                                         <span class="lg:hidden timeline-year">2026-Pres.</span>
                                     </div>
                                     <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
-                                        Engenharia de Software com foco em Full Stack, IA & Cybersecurity.
-                                        Desenvolvimento de APIs escaláveis e automação inteligente.
+                                        Engenharia de Software com foco em Full Stack, IA Generativa, Automação &
+                                        Infraestrutura, integrando boas práticas de segurança em todas as etapas.
                                     </p>
                                     <div class="flex flex-wrap gap-2">
                                         <span
@@ -1108,7 +1182,9 @@
                 <!-- Technical Summary / Competencies -->
                 <div class="mt-48 grid grid-cols-1 md:grid-cols-2 gap-12 reveal-in">
                     <div class="flashlight-card glass-card p-10 rounded-3xl">
-                        <h4 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-8 font-bold">Competências Técnicas
+                        <h4
+                            class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-8 font-bold">
+                            Competências Técnicas
                         </h4>
                         <ul class="space-y-6">
                             <li class="flex flex-col gap-2 border-b border-white/5 pb-4">
@@ -1141,7 +1217,9 @@
                         </ul>
                     </div>
                     <div class="flashlight-card glass-card p-10 rounded-3xl flex flex-col justify-center">
-                        <h4 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-6 font-bold">Formação Acadêmica
+                        <h4
+                            class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-6 font-bold">
+                            Formação Acadêmica
                         </h4>
                         <p class="text-xl font-oswald uppercase tracking-tight mb-2">Análise e Desenvolvimento de
                             Sistemas</p>
@@ -1167,45 +1245,45 @@
                 <!-- Headline -->
                 <div class="mb-16 reveal-in">
                     <h2
-                    class="text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-none mb-6 text-white">
-                    Projetos que demonstram <span class="bg-gradient-to-r from-white via-white/90 to-white/40 bg-clip-text text-transparent">capacidade técnica,</span> <br>
-                    <span class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">inovação e engenharia real.</span>
-                </h2>
+                        class="text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-none mb-6 text-white">
+                        Problemas reais, <span
+                            class="bg-gradient-to-r from-white via-white/90 to-white/40 bg-clip-text text-transparent">soluções
+                            reais.</span> <br>
+                        <span
+                            class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">Full
+                            Stack, IA e Automação.</span>
+                    </h2>
                     <p class="text-white/60 text-lg md:text-xl max-w-2xl uppercase tracking-widest font-space">
-                        Portfólio prático com soluções full stack em produção, segurança ofensiva/defensiva e engenharia
-                        de software sólida.
+                        Cada projeto resolve um problema específico — desde aplicações web completas até automações com
+                        inteligência artificial.
                     </p>
                 </div>
 
                 <!-- Projects Content -->
                 <div class="flex flex-col gap-16">
 
-                    <!-- WEBPRIME MOTORS: THE MASTERPIECE DESTAQUE -->
-                    <div class="mb-24 reveal-in">
-                        <div class="project-card group border-primary/20 bg-[#08080c] h-[500px] md:h-[650px]">
-                            <span class="status-badge production">🌐 Principal Project</span>
+                    <!-- PRIMARY FEATURED PROJECTS GRID -->
+                    <div class="mb-24 reveal-in flex flex-col gap-12">
+                        <!-- LLM-LANGCHAIN -->
+                        <div class="project-card group border-primary/20 bg-[#08080c] h-[500px] md:h-[600px]">
+                            <span class="status-badge production">🧠 AI Project</span>
 
                             <!-- Full-Bleed Image Container -->
                             <div class="absolute inset-0">
-                                <img src="raw-files/Screenshot 2026-05-12 192758.png"
+                                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
                                     class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-110"
                                     style="image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);"
-                                    alt="WebPrimeMotors">
+                                    alt="LLM-LangChain">
 
-                                <!-- Ambient Atmosphere Glow -->
                                 <div
                                     class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,92,0,0.15),transparent_80%)]">
                                 </div>
-
-                                <!-- Premium Glass Reflection Overlay -->
                                 <div
                                     class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none">
                                 </div>
                                 <div
                                     class="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.05)_45%,transparent_50%)] bg-[length:200%_100%] animate-shimmer pointer-events-none">
                                 </div>
-
-                                <!-- Dark Vignette for Text Legibility -->
                                 <div
                                     class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90">
                                 </div>
@@ -1214,7 +1292,6 @@
                                 </div>
                             </div>
 
-                            <!-- SAME OVERLAY EFFECT AS BELOW CARDS -->
                             <div
                                 class="project-overlay opacity-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                                 <div class="project-content w-full">
@@ -1222,15 +1299,99 @@
                                         <div class="max-w-2xl">
                                             <span
                                                 class="text-primary font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">//
-                                                MASTERPIECE ARCHITECTURE</span>
+                                                INTELIGÊNCIA ARTIFICIAL</span>
                                             <h3
-                                                class="text-4xl md:text-7xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
-                                                WebPrime <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">Motors</span>
+                                                class="text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
+                                                Vision <span
+                                                    class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">Mind</span>
                                             </h3>
                                             <p
+                                                class="text-white/50 text-[10px] uppercase tracking-widest font-mono mb-3">
+                                                Problema: Interpretar imagens e gerar explicações inteligentes de forma
+                                                automatizada.
+                                            </p>
+                                            <p
                                                 class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
-                                                Ecossistema de gestão automotiva enterprise. Alta performance em .NET
-                                                Core MVC com arquitetura de dados escalável e segurança robusta.
+                                                Aplicação baseada em IA capaz de analisar imagens utilizando LangChain e
+                                                Gemini, gerando descrições e respostas contextuais.
+                                            </p>
+                                            <div class="flex flex-wrap gap-3">
+                                                <span
+                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
+                                                    <iconify-icon icon="simple-icons:python"></iconify-icon> Python
+                                                </span>
+                                                <span
+                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
+                                                    <iconify-icon icon="simple-icons:langchain"></iconify-icon>
+                                                    LangChain
+                                                </span>
+                                                <span
+                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
+                                                    <iconify-icon icon="simple-icons:googlegemini"></iconify-icon>
+                                                    Gemini
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <a href="https://github.com/GuiMRDS/Vision-Mind" target="_blank"
+                                            class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform shadow-[0_0_30px_rgba(255,92,0,0.4)] mb-2">
+                                            <iconify-icon icon="solar:arrow-right-up-bold"
+                                                class="text-2xl"></iconify-icon>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WEBPRIME MOTORS -->
+                        <div class="project-card group border-primary/20 bg-[#08080c] h-[500px] md:h-[600px]">
+                            <span class="status-badge production">🌐 Production</span>
+
+                            <!-- Full-Bleed Image Container -->
+                            <div class="absolute inset-0">
+                                <img src="raw-files/Screenshot 2026-05-12 192758.png"
+                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-110"
+                                    style="image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);"
+                                    alt="WebPrime Motors">
+
+                                <div
+                                    class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,92,0,0.15),transparent_80%)]">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.05)_45%,transparent_50%)] bg-[length:200%_100%] animate-shimmer pointer-events-none">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90">
+                                </div>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-transparent">
+                                </div>
+                            </div>
+
+                            <div
+                                class="project-overlay opacity-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                                <div class="project-content w-full">
+                                    <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+                                        <div class="max-w-2xl">
+                                            <span
+                                                class="text-primary font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">//
+                                                FULL STACK & SISTEMAS</span>
+                                            <h3
+                                                class="text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
+                                                WebPrime <span
+                                                    class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">Motors</span>
+                                            </h3>
+                                            <p
+                                                class="text-white/50 text-[10px] uppercase tracking-widest font-mono mb-3">
+                                                Problema: Gerenciar catálogo de veículos, clientes e vendas em uma
+                                                plataforma web.
+                                            </p>
+                                            <p
+                                                class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
+                                                Sistema completo de gestão automotiva com autenticação, CRUD e
+                                                arquitetura MVC.
                                             </p>
                                             <div class="flex flex-wrap gap-3">
                                                 <span
@@ -1262,29 +1423,19 @@
                         <div class="h-[1px] w-full bg-gradient-to-r from-white/10 to-transparent"></div>
                     </div>
 
-                    <!-- HIGHLIGHTS SLIDER: The Featured 5 -->
+                    <!-- HIGHLIGHTS SLIDER -->
                     <div class="slider-mask reveal-in">
                         <div class="flex justify-between items-center mb-8">
-                            <h3 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.4em] font-bold">// FEATURED HIGHLIGHTS
+                            <h3
+                                class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.4em] font-bold">
+                                // FEATURED HIGHLIGHTS
                             </h3>
-                            <div class="flex gap-2">
-                                <button
-                                    onclick="document.getElementById('highlights-slider').scrollBy({left: -300, behavior: 'smooth'})"
-                                    class="p-2 border border-white/10 rounded-full hover:bg-white/5 transition-colors">
-                                    <iconify-icon icon="solar:alt-arrow-left-bold" class="text-white"></iconify-icon>
-                                </button>
-                                <button
-                                    onclick="document.getElementById('highlights-slider').scrollBy({left: 300, behavior: 'smooth'})"
-                                    class="p-2 border border-white/10 rounded-full hover:bg-white/5 transition-colors">
-                                    <iconify-icon icon="solar:alt-arrow-right-bold" class="text-white"></iconify-icon>
-                                </button>
-                            </div>
                         </div>
 
                         <div id="highlights-slider" class="highlights-slider">
                             <!-- HIGHLIGHT: Xedit -->
                             <div class="slider-item">
-                                <div class="project-card group card-glow-blue aspect-[3/4]">
+                                <div class="project-card group aspect-[3/4]">
                                     <span class="status-badge">🛠️ Highlight</span>
                                     <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
                                         class="project-image" alt="Xedit">
@@ -1292,88 +1443,22 @@
                                     <div class="project-overlay">
                                         <div class="project-content">
                                             <span
-                                                class="text-[#009dff] font-mono text-[10px] uppercase tracking-widest mb-2 block">[
-                                                02 // NEXT.JS ]</span>
-                                            <h3
-                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
-                                                Xedit</h3>
-                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
-                                                Ecossistema de conteúdo de alto desempenho inspirado no TabNews.
-                                            </p>
-                                            <a href="https://github.com/GuiMRDS/clone-tabnews" target="_blank"
-                                                class="text-[10px] font-bold uppercase tracking-widest text-[#009dff] flex items-center gap-2">
-                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- HIGHLIGHT: Lapzeira -->
-                            <div class="slider-item">
-                                <div class="project-card group aspect-[3/4]">
-                                    <span class="status-badge">✨ Highlight</span>
-                                    <div class="absolute inset-0">
-                                        <img src="assets/lapzeira-2.png" class="project-image" alt="Lapzeira">
-                                    </div>
-                                    <div class="project-overlay">
-                                        <div class="project-content">
-                                            <span
                                                 class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
-                                                03 // DESIGN ]</span>
+                                                03 // NEXT.JS ]</span>
                                             <h3
-                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
-                                                Lapzeira</h3>
-                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
-                                                Masterpiece landing page com foco em precisão e ergonomia.
+                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-2">
+                                                Xedit</h3>
+                                            <p class="text-white/50 text-[9px] mb-1 uppercase font-mono">
+                                                Problema: Criar uma plataforma de conteúdo com qualidade de produção.
                                             </p>
-                                            <a href="https://github.com/GuiMRDS/Lapzeira" target="_blank"
+                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
+                                                Plataforma de conteúdo construída com Next.js, TDD e deploy contínuo.
+                                            </p>
+                                            <a href="https://github.com/GuiMRDS/xedit" target="_blank"
                                                 class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
                                                 View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
                                             </a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- HIGHLIGHT: Infinity Spark -->
-                            <div class="slider-item">
-                                <div class="project-card group card-glow-purple aspect-[3/4] bg-[#050505] project-card-highlight">
-                                    <span class="status-badge">⚡ Highlight</span>
-                                    <!-- Clean Cloud/Edge visual -->
-                                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop"
-                                        class="project-image"
-                                        alt="Infinity Spark">
-
-
-                                    <div class="project-overlay opacity-100 bg-transparent">
-                                        <div class="project-content">
-                                            <div class="mb-4">
-                                                <span
-                                                    class="text-[#bb00ff] font-mono text-[10px] uppercase tracking-[0.4em] mb-2 block">[
-                                                    04 // VERCEL ]</span>
-                                                <h3
-                                                    class="text-3xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
-                                                    Infinity Spark</h3>
-                                                <p
-                                                    class="text-white/50 text-[10px] mb-8 uppercase leading-relaxed font-space max-w-[200px]">
-                                                    Testes avançados de Vercel Edge e Continuous Deployment em escala
-                                                    global.
-                                                </p>
-                                            </div>
-
-                                            <a href="https://github.com/GuiMRDS/PrimeiroTeste-Vercel" target="_blank"
-                                                class="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#d480ff] group/link">
-                                                View Repo
-                                                <iconify-icon icon="solar:arrow-right-bold"
-                                                    class="group-hover/link:translate-x-1 transition-transform"></iconify-icon>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Decorative Vercel-style geometric element -->
-                                    <div
-                                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-[#bb00ff]/10 blur-[80px] pointer-events-none">
                                     </div>
                                 </div>
                             </div>
@@ -1388,12 +1473,15 @@
                                         <div class="project-content">
                                             <span
                                                 class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
-                                                05 // SECURITY ]</span>
+                                                04 // SECURITY ]</span>
                                             <h3
-                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
+                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-2">
                                                 Ransomware Shield</h3>
+                                            <p class="text-white/50 text-[9px] mb-1 uppercase font-mono">
+                                                Problema: Entender como malware opera para construir defesas eficazes.
+                                            </p>
                                             <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
-                                                Simulação de malware e contramedidas defensivas ativas.
+                                                Simulação controlada de ransomware e keylogger com contramedidas ativas.
                                             </p>
                                             <a href="https://github.com/GuiMRDS/Ransomware_and_Keylogger_Shield"
                                                 target="_blank"
@@ -1415,12 +1503,16 @@
                                         <div class="project-content">
                                             <span
                                                 class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
-                                                06 // HACKING ]</span>
+                                                05 // INFRA ]</span>
                                             <h3
-                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-3">
+                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-2">
                                                 Brute Force Study</h3>
+                                            <p class="text-white/50 text-[9px] mb-1 uppercase font-mono">
+                                                Problema: Avaliar vulnerabilidades de autenticação em redes.
+                                            </p>
                                             <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
-                                                Estudo técnico de vulnerabilidades e força bruta em redes.
+                                                Estudo prático de ataques brute force com Medusa e Kali Linux para
+                                                hardening de infraestrutura.
                                             </p>
                                             <a href="https://github.com/GuiMRDS/Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux"
                                                 target="_blank"
@@ -1439,30 +1531,37 @@
                 <div class="pt-32 pb-40 border-t border-white/5 reveal-in max-w-6xl mx-auto px-6">
                     <div class="flex items-center gap-4 mb-16 justify-center">
                         <div class="h-[1px] w-12 bg-white/10"></div>
-                        <span class="text-[10px] font-mono text-white/40 uppercase tracking-[0.6em] font-bold">Archive & Academic Labs</span>
+                        <span class="text-[10px] font-mono text-white/40 uppercase tracking-[0.6em] font-bold">Archive &
+                            Academic Labs</span>
                         <div class="h-[1px] w-12 bg-white/10"></div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
                         <!-- Archive Project 1: Biblioteca Virtual -->
-                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div
+                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
-                                    <iconify-icon icon="solar:library-bold" class="text-xl text-primary/60"></iconify-icon>
+                                    <iconify-icon icon="solar:library-bold"
+                                        class="text-xl text-primary/60"></iconify-icon>
                                 </div>
                                 <a href="https://github.com/GuiMRDS/Bibloteca_Vitual" target="_blank"
                                     class="text-white/20 group-hover:text-primary transition-colors p-2">
                                     <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
                                 </a>
                             </div>
-                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Biblioteca Virtual</h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">C# .NET · Academic</p>
+                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Biblioteca Virtual
+                            </h4>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">C# .NET ·
+                                Academic</p>
                         </div>
 
                         <!-- Archive Project 2: BancoDigitalJava -->
-                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div
+                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
                             <div class="flex justify-between items-start mb-4">
-                                <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,92,0,0.1)]">
+                                <div
+                                    class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center shadow-[0_0_20px_rgba(255,92,0,0.1)]">
                                     <iconify-icon icon="logos:java" class="text-2xl"></iconify-icon>
                                 </div>
                                 <a href="https://github.com/GuiMRDS/BancoDigitalJava" target="_blank"
@@ -1471,11 +1570,13 @@
                                 </a>
                             </div>
                             <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Digital Bank Java</h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java POO · Educational</p>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java POO ·
+                                Educational</p>
                         </div>
 
                         <!-- Archive Project 3: About-me -->
-                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div
+                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
                                     <iconify-icon icon="solar:user-bold" class="text-xl text-primary/60"></iconify-icon>
@@ -1485,12 +1586,15 @@
                                     <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
                                 </a>
                             </div>
-                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Professional Profile</h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Markdown · GitHub</p>
+                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Professional Profile
+                            </h4>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Markdown ·
+                                GitHub</p>
                         </div>
 
                         <!-- Archive Project 4: ContaBancaria-java -->
-                        <div class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
+                        <div
+                            class="flashlight-card glass-panel p-6 rounded-2xl hover:border-primary/30 transition-all group">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center">
                                     <iconify-icon icon="solar:code-bold" class="text-xl text-primary/60"></iconify-icon>
@@ -1500,14 +1604,18 @@
                                     <iconify-icon icon="solar:arrow-right-up-bold" class="text-xs"></iconify-icon>
                                 </a>
                             </div>
-                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Banking Fundamentals</h4>
-                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java · Foundations</p>
+                            <h4 class="text-base font-oswald font-bold uppercase text-white mb-2">Banking Fundamentals
+                            </h4>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest font-mono mb-4">Java ·
+                                Foundations</p>
                         </div>
                     </div>
 
                     <!-- Small Call to Action (Move to bottom) -->
-                    <div class="flex flex-col justify-center items-center text-center p-12 border border-white/5 border-dashed rounded-[3rem] reveal-in hover:bg-white/[0.02] transition-colors group">
-                        <iconify-icon icon="solar:add-circle-bold" class="text-5xl text-white/10 mb-6 group-hover:text-primary/30 transition-colors"></iconify-icon>
+                    <div
+                        class="flex flex-col justify-center items-center text-center p-12 border border-white/5 border-dashed rounded-[3rem] reveal-in hover:bg-white/[0.02] transition-colors group">
+                        <iconify-icon icon="solar:add-circle-bold"
+                            class="text-5xl text-white/10 mb-6 group-hover:text-primary/30 transition-colors"></iconify-icon>
                         <p class="text-muted text-xs uppercase tracking-[0.4em]">Explore more on GitHub</p>
                         <a href="https://github.com/GuiMRDS" target="_blank"
                             class="text-white font-oswald uppercase text-2xl mt-4 hover:text-primary transition-colors">@GuiMRDS</a>
@@ -1518,162 +1626,214 @@
         </section>
 
         <!-- SECTION 4/5: CONTACT MASTERPIECE (Inspired by Future UI v5) -->
-        <section id="contato" class="min-h-screen py-24 flex items-center px-6 bg-[#050505] overflow-hidden reveal-in relative z-20">
-                <!-- Advanced Transition Mask -->
-                <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[500px] bg-primary/5 blur-[120px] rounded-[100%] -translate-y-1/2 pointer-events-none -z-10"></div>
-                
-                <!-- Ambient Glows -->
-                <div class="absolute bottom-1/4 right-1/4 w-[800px] h-[800px] bg-primary/5 blur-[180px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
-                
-                <div class="max-w-[1300px] mx-auto relative z-10">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                        
-                        <!-- Left: Large Typography & CTA -->
-                        <div class="flex flex-col gap-10">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-12 h-[1px] bg-primary"></span>
-                                    <span class="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-primary">Pronto para o Próximo Nível?</span>
-                                </div>
-                                <h2 class="font-oswald text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-[0.85] text-white">
-                                    Vou elevar <br/>
-                                    <span class="bg-gradient-to-r from-primary via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_30px_rgba(255,92,0,0.5)]">sua visão.</span>
-                                </h2>
+        <section id="contato"
+            class="min-h-screen py-24 flex items-center px-6 bg-[#050505] overflow-hidden reveal-in relative z-20">
+            <!-- Advanced Transition Mask -->
+            <div
+                class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent">
+            </div>
+            <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[500px] bg-primary/5 blur-[120px] rounded-[100%] -translate-y-1/2 pointer-events-none -z-10">
+            </div>
 
+            <!-- Ambient Glows -->
+            <div
+                class="absolute bottom-1/4 right-1/4 w-[800px] h-[800px] bg-primary/5 blur-[180px] rounded-full pointer-events-none -z-10 animate-pulse">
+            </div>
+
+            <div class="max-w-[1300px] mx-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+
+                    <!-- Left: Large Typography & CTA -->
+                    <div class="flex flex-col gap-10">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-12 h-[1px] bg-primary"></span>
+                                <span
+                                    class="text-[10px] font-mono font-bold uppercase tracking-[0.4em] text-primary">Pronto
+                                    para o Próximo Nível?</span>
                             </div>
+                            <h2
+                                class="font-oswald text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-[0.85] text-white">
+                                Vou elevar <br />
+                                <span
+                                    class="bg-gradient-to-r from-primary via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_30px_rgba(255,92,0,0.5)]">sua
+                                    visão.</span>
+                            </h2>
 
-                            <p class="font-space text-lg text-white/40 leading-relaxed uppercase tracking-widest max-w-xl">
-                                Do desenvolvimento full stack à segurança ofensiva, eu transformo desafios complexos em soluções digitais imbatíveis.
-                            </p>
+                        </div>
 
-                            <div class="flex flex-wrap gap-8">
-                                <!-- WhatsApp Button -->
-                                <div class="border-beam-container group">
-                                    <div class="border-beam"></div>
-                                    <a href="https://wa.me/5515991195225" target="_blank"
-                                       class="flashlight-card relative z-10 bg-white/5 backdrop-blur-xl px-12 py-6 rounded-full border border-white/10 flex items-center gap-4 group-hover:bg-white group-hover:text-black transition-all duration-500">
-                                        <span class="text-xs font-bold uppercase tracking-[0.2em] text-white/90 group-hover:text-black transition-colors">WhatsApp</span>
-                                        <iconify-icon icon="logos:whatsapp-icon" class="text-xl"></iconify-icon>
-                                    </a>
+                        <p class="font-space text-lg text-white/40 leading-relaxed uppercase tracking-widest max-w-xl">
+                            Do desenvolvimento full stack e soluções inteligentes com IA à segurança e automação,
+                            transformo desafios em resultados escaláveis.
+                        </p>
 
-                                </div>
-
-                                <!-- Email Button -->
-                                <a href="mailto:guimars22@gmail.com"
-                                   class="flashlight-card relative overflow-hidden px-12 py-6 rounded-full border border-white/10 group flex items-center gap-4 hover:border-primary/40 transition-colors">
-                                    <div class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                                    <span class="relative z-10 text-xs font-bold uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">Enviar E-mail</span>
-                                    <iconify-icon icon="solar:letter-bold" class="relative z-10 text-xl text-white/40 group-hover:text-white"></iconify-icon>
+                        <div class="flex flex-wrap gap-8">
+                            <!-- WhatsApp Button -->
+                            <div class="border-beam-container group">
+                                <div class="border-beam"></div>
+                                <a href="https://wa.me/5515991195225" target="_blank"
+                                    class="flashlight-card relative z-10 bg-white/5 backdrop-blur-xl px-12 py-6 rounded-full border border-white/10 flex items-center gap-4 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                                    <span
+                                        class="text-xs font-bold uppercase tracking-[0.2em] text-white/90 group-hover:text-black transition-colors">WhatsApp</span>
+                                    <iconify-icon icon="logos:whatsapp-icon" class="text-xl"></iconify-icon>
                                 </a>
+
                             </div>
 
-                        </div>
-
-                        <!-- Right: Interactive Visual (Flashlight Reveal Style) -->
-                        <div class="relative flex justify-center lg:justify-end">
-                            <div class="flashlight-card bg-[#0A0A0A] border-white/10 rounded-[3rem] p-12 max-w-md w-full group cursor-crosshair shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:border-primary/40 transition-colors">
-                                <div class="relative z-10 flex flex-col gap-8">
-                                    <div class="w-20 h-20 rounded-3xl bg-primary shadow-[0_0_40px_rgba(255,77,0,0.3)] flex items-center justify-center group-hover:scale-110 transition-all duration-700">
-                                        <iconify-icon icon="solar:mailbox-bold" class="text-4xl text-white"></iconify-icon>
-                                    </div>
-                                    <div class="space-y-3">
-                                        <div class="flex items-center gap-3">
-                                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                            <h4 class="font-oswald text-4xl uppercase font-bold text-white tracking-tighter">Status: Ativo</h4>
-                                        </div>
-                                        <p class="font-space text-sm text-white/30 uppercase tracking-[0.2em] leading-relaxed">
-                                            Monitorando novas oportunidades de engenharia de software e cibersegurança em tempo real.
-                                        </p>
-                                    </div>
-                                    
-                                    <!-- Decorative Tech Info -->
-                                    <div class="pt-8 border-t border-white/10 flex flex-col gap-6">
-                                        <div class="flex justify-between items-center group/item">
-                                            <span class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Protocolo</span>
-                                            <span class="text-[11px] font-mono text-primary uppercase font-bold tracking-wider">Secure_Connect.v5</span>
-                                        </div>
-                                        <div class="flex justify-between items-center group/item">
-                                            <span class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Disponibilidade</span>
-                                            <span class="text-[11px] font-mono text-emerald-400 uppercase font-bold tracking-wider px-3 py-1 bg-emerald-500/10 rounded-full">100% ONLINE</span>
-                                        </div>
-                                    </div>
+                            <!-- Email Button -->
+                            <a href="mailto:guimars22@gmail.com"
+                                class="flashlight-card relative overflow-hidden px-12 py-6 rounded-full border border-white/10 group flex items-center gap-4 hover:border-primary/40 transition-colors">
+                                <div
+                                    class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                                 </div>
-                                <!-- Background grid reveal on hover -->
-                                <div class="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none" 
-                                     style="background-image: radial-gradient(circle at 1px 1px, #FF5C00 1px, transparent 0); background-size: 32px 32px; transform: translateZ(10px);"></div>
-                                
-                                <!-- Internal Glow -->
-                                <div class="absolute -inset-20 bg-primary/5 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                            </div>
+                                <span
+                                    class="relative z-10 text-xs font-bold uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">Enviar
+                                    E-mail</span>
+                                <iconify-icon icon="solar:letter-bold"
+                                    class="relative z-10 text-xl text-white/40 group-hover:text-white"></iconify-icon>
+                            </a>
                         </div>
+
                     </div>
 
-                    <!-- Footer: Premium Anchor -->
-                    <div class="mt-40 pt-20 border-t border-white/5 relative">
-                        <!-- Top Shadow/Fade -->
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-30"></div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
-                            <!-- Column 1: Brand & Creds -->
-                            <div class="flex flex-col gap-6">
-                                <div class="flex flex-col gap-2">
-                                    <span class="font-oswald text-3xl tracking-tighter uppercase font-bold text-white">Marinho<span class="text-primary italic">.dev</span></span>
-                                    <p class="font-space text-[10px] text-white/30 uppercase tracking-[0.3em] leading-relaxed">
-                                        Software Engineer & Security Researcher. <br/>
-                                        Transformando complexidade em elegância.
+                    <!-- Right: Interactive Visual (Flashlight Reveal Style) -->
+                    <div class="relative flex justify-center lg:justify-end">
+                        <div
+                            class="flashlight-card bg-[#0A0A0A] border-white/10 rounded-[3rem] p-12 max-w-md w-full group cursor-crosshair shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:border-primary/40 transition-colors">
+                            <div class="relative z-10 flex flex-col gap-8">
+                                <div
+                                    class="w-20 h-20 rounded-3xl bg-primary shadow-[0_0_40px_rgba(255,77,0,0.3)] flex items-center justify-center group-hover:scale-110 transition-all duration-700">
+                                    <iconify-icon icon="solar:mailbox-bold" class="text-4xl text-white"></iconify-icon>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        <h4
+                                            class="font-oswald text-4xl uppercase font-bold text-white tracking-tighter">
+                                            Status: Ativo</h4>
+                                    </div>
+                                    <p
+                                        class="font-space text-sm text-white/30 uppercase tracking-[0.2em] leading-relaxed">
+                                        Monitorando novas oportunidades em engenharia de software, IA, automação e
+                                        segurança.
                                     </p>
                                 </div>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
-                                    <span class="font-mono text-[9px] text-white/20 uppercase tracking-widest">© 2026 Engineered by Antigravity</span>
-                                </div>
-                            </div>
 
-                            <!-- Column 2: Quick Links / Navigation -->
-                            <div class="flex flex-col gap-8 md:items-center">
-                                <div class="flex flex-col gap-4">
-                                    <span class="text-[9px] font-mono text-primary uppercase font-bold tracking-[0.5em]">// Navegação</span>
-                                    <div class="flex flex-wrap gap-x-8 gap-y-4">
-                                        <a href="#hero" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Início</a>
-                                        <a href="#sobre" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Sobre</a>
-                                        <a href="#projetos" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Projetos</a>
-                                        <a href="#contato" class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Contato</a>
+                                <!-- Decorative Tech Info -->
+                                <div class="pt-8 border-t border-white/10 flex flex-col gap-6">
+                                    <div class="flex justify-between items-center group/item">
+                                        <span
+                                            class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Protocolo</span>
+                                        <span
+                                            class="text-[11px] font-mono text-primary uppercase font-bold tracking-wider">Secure_Connect.v5</span>
+                                    </div>
+                                    <div class="flex justify-between items-center group/item">
+                                        <span
+                                            class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Disponibilidade</span>
+                                        <span
+                                            class="text-[11px] font-mono text-emerald-400 uppercase font-bold tracking-wider px-3 py-1 bg-emerald-500/10 rounded-full">100%
+                                            ONLINE</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Column 3: Social Connectivity -->
-                            <div class="flex flex-col gap-8 md:items-end">
-                                <div class="flex flex-col gap-6 md:items-end w-full">
-                                    <span class="text-[9px] font-mono text-primary uppercase font-bold tracking-[0.5em]">// Connect</span>
-                                    <div class="flex gap-4">
-                                        <a href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
-                                            <iconify-icon icon="simple-icons:linkedin" class="text-xl"></iconify-icon>
-                                        </a>
-                                        <a href="https://github.com/GuiMRDS" target="_blank" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
-                                            <iconify-icon icon="simple-icons:github" class="text-xl"></iconify-icon>
-                                        </a>
-                                        <a href="https://www.instagram.com/Gui.MRDS" target="_blank" class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
-                                            <iconify-icon icon="simple-icons:instagram" class="text-xl"></iconify-icon>
-                                        </a>
-                                    </div>
-
-                                </div>
+                            <!-- Background grid reveal on hover -->
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"
+                                style="background-image: radial-gradient(circle at 1px 1px, #FF5C00 1px, transparent 0); background-size: 32px 32px; transform: translateZ(10px);">
                             </div>
-                        </div>
 
-                        <!-- Big Back to Top Trigger -->
-                        <div class="mt-32 flex justify-center">
-                            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-                                    class="group flex flex-col items-center gap-4 cursor-pointer">
-                                <div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent group-hover:h-20 transition-all duration-700"></div>
-                                <span class="text-[9px] font-mono text-white/20 uppercase tracking-[0.8em] group-hover:text-primary transition-colors">Back to Top</span>
-                            </button>
+                            <!-- Internal Glow -->
+                            <div
+                                class="absolute -inset-20 bg-primary/5 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+
+                <!-- Footer: Premium Anchor -->
+                <div class="mt-40 pt-20 border-t border-white/5 relative">
+                    <!-- Top Shadow/Fade -->
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-30">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+                        <!-- Column 1: Brand & Creds -->
+                        <div class="flex flex-col gap-6">
+                            <div class="flex flex-col gap-2">
+                                <span
+                                    class="font-oswald text-3xl tracking-tighter uppercase font-bold text-white">Marinho<span
+                                        class="text-primary italic">.dev</span></span>
+                                <p
+                                    class="font-space text-[10px] text-white/30 uppercase tracking-[0.3em] leading-relaxed">
+                                    Software Engineer & Security Researcher. <br />
+                                    Transformando complexidade em elegância.
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
+                                <span class="font-mono text-[9px] text-white/20 uppercase tracking-widest">© 2026
+                                    Engineered by Antigravity</span>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Quick Links / Navigation -->
+                        <div class="flex flex-col gap-8 md:items-center">
+                            <div class="flex flex-col gap-4">
+                                <span class="text-[9px] font-mono text-primary uppercase font-bold tracking-[0.5em]">//
+                                    Navegação</span>
+                                <div class="flex flex-wrap gap-x-8 gap-y-4">
+                                    <a href="#hero"
+                                        class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Início</a>
+                                    <a href="#sobre"
+                                        class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Sobre</a>
+                                    <a href="#projetos"
+                                        class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Projetos</a>
+                                    <a href="#contato"
+                                        class="text-xs font-oswald uppercase tracking-widest text-white/40 hover:text-white transition-colors">Contato</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Column 3: Social Connectivity -->
+                        <div class="flex flex-col gap-8 md:items-end">
+                            <div class="flex flex-col gap-6 md:items-end w-full">
+                                <span class="text-[9px] font-mono text-primary uppercase font-bold tracking-[0.5em]">//
+                                    Connect</span>
+                                <div class="flex gap-4">
+                                    <a href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank"
+                                        class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                        <iconify-icon icon="simple-icons:linkedin" class="text-xl"></iconify-icon>
+                                    </a>
+                                    <a href="https://github.com/GuiMRDS" target="_blank"
+                                        class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                        <iconify-icon icon="simple-icons:github" class="text-xl"></iconify-icon>
+                                    </a>
+                                    <a href="https://www.instagram.com/Gui.MRDS" target="_blank"
+                                        class="w-12 h-12 rounded-full glass-panel border border-white/10 flex items-center justify-center text-white/80 hover:text-primary hover:border-primary/50 transition-all group shadow-lg">
+                                        <iconify-icon icon="simple-icons:instagram" class="text-xl"></iconify-icon>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Big Back to Top Trigger -->
+                    <div class="mt-32 flex justify-center">
+                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+                            class="group flex flex-col items-center gap-4 cursor-pointer">
+                            <div
+                                class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent group-hover:h-20 transition-all duration-700">
+                            </div>
+                            <span
+                                class="text-[9px] font-mono text-white/20 uppercase tracking-[0.8em] group-hover:text-primary transition-colors">Back
+                                to Top</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
         </div>
     </main>
 
@@ -1695,16 +1855,16 @@
                 card.style.setProperty('--mouse-y', `${y}px`);
 
                 // Check if mouse is over the card or nearby for a more responsive feel
-                if (e.clientX >= rect.left - 100 && e.clientX <= rect.right + 100 && 
+                if (e.clientX >= rect.left - 100 && e.clientX <= rect.right + 100 &&
                     e.clientY >= rect.top - 100 && e.clientY <= rect.bottom + 100) {
-                    
+
                     const centerX = rect.left + rect.width / 2;
                     const centerY = rect.top + rect.height / 2;
                     const moveX = (e.clientX - centerX) / 25;
                     const moveY = (e.clientY - centerY) / 25;
 
                     card.style.transform = `rotateX(${-moveY}deg) rotateY(${moveX}deg) ${card.classList.contains('project-card') ? 'translateY(-15px)' : ''}`;
-                    
+
                     // Removido efeito 3D interno
                     const elements = card.querySelectorAll('.badge, .project-content, .status-badge, .floating-trigger, h3, p, a, .w-16, .w-20');
                     elements.forEach(el => {
@@ -1756,7 +1916,7 @@
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 preloader.style.visibility = 'hidden';
-                
+
                 // Trigger Hero animations manually for instant feel after load
                 document.getElementById('hero-content').classList.add('active');
                 document.getElementById('hero-image').classList.add('active');
@@ -1806,7 +1966,7 @@
             const progress = document.querySelector('.timeline-progress');
             const startTrigger = document.getElementById('timeline-start');
             const endTrigger = document.getElementById('timeline-end');
-            
+
             if (timeline && progress && startTrigger && endTrigger) {
                 const startRect = startTrigger.getBoundingClientRect();
                 const endRect = endTrigger.getBoundingClientRect();
@@ -1814,13 +1974,13 @@
 
                 // The "Playhead" is the center of the screen
                 const scrollPoint = windowHeight * 0.5;
-                
+
                 // Distance from start card to center of screen
                 const currentDist = scrollPoint - startRect.top;
-                
+
                 // Total distance between the two cards
                 const totalDist = endRect.top - startRect.top;
-                
+
                 // Calculate percentage (0 to 100)
                 const percent = Math.min(Math.max((currentDist / totalDist) * 100, 0), 100);
                 progress.style.height = `${percent}%`;

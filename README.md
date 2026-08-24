@@ -1,97 +1,46 @@
-# MARINHO.DEV
+# Astro Starter Kit: Basics
 
-Meu portfólio pessoal desenvolvido para apresentar meus projetos, experiências, habilidades e trajetória como desenvolvedor.
+```sh
+npm create astro@latest -- --template basics
+```
 
-## 🌐 Sobre o Projeto
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-O MARINHO.DEV foi criado com foco em:
-- Performance
-- Design moderno
-- Responsividade
-- Experiência do usuário
-- Identidade visual futurista
-- Apresentação profissional de projetos e habilidades
+## 🚀 Project Structure
 
-O objetivo do projeto é centralizar minhas informações profissionais, experiências, stacks e projetos em uma plataforma moderna e interativa.
+Inside of your Astro project, you'll see the following folders and files:
 
----
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src
+│   ├── assets
+│   │   └── astro.svg
+│   ├── components
+│   │   └── Welcome.astro
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── package.json
+```
 
-## 🛠️ Tecnologias Utilizadas
+To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-### Frontend
-- HTML
-- CSS
-- Java
+## 🧞 Commands
 
-### UI/UX
-- Glassmorphism
-- Design Responsivo
-- Animações modernas
-- Interface futurista
+All commands are run from the root of the project, from a terminal:
 
-### Ferramentas & Desenvolvimento
-- Git
-- GitHub
-- Vercel
-- Figma
-- Antigravily
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
----
+## 👀 Want to learn more?
 
-## 💡 Funcionalidades
-
-- Landing page moderna
-- Hero section animada
-- Seção de projetos
-- Seção de experiências
-- Skills & tecnologias
-- Layout responsivo
-- Navegação fluida
-- Interface otimizada
-
----
-
-## 📚 Objetivos do Projeto
-
-Este projeto foi desenvolvido para:
-- Fortalecer meu portfólio profissional
-- Demonstrar habilidades em desenvolvimento frontend
-- Aplicar conceitos modernos de UI/UX
-- Consolidar conhecimentos em React/Next.js
-- Criar uma presença profissional online
-
----
-
-## 👨‍💻 Sobre Mim
-
-Sou estudante de Análise e Desenvolvimento de Sistemas com foco em:
-- Desenvolvimento Full Stack
-- Inteligência Artificial
-- Segurança da Informação
-- Experiência do Usuário
-- Automação e soluções modernas para web
-
-Atualmente trabalho com suporte de TI e desenvolvimento web, buscando constante evolução técnica e profissional.
-
----
-
-
-## 📬 Contato
-
-### LinkedIn
-:contentReference[oaicite:1]{index=1}
-
-### GitHub
-:contentReference[oaicite:2]{index=2}
-
----
-
-## ⭐ Status do Projeto
-
-🚧 Em constante evolução.
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

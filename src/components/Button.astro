@@ -1,0 +1,72 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'outline' | 'glass' | 'beam' | 'icon';
+  size?: 'sm' | 'md' | 'lg';
+  target?: string;
+  icon?: string;
+  iconPosition?: 'left' | 'right';
+  class?: string;
+  id?: string;
+  [key: string]: any;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  target,
+  icon,
+  iconPosition = 'right',
+  class: className = '',
+  id,
+  ...rest
+} = Astro.props;
+
+const Element = href ? 'a' : 'button';
+
+// Size styles
+const sizeStyles = {
+  sm: 'px-6 py-2 text-[10px] tracking-widest',
+  md: 'px-8 py-4 text-xs tracking-widest',
+  lg: 'px-12 py-6 text-xs tracking-[0.2em]',
+};
+
+// Variant styles
+const baseStyles = 'font-oswald uppercase font-bold transition-all rounded-full flex items-center justify-center gap-3 cursor-pointer';
+
+let variantStyles = '';
+
+if (variant === 'primary') {
+  variantStyles = 'relative bg-text text-white overflow-hidden hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.15)]';
+} else if (variant === 'outline') {
+  variantStyles = 'border border-black/10 text-neutral-900 hover:bg-black/5';
+} else if (variant === 'glass') {
+  variantStyles = 'flashlight-card relative overflow-hidden border border-white/10 text-white/60 hover:text-white hover:border-primary/40';
+} else if (variant === 'beam') {
+  variantStyles = 'flashlight-card relative z-10 bg-white/5 backdrop-blur-xl border border-white/10 text-white/90 hover:bg-white hover:text-black';
+} else if (variant === 'icon') {
+  variantStyles = 'w-16 h-16 bg-primary rounded-full text-white hover:scale-110 shadow-[0_0_30px_rgba(255,92,0,0.4)]';
+}
+
+const combinedClasses = `${baseStyles} ${variant !== 'icon' ? sizeStyles[size] : ''} ${variantStyles} ${className}`.trim();
+---
+
+{variant === 'beam' ? (
+  <div class="border-beam-container group">
+    <div class="border-beam"></div>
+    <Element href={href} target={target} id={id} class={combinedClasses} {...rest}>
+      {icon && iconPosition === 'left' && <iconify-icon icon={icon} class="text-xl"></iconify-icon>}
+      <slot />
+      {icon && iconPosition === 'right' && <iconify-icon icon={icon} class="text-xl"></iconify-icon>}
+    </Element>
+  </div>
+) : (
+  <Element href={href} target={target} id={id} class={combinedClasses} {...rest}>
+    {variant === 'primary' && <div class="absolute inset-0 bg-white opacity-0 hover:opacity-10 transition-opacity"></div>}
+    {variant === 'glass' && <div class="absolute inset-0 bg-primary/5 translate-y-full hover:translate-y-0 transition-transform duration-500 pointer-events-none"></div>}
+    {icon && iconPosition === 'left' && <iconify-icon icon={icon} class="text-xl relative z-10"></iconify-icon>}
+    <span class={variant === 'primary' || variant === 'glass' ? 'relative z-10' : ''}><slot /></span>
+    {icon && iconPosition === 'right' && <iconify-icon icon={icon} class="text-xl relative z-10"></iconify-icon>}
+  </Element>
+)}

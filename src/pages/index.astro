@@ -2,6 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Button from '../components/Button.astro';
+import TimelineCard from '../components/TimelineCard.astro';
+import CompetencyCard from '../components/CompetencyCard.astro';
+import EducationCard from '../components/EducationCard.astro';
 ---
 
 <Layout title="Guilherme Marinho | Soluções Full Stack & Segurança">
@@ -61,19 +65,13 @@ import Footer from '../components/Footer.astro';
                     </p>
 
                     <div class="flex flex-wrap gap-4 mb-10">
-                        <a href="#projetos"
-                            class="group relative px-8 py-4 bg-text text-white font-bold rounded-full overflow-hidden transition-all hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.15)] flex items-center justify-center">
-                            <span class="relative z-10 font-oswald uppercase text-xs tracking-widest">Ver
-                                Projetos</span>
-                            <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity">
-                            </div>
-                        </a>
+                        <Button href="#projetos" variant="primary" size="md">
+                            Ver Projetos
+                        </Button>
 
-                        <a href="#sobre"
-                            class="px-8 py-4 border border-black/10 rounded-full font-oswald uppercase text-xs tracking-widest hover:bg-black/5 transition-colors flex items-center gap-3">
+                        <Button href="#sobre" variant="outline" size="md" icon="solar:arrow-right-bold">
                             Sobre Mim
-                            <iconify-icon icon="solar:arrow-right-bold" class="text-lg"></iconify-icon>
-                        </a>
+                        </Button>
                     </div>
 
                 </div>
@@ -230,289 +228,98 @@ import Footer from '../components/Footer.astro';
                     <!-- Career Phases -->
                     <div class="space-y-32">
                         <!-- Phase 1: Freelancer -->
-                        <div id="timeline-start"
-                            class="relative flex flex-col lg:flex-row items-center justify-between group">
-
-                            <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
-                                <span class="timeline-year">2019 — 2023</span>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-primary z-20 group-hover:scale-125 transition-transform hidden lg:block">
-                            </div>
-                            <div class="lg:w-[45%] w-full reveal-in">
-                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
-                                    <div class="flex justify-between items-start mb-6">
-                                        <h3
-                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
-                                            Freelancer
-                                            <span
-                                                class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">Web
-                                                & Design</span>
-                                        </h3>
-                                        <span class="lg:hidden timeline-year">2019-2023</span>
-                                    </div>
-                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
-                                        Início da trajetória focado em criação de interfaces modernas, experiência do
-                                        usuário e presença digital para pequenos negócios e clientes independentes.
-                                    </p>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:wordpress"></iconify-icon>
-                                            WordPress
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:css3"></iconify-icon>
-                                            CSS
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:javascript"></iconify-icon>
-                                            JS
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="solar:palette-bold"></iconify-icon>
-                                            UI/UX
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <TimelineCard
+                            id="timeline-start"
+                            year="2019 — 2023"
+                            yearMobile="2019-2023"
+                            title="Freelancer"
+                            highlightText="Web & Design"
+                            gradientClass="from-[#FF5C00] to-[#FF8A00]"
+                            dotBorderColor="border-primary"
+                            description="Início da trajetória focado em criação de interfaces modernas, experiência do usuário e presença digital para pequenos negócios e clientes independentes."
+                            tags={[
+                                { icon: "simple-icons:wordpress", label: "WordPress" },
+                                { icon: "simple-icons:css3", label: "CSS" },
+                                { icon: "simple-icons:javascript", label: "JS" },
+                                { icon: "solar:palette-bold", label: "UI/UX" }
+                            ]}
+                            side="left"
+                        />
 
                         <!-- Phase 2: UNIP -->
-                        <div class="relative flex flex-col lg:flex-row-reverse items-center justify-between group">
-                            <div class="lg:w-[45%] text-left hidden lg:block pl-12 reveal-in">
-                                <span class="timeline-year">2023 — 2025</span>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-amber-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
-                            </div>
-                            <div class="lg:w-[45%] w-full reveal-in">
-                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
-                                    <div class="flex justify-between items-start mb-6">
-                                        <h3
-                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
-                                            Aprendiz
-                                            de <span
-                                                class="bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">Laboratório</span>
-                                            — UNIP</h3>
-                                        <span class="lg:hidden timeline-year">2023-2025</span>
-                                    </div>
-                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
-                                        Suporte técnico e infraestrutura. Experiência com troubleshooting, manutenção de
-                                        sistemas e fundamentos de redes e segurança.
-                                    </p>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:linux"></iconify-icon>
-                                            Linux
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="solar:shield-keyhole-bold"></iconify-icon>
-                                            Infra & Security
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <TimelineCard
+                            year="2023 — 2025"
+                            yearMobile="2023-2025"
+                            title="Aprendiz de"
+                            highlightText="Laboratório — UNIP"
+                            gradientClass="from-amber-400 to-amber-600"
+                            dotBorderColor="border-amber-400"
+                            description="Suporte técnico e infraestrutura. Experiência com troubleshooting, manutenção de sistemas e fundamentos de redes e segurança."
+                            tags={[
+                                { icon: "simple-icons:linux", label: "Linux" },
+                                { icon: "solar:shield-keyhole-bold", label: "Infra & Security" }
+                            ]}
+                            side="right"
+                        />
 
                         <!-- Phase 3: Formação Full Stack -->
-                        <div class="relative flex flex-col lg:flex-row items-center justify-between group">
-                            <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
-                                <span class="timeline-year">2024 — 2025</span>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-emerald-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
-                            </div>
-                            <div class="lg:w-[45%] w-full reveal-in">
-                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
-                                    <div class="flex justify-between items-start mb-6">
-                                        <h3
-                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
-                                            Especialização <span
-                                                class="bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">Full
-                                                Stack</span></h3>
-                                        <span class="lg:hidden timeline-year">2024-2025</span>
-                                    </div>
-                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
-                                        Evolução técnica em Cloud, IA e Cybersecurity. Bootcamps e projetos práticos em
-                                        arquitetura moderna e automação.
-                                    </p>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:python"></iconify-icon>
-                                            Python
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:nextdotjs"></iconify-icon>
-                                            Next.js
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="solar:magic-stick-bold"></iconify-icon>
-                                            IA & Automation
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <TimelineCard
+                            year="2024 — 2025"
+                            yearMobile="2024-2025"
+                            title="Especialização"
+                            highlightText="Full Stack"
+                            gradientClass="from-emerald-400 to-emerald-600"
+                            dotBorderColor="border-emerald-400"
+                            description="Evolução técnica em Cloud, IA e Cybersecurity. Bootcamps e projetos práticos em arquitetura moderna e automação."
+                            tags={[
+                                { icon: "simple-icons:python", label: "Python" },
+                                { icon: "simple-icons:nextdotjs", label: "Next.js" },
+                                { icon: "solar:magic-stick-bold", label: "IA & Automation" }
+                            ]}
+                            side="left"
+                        />
 
                         <!-- Phase 4: FADI -->
-                        <div class="relative flex flex-col lg:flex-row-reverse items-center justify-between group">
-                            <div class="lg:w-[45%] text-left hidden lg:block pl-12 reveal-in">
-                                <span class="timeline-year">2025 — 2026</span>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-cyan-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
-                            </div>
-                            <div class="lg:w-[45%] w-full reveal-in">
-                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
-                                    <div class="flex justify-between items-start mb-6">
-                                        <h3
-                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
-                                            Assistente
-                                            de <span
-                                                class="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">TI</span>
-                                            — FADI</h3>
-                                        <span class="lg:hidden timeline-year">2025-2026</span>
-                                    </div>
-                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
-                                        Sustentação e evolução de soluções digitais corporativas. Suporte ao ERP Sophia
-                                        e administração de site institucional.
-                                    </p>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:wordpress"></iconify-icon>
-                                            WordPress
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="solar:database-bold"></iconify-icon>
-                                            ERP Sophia
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="solar:settings-minimalistic-bold"></iconify-icon>
-                                            TI Support
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <TimelineCard
+                            year="2025 — 2026"
+                            yearMobile="2025-2026"
+                            title="Assistente de"
+                            highlightText="TI — FADI"
+                            gradientClass="from-cyan-400 to-cyan-600"
+                            dotBorderColor="border-cyan-400"
+                            description="Sustentação e evolução de soluções digitais corporativas. Suporte ao ERP Sophia e administração de site institucional."
+                            tags={[
+                                { icon: "simple-icons:wordpress", label: "WordPress" },
+                                { icon: "solar:database-bold", label: "ERP Sophia" },
+                                { icon: "solar:settings-minimalistic-bold", label: "TI Support" }
+                            ]}
+                            side="right"
+                        />
 
                         <!-- Phase 5: Software Engineer -->
-                        <div id="timeline-end"
-                            class="relative flex flex-col lg:flex-row items-center justify-between group">
-
-                            <div class="lg:w-[45%] text-right hidden lg:block pr-12 reveal-in">
-                                <span class="timeline-year">2026 — Presente</span>
-                            </div>
-                            <div
-                                class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-dark border-2 border-indigo-400 z-20 group-hover:scale-125 transition-transform hidden lg:block">
-                            </div>
-                            <div class="lg:w-[45%] w-full reveal-in">
-                                <div class="flashlight-card glass-card p-8 rounded-2xl relative overflow-hidden">
-                                    <div class="flex justify-between items-start mb-6">
-                                        <h3
-                                            class="text-2xl font-oswald font-medium uppercase tracking-tight text-white">
-                                            Software
-                                            <span
-                                                class="bg-gradient-to-r from-indigo-400 to-indigo-600 bg-clip-text text-transparent">Engineer</span>
-                                        </h3>
-                                        <span class="lg:hidden timeline-year">2026-Pres.</span>
-                                    </div>
-                                    <p class="text-muted text-sm leading-relaxed mb-6 uppercase">
-                                        Engenharia de Software com foco em Full Stack, IA Generativa, Automação &
-                                        Infraestrutura, integrando boas práticas de segurança em todas as etapas.
-                                    </p>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="simple-icons:nodedotjs"></iconify-icon>
-                                            Full Stack
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="solar:magic-stick-bold"></iconify-icon>
-                                            GenAI
-                                        </span>
-                                        <span
-                                            class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-mono flex items-center gap-2">
-                                            <iconify-icon icon="solar:shield-check-bold"></iconify-icon>
-                                            DevSecOps
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <TimelineCard
+                            id="timeline-end"
+                            year="2026 — Presente"
+                            yearMobile="2026-Pres."
+                            title="Software"
+                            highlightText="Engineer"
+                            gradientClass="from-indigo-400 to-indigo-600"
+                            dotBorderColor="border-indigo-400"
+                            description="Engenharia de Software com foco em Full Stack, IA Generativa, Automação & Infraestrutura, integrando boas práticas de segurança em todas as etapas."
+                            tags={[
+                                { icon: "simple-icons:nodedotjs", label: "Full Stack" },
+                                { icon: "solar:magic-stick-bold", label: "GenAI" },
+                                { icon: "solar:shield-check-bold", label: "DevSecOps" }
+                            ]}
+                            side="left"
+                        />
                     </div>
                 </div>
 
                 <!-- Technical Summary / Competencies -->
                 <div class="mt-48 grid grid-cols-1 md:grid-cols-2 gap-12 reveal-in">
-                    <div class="flashlight-card glass-card p-10 rounded-3xl">
-                        <h4
-                            class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-8 font-bold">
-                            Competências Técnicas
-                        </h4>
-                        <ul class="space-y-6">
-                            <li class="flex flex-col gap-2 border-b border-white/5 pb-4">
-                                <span class="text-xs uppercase font-space text-white/40">Full Stack & Software
-                                    Engineering</span>
-                                <div class="flex items-center gap-4">
-                                    <iconify-icon icon="simple-icons:csharp"
-                                        class="text-xl text-primary/60"></iconify-icon>
-                                    <iconify-icon icon="simple-icons:nextdotjs"
-                                        class="text-xl text-primary/60"></iconify-icon>
-                                    <iconify-icon icon="simple-icons:python"
-                                        class="text-xl text-primary/60"></iconify-icon>
-                                    <span class="text-sm font-mono text-muted">C#, .NET, Python, React, SOLID</span>
-                                </div>
-                            </li>
-                            <li class="flex flex-col gap-2 border-b border-white/5 pb-4">
-                                <span class="text-xs uppercase font-space text-white/40">IA, Automação &
-                                    Cybersecurity</span>
-                                <div class="flex items-center gap-4">
-                                    <iconify-icon icon="solar:magic-stick-bold"
-                                        class="text-xl text-primary/60"></iconify-icon>
-                                    <iconify-icon icon="solar:shield-check-bold"
-                                        class="text-xl text-primary/60"></iconify-icon>
-                                    <iconify-icon icon="simple-icons:docker"
-                                        class="text-xl text-primary/60"></iconify-icon>
-                                    <span class="text-sm font-mono text-muted">GenAI, LLMs, Ethical Hacking,
-                                        DevSecOps</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="flashlight-card glass-card p-10 rounded-3xl flex flex-col justify-center">
-                        <h4
-                            class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-6 font-bold">
-                            Formação Acadêmica
-                        </h4>
-                        <p class="text-xl font-oswald uppercase tracking-tight mb-2">Análise e Desenvolvimento de
-                            Sistemas</p>
-                        <p class="text-sm text-muted uppercase tracking-widest mb-6">Universidade Paulista (UNIP) —
-                            Concluído</p>
-                        <div class="border-t border-white/5 pt-6 flex flex-wrap gap-2">
-                            <span
-                                class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] uppercase font-mono text-muted italic">Cibersegurança
-                                — DIO</span>
-                            <span
-                                class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] uppercase font-mono text-muted italic">Analista
-                                Segurança — Cisco</span>
-                            <span
-                                class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[9px] uppercase font-mono text-muted italic">AI
-                                Fundamentals — Google</span>
-                        </div>
-                    </div>
+                    <CompetencyCard />
+                    <EducationCard />
                 </div>
             </div>
         </section>
@@ -610,11 +417,8 @@ import Footer from '../components/Footer.astro';
                                                 </span>
                                             </div>
                                         </div>
-                                        <a href="https://github.com/GuiMRDS/Vision-Mind" target="_blank"
-                                            class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform shadow-[0_0_30px_rgba(255,92,0,0.4)] mb-2">
-                                            <iconify-icon icon="solar:arrow-right-up-bold"
-                                                class="text-2xl"></iconify-icon>
-                                        </a>
+                                        <Button href="https://github.com/GuiMRDS/Vision-Mind" target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label="Repositório Vision Mind">
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
@@ -683,11 +487,8 @@ import Footer from '../components/Footer.astro';
                                                 </span>
                                             </div>
                                         </div>
-                                        <a href="https://webprimemotors.somee.com/" target="_blank"
-                                            class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white hover:scale-110 transition-transform shadow-[0_0_30px_rgba(255,92,0,0.4)] mb-2">
-                                            <iconify-icon icon="solar:arrow-right-up-bold"
-                                                class="text-2xl"></iconify-icon>
-                                        </a>
+                                        <Button href="https://webprimemotors.somee.com/" target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label="WebPrime Motors Live">
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
@@ -1054,29 +855,14 @@ import Footer from '../components/Footer.astro';
 
                         <div class="flex flex-wrap gap-8">
                             <!-- WhatsApp Button -->
-                            <div class="border-beam-container group">
-                                <div class="border-beam"></div>
-                                <a href="https://wa.me/5515991195225" target="_blank"
-                                    class="flashlight-card relative z-10 bg-white/5 backdrop-blur-xl px-12 py-6 rounded-full border border-white/10 flex items-center gap-4 group-hover:bg-white group-hover:text-black transition-all duration-500">
-                                    <span
-                                        class="text-xs font-bold uppercase tracking-[0.2em] text-white/90 group-hover:text-black transition-colors">WhatsApp</span>
-                                    <iconify-icon icon="logos:whatsapp-icon" class="text-xl"></iconify-icon>
-                                </a>
-
-                            </div>
+                            <Button href="https://wa.me/5515991195225" target="_blank" variant="beam" size="lg" icon="logos:whatsapp-icon">
+                                WhatsApp
+                            </Button>
 
                             <!-- Email Button -->
-                            <a href="mailto:guimars22@gmail.com"
-                                class="flashlight-card relative overflow-hidden px-12 py-6 rounded-full border border-white/10 group flex items-center gap-4 hover:border-primary/40 transition-colors">
-                                <div
-                                    class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                                </div>
-                                <span
-                                    class="relative z-10 text-xs font-bold uppercase tracking-[0.2em] text-white/60 group-hover:text-white transition-colors">Enviar
-                                    E-mail</span>
-                                <iconify-icon icon="solar:letter-bold"
-                                    class="relative z-10 text-xl text-white/40 group-hover:text-white"></iconify-icon>
-                            </a>
+                            <Button href="mailto:guimars22@gmail.com" variant="glass" size="lg" icon="solar:letter-bold">
+                                Enviar E-mail
+                            </Button>
                         </div>
 
                     </div>

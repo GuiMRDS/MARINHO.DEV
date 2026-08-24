@@ -1,0 +1,47 @@
+---
+interface Competency {
+  title: string;
+  icons: string[];
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  competencies?: Competency[];
+}
+
+const {
+  title = "Competências Técnicas",
+  competencies = [
+    {
+      title: "Full Stack & Software Engineering",
+      icons: ["simple-icons:csharp", "simple-icons:nextdotjs", "simple-icons:python"],
+      description: "C#, .NET, Python, React, SOLID"
+    },
+    {
+      title: "IA, Automação & Cybersecurity",
+      icons: ["solar:magic-stick-bold", "solar:shield-check-bold", "simple-icons:docker"],
+      description: "GenAI, LLMs, Ethical Hacking, DevSecOps"
+    }
+  ]
+} = Astro.props;
+---
+
+<div class="flashlight-card glass-card p-10 rounded-3xl">
+    <h4 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] mb-8 font-bold">
+        {title}
+    </h4>
+    <ul class="space-y-6">
+        {competencies.map((comp) => (
+            <li class="flex flex-col gap-2 border-b border-white/5 pb-4">
+                <span class="text-xs uppercase font-space text-white/40">{comp.title}</span>
+                <div class="flex items-center gap-4">
+                    {comp.icons.map((icon) => (
+                        <iconify-icon icon={icon} class="text-xl text-primary/60"></iconify-icon>
+                    ))}
+                    <span class="text-sm font-mono text-muted">{comp.description}</span>
+                </div>
+            </li>
+        ))}
+    </ul>
+</div>

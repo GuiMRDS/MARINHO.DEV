@@ -1,4 +1,5 @@
 ---
+import Button from './Button.astro';
 ---
 
 <!-- Navigation Header -->
@@ -25,9 +26,8 @@
             <a href="#contato" class="nav-link hover:text-primary transition-colors">Contato</a>
         </div>
 
-        <a href="https://wa.me/5515991195225" target="_blank"
-            class="nav-btn px-6 py-2 border border-black/10 rounded-full font-oswald uppercase text-[10px] tracking-widest nav-btn-text hover:bg-black hover:text-white transition-all text-center">
+        <Button href="https://wa.me/5515991195225" target="_blank" variant="outline" size="sm" class="nav-btn nav-btn-text hover:bg-black hover:text-white">
             Fale Comigo
-        </a>
+        </Button>
     </div>
 </nav>

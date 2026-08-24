@@ -1,0 +1,89 @@
+---
+import Button from './Button.astro';
+
+interface Tag {
+  icon?: string;
+  label: string;
+}
+
+interface Props {
+  category: string;
+  title: string;
+  highlightTitle: string;
+  status: string;
+  statusClass?: string;
+  problem: string;
+  description: string;
+  image: string;
+  imageAlt?: string;
+  link: string;
+  tags: Tag[];
+  height?: string;
+}
+
+const {
+  category,
+  title,
+  highlightTitle,
+  status,
+  statusClass = 'production',
+  problem,
+  description,
+  image,
+  imageAlt = `${title} ${highlightTitle}`,
+  link,
+  tags,
+  height = 'h-[500px] md:h-[600px]'
+} = Astro.props;
+---
+
+<div class={`project-card group border-primary/20 bg-[#08080c] ${height}`}>
+    <span class={`status-badge ${statusClass}`}>{status}</span>
+
+    <!-- Full-Bleed Image Container -->
+    <div class="absolute inset-0">
+        <img
+            src={image}
+            class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-110"
+            style="image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);"
+            alt={imageAlt}
+        />
+
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,92,0,0.15),transparent_80%)]"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.05)_45%,transparent_50%)] bg-[length:200%_100%] animate-shimmer pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-transparent"></div>
+    </div>
+
+    <div class="project-overlay opacity-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+        <div class="project-content w-full">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-primary font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">
+                        {category}
+                    </span>
+                    <h3 class="text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
+                        {title} <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">{highlightTitle}</span>
+                    </h3>
+                    <p class="text-white/50 text-[10px] uppercase tracking-widest font-mono mb-3">
+                        Problema: {problem}
+                    </p>
+                    <p class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
+                        {description}
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        {tags.map((tag) => (
+                            <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
+                                {tag.icon && <iconify-icon icon={tag.icon}></iconify-icon>}
+                                {tag.label}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+                <Button href={link} target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label={`Ver ${title} ${highlightTitle}`}>
+                </Button>
+            </div>
+        </div>
+    </div>
+</div>

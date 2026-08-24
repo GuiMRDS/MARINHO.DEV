@@ -1,0 +1,52 @@
+---
+interface Props {
+  badge: string;
+  codeTag: string;
+  title: string;
+  image: string;
+  imageAlt?: string;
+  problem: string;
+  description: string;
+  link: string;
+  highlightClass?: string;
+}
+
+const {
+  badge,
+  codeTag,
+  title,
+  image,
+  imageAlt = title,
+  problem,
+  description,
+  link,
+  highlightClass = ''
+} = Astro.props;
+---
+
+<div class="slider-item">
+    <div class={`project-card group aspect-[3/4] ${highlightClass}`}>
+        <span class="status-badge">{badge}</span>
+        <img src={image} class="project-image" alt={imageAlt} />
+
+        <div class="project-overlay">
+            <div class="project-content">
+                <span class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">
+                    {codeTag}
+                </span>
+                <h3 class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-2">
+                    {title}
+                </h3>
+                <p class="text-white/50 text-[9px] mb-1 uppercase font-mono">
+                    Problema: {problem}
+                </p>
+                <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
+                    {description}
+                </p>
+                <a href={link} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                    View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,9 @@ import Button from '../components/Button.astro';
 import TimelineCard from '../components/TimelineCard.astro';
 import CompetencyCard from '../components/CompetencyCard.astro';
 import EducationCard from '../components/EducationCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import HighlightProjectCard from '../components/HighlightProjectCard.astro';
+import EvidenceCard from '../components/EvidenceCard.astro';
 ---
 
 <Layout title="Guilherme Marinho | Soluções Full Stack & Segurança">
@@ -350,149 +353,41 @@ import EducationCard from '../components/EducationCard.astro';
                     <!-- PRIMARY FEATURED PROJECTS GRID -->
                     <div class="mb-24 reveal-in flex flex-col gap-12">
                         <!-- LLM-LANGCHAIN -->
-                        <div class="project-card group border-primary/20 bg-[#08080c] h-[500px] md:h-[600px]">
-                            <span class="status-badge production">🧠 AI Project</span>
-
-                            <!-- Full-Bleed Image Container -->
-                            <div class="absolute inset-0">
-                                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
-                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-110"
-                                    style="image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);"
-                                    alt="LLM-LangChain">
-
-                                <div
-                                    class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,92,0,0.15),transparent_80%)]">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.05)_45%,transparent_50%)] bg-[length:200%_100%] animate-shimmer pointer-events-none">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-transparent">
-                                </div>
-                            </div>
-
-                            <div
-                                class="project-overlay opacity-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                                <div class="project-content w-full">
-                                    <div class="flex flex-col md:flex-row justify-between items-end gap-6">
-                                        <div class="max-w-2xl">
-                                            <span
-                                                class="text-primary font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">//
-                                                INTELIGÊNCIA ARTIFICIAL</span>
-                                            <h3
-                                                class="text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
-                                                Vision <span
-                                                    class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">Mind</span>
-                                            </h3>
-                                            <p
-                                                class="text-white/50 text-[10px] uppercase tracking-widest font-mono mb-3">
-                                                Problema: Interpretar imagens e gerar explicações inteligentes de forma
-                                                automatizada.
-                                            </p>
-                                            <p
-                                                class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
-                                                Aplicação baseada em IA capaz de analisar imagens utilizando LangChain e
-                                                Gemini, gerando descrições e respostas contextuais.
-                                            </p>
-                                            <div class="flex flex-wrap gap-3">
-                                                <span
-                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
-                                                    <iconify-icon icon="simple-icons:python"></iconify-icon> Python
-                                                </span>
-                                                <span
-                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
-                                                    <iconify-icon icon="simple-icons:langchain"></iconify-icon>
-                                                    LangChain
-                                                </span>
-                                                <span
-                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
-                                                    <iconify-icon icon="simple-icons:googlegemini"></iconify-icon>
-                                                    Gemini
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <Button href="https://github.com/GuiMRDS/Vision-Mind" target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label="Repositório Vision Mind">
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ProjectCard
+                            category="// INTELIGÊNCIA ARTIFICIAL"
+                            title="Vision"
+                            highlightTitle="Mind"
+                            status="🧠 AI Project"
+                            statusClass="production"
+                            problem="Interpretar imagens e gerar explicações inteligentes de forma automatizada."
+                            description="Aplicação baseada em IA capaz de analisar imagens utilizando LangChain e Gemini, gerando descrições e respostas contextuais."
+                            image="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
+                            imageAlt="LLM-LangChain"
+                            link="https://github.com/GuiMRDS/Vision-Mind"
+                            tags={[
+                                { icon: "simple-icons:python", label: "Python" },
+                                { icon: "simple-icons:langchain", label: "LangChain" },
+                                { icon: "simple-icons:googlegemini", label: "Gemini" }
+                            ]}
+                        />
 
                         <!-- WEBPRIME MOTORS -->
-                        <div class="project-card group border-primary/20 bg-[#08080c] h-[500px] md:h-[600px]">
-                            <span class="status-badge production">🌐 Production</span>
-
-                            <!-- Full-Bleed Image Container -->
-                            <div class="absolute inset-0">
-                                <img src="/raw-files/Screenshot 2026-05-12 192758.png"
-                                    class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-110"
-                                    style="image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);"
-                                    alt="WebPrime Motors">
-
-                                <div
-                                    class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,92,0,0.15),transparent_80%)]">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent pointer-events-none">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-[linear-gradient(110deg,transparent_40%,rgba(255,255,255,0.05)_45%,transparent_50%)] bg-[length:200%_100%] animate-shimmer pointer-events-none">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-90">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-transparent">
-                                </div>
-                            </div>
-
-                            <div
-                                class="project-overlay opacity-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                                <div class="project-content w-full">
-                                    <div class="flex flex-col md:flex-row justify-between items-end gap-6">
-                                        <div class="max-w-2xl">
-                                            <span
-                                                class="text-primary font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">//
-                                                FULL STACK & SISTEMAS</span>
-                                            <h3
-                                                class="text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
-                                                WebPrime <span
-                                                    class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">Motors</span>
-                                            </h3>
-                                            <p
-                                                class="text-white/50 text-[10px] uppercase tracking-widest font-mono mb-3">
-                                                Problema: Gerenciar catálogo de veículos, clientes e vendas em uma
-                                                plataforma web.
-                                            </p>
-                                            <p
-                                                class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
-                                                Sistema completo de gestão automotiva com autenticação, CRUD e
-                                                arquitetura MVC.
-                                            </p>
-                                            <div class="flex flex-wrap gap-3">
-                                                <span
-                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
-                                                    <iconify-icon icon="simple-icons:dotnet"></iconify-icon> ASP.NET MVC
-                                                </span>
-                                                <span
-                                                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
-                                                    <iconify-icon icon="simple-icons:microsoftsqlserver"></iconify-icon>
-                                                    SQL Server
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <Button href="https://webprimemotors.somee.com/" target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label="WebPrime Motors Live">
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ProjectCard
+                            category="// FULL STACK & SISTEMAS"
+                            title="WebPrime"
+                            highlightTitle="Motors"
+                            status="🌐 Production"
+                            statusClass="production"
+                            problem="Gerenciar catálogo de veículos, clientes e vendas em uma plataforma web."
+                            description="Sistema completo de gestão automotiva com autenticação, CRUD e arquitetura MVC."
+                            image="/raw-files/Screenshot 2026-05-12 192758.png"
+                            imageAlt="WebPrime Motors"
+                            link="https://webprimemotors.somee.com/"
+                            tags={[
+                                { icon: "simple-icons:dotnet", label: "ASP.NET MVC" },
+                                { icon: "simple-icons:microsoftsqlserver", label: "SQL Server" }
+                            ]}
+                        />
                     </div>
 
                     <!-- Header for Slider -->
@@ -513,95 +408,38 @@ import EducationCard from '../components/EducationCard.astro';
 
                         <div id="highlights-slider" class="highlights-slider">
                             <!-- HIGHLIGHT: Xedit -->
-                            <div class="slider-item">
-                                <div class="project-card group aspect-[3/4]">
-                                    <span class="status-badge">🛠️ Highlight</span>
-                                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
-                                        class="project-image" alt="Xedit">
-
-                                    <div class="project-overlay">
-                                        <div class="project-content">
-                                            <span
-                                                class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
-                                                03 // NEXT.JS ]</span>
-                                            <h3
-                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-2">
-                                                Xedit</h3>
-                                            <p class="text-white/50 text-[9px] mb-1 uppercase font-mono">
-                                                Problema: Criar uma plataforma de conteúdo com qualidade de produção.
-                                            </p>
-                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
-                                                Plataforma de conteúdo construída com Next.js, TDD e deploy contínuo.
-                                            </p>
-                                            <a href="https://github.com/GuiMRDS/xedit" target="_blank"
-                                                class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
-                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <HighlightProjectCard
+                                badge="🛠️ Highlight"
+                                codeTag="[ 03 // NEXT.JS ]"
+                                title="Xedit"
+                                problem="Criar uma plataforma de conteúdo com qualidade de produção."
+                                description="Plataforma de conteúdo construída com Next.js, TDD e deploy contínuo."
+                                image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+                                link="https://github.com/GuiMRDS/xedit"
+                            />
 
                             <!-- HIGHLIGHT: Ransomware Shield -->
-                            <div class="slider-item">
-                                <div class="project-card group aspect-[3/4] project-card-highlight">
-                                    <span class="status-badge">🔒 Cyber</span>
-                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
-                                        class="project-image" alt="Ransomware Shield">
-                                    <div class="project-overlay">
-                                        <div class="project-content">
-                                            <span
-                                                class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
-                                                04 // SECURITY ]</span>
-                                            <h3
-                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-2">
-                                                Ransomware Shield</h3>
-                                            <p class="text-white/50 text-[9px] mb-1 uppercase font-mono">
-                                                Problema: Entender como malware opera para construir defesas eficazes.
-                                            </p>
-                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
-                                                Simulação controlada de ransomware e keylogger com contramedidas ativas.
-                                            </p>
-                                            <a href="https://github.com/GuiMRDS/Ransomware_and_Keylogger_Shield"
-                                                target="_blank"
-                                                class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
-                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <HighlightProjectCard
+                                badge="🔒 Cyber"
+                                codeTag="[ 04 // SECURITY ]"
+                                title="Ransomware Shield"
+                                problem="Entender como malware opera para construir defesas eficazes."
+                                description="Simulação controlada de ransomware e keylogger com contramedidas ativas."
+                                image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+                                link="https://github.com/GuiMRDS/Ransomware_and_Keylogger_Shield"
+                                highlightClass="project-card-highlight"
+                            />
 
                             <!-- HIGHLIGHT: Brute Force Study -->
-                            <div class="slider-item">
-                                <div class="project-card group aspect-[3/4]">
-                                    <span class="status-badge">🛡️ Cyber</span>
-                                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop"
-                                        class="project-image" alt="Brute Force Study">
-                                    <div class="project-overlay">
-                                        <div class="project-content">
-                                            <span
-                                                class="text-primary font-mono text-[10px] uppercase tracking-widest mb-2 block">[
-                                                05 // INFRA ]</span>
-                                            <h3
-                                                class="text-2xl font-oswald font-bold uppercase tracking-tight text-white mb-2">
-                                                Brute Force Study</h3>
-                                            <p class="text-white/50 text-[9px] mb-1 uppercase font-mono">
-                                                Problema: Avaliar vulnerabilidades de autenticação em redes.
-                                            </p>
-                                            <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
-                                                Estudo prático de ataques brute force com Medusa e Kali Linux para
-                                                hardening de infraestrutura.
-                                            </p>
-                                            <a href="https://github.com/GuiMRDS/Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux"
-                                                target="_blank"
-                                                class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
-                                                View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <HighlightProjectCard
+                                badge="🛡️ Cyber"
+                                codeTag="[ 05 // INFRA ]"
+                                title="Brute Force Study"
+                                problem="Avaliar vulnerabilidades de autenticação em redes."
+                                description="Estudo prático de ataques brute force com Medusa e Kali Linux para hardening de infraestrutura."
+                                image="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop"
+                                link="https://github.com/GuiMRDS/Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux"
+                            />
                         </div>
                     </div>
                 </div>
@@ -629,180 +467,44 @@ import EducationCard from '../components/EducationCard.astro';
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         <!-- Evidence Card 1: Projetos Publicados -->
-                        <div
-                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
-                            <!-- Top accent bar -->
-                            <div
-                                class="w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-full mb-6">
-                            </div>
-
-                            <div class="relative z-10 flex flex-col gap-5">
-                                <div class="flex justify-between items-center">
-                                    <div
-                                        class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
-                                        <iconify-icon icon="solar:rocket-bold"
-                                            class="text-2xl text-primary group-hover:text-white transition-colors"></iconify-icon>
-                                    </div>
-                                    <span
-                                        class="font-oswald text-4xl font-bold text-primary tracking-tighter">+10</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">
-                                        Projetos Publicados</h4>
-                                    <p
-                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
-                                        Soluções web, automações e APIs deployed e funcionais no GitHub e nuvem.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Footer Tag -->
-                            <div
-                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                                <span
-                                    class="text-[9px] font-mono text-primary uppercase font-bold tracking-widest px-2.5 py-1 bg-primary/10 rounded-full border border-primary/20">Production
-                                    Ready</span>
-                                <iconify-icon icon="solar:arrow-right-up-linear"
-                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
-                            </div>
-
-                            <!-- Background ambient glow -->
-                            <div
-                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            </div>
-                        </div>
+                        <EvidenceCard
+                            icon="solar:rocket-bold"
+                            metric="+10"
+                            title="Projetos Publicados"
+                            description="Soluções web, automações e APIs deployed e funcionais no GitHub e nuvem."
+                            tag="Production Ready"
+                            isPrimary={true}
+                        />
 
                         <!-- Evidence Card 2: Trajetória Prática -->
-                        <div
-                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
-                            <!-- Top accent bar -->
-                            <div
-                                class="w-full h-1 bg-gradient-to-r from-white/30 via-white/10 to-transparent rounded-full mb-6">
-                            </div>
-
-                            <div class="relative z-10 flex flex-col gap-5">
-                                <div class="flex justify-between items-center">
-                                    <div
-                                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
-                                        <iconify-icon icon="solar:code-circle-bold"
-                                            class="text-2xl text-white/80 group-hover:text-white transition-colors"></iconify-icon>
-                                    </div>
-                                    <span class="font-oswald text-4xl font-bold text-white tracking-tighter">+5
-                                        Anos</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">Criando
-                                        Soluções</h4>
-                                    <p
-                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
-                                        Atuação contínua desde 2019 evoluindo de web design a engenharia de software.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Footer Tag -->
-                            <div
-                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                                <span
-                                    class="text-[9px] font-mono text-white/40 uppercase font-bold tracking-widest px-2.5 py-1 bg-white/5 rounded-full border border-white/10">Desde
-                                    2019</span>
-                                <iconify-icon icon="solar:arrow-right-up-linear"
-                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
-                            </div>
-
-                            <!-- Background ambient glow -->
-                            <div
-                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            </div>
-                        </div>
+                        <EvidenceCard
+                            icon="solar:code-circle-bold"
+                            metric="+5 Anos"
+                            title="Criando Soluções"
+                            description="Atuação contínua desde 2019 evoluindo de web design a engenharia de software."
+                            tag="Desde 2019"
+                            isPrimary={false}
+                        />
 
                         <!-- Evidence Card 3: Stack de Desenvolvimento -->
-                        <div
-                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
-                            <!-- Top accent bar -->
-                            <div
-                                class="w-full h-1 bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-full mb-6">
-                            </div>
-
-                            <div class="relative z-10 flex flex-col gap-5">
-                                <div class="flex justify-between items-center">
-                                    <div
-                                        class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
-                                        <iconify-icon icon="solar:cpu-bold"
-                                            class="text-2xl text-primary group-hover:text-white transition-colors"></iconify-icon>
-                                    </div>
-                                    <span class="font-oswald text-2xl font-bold text-white tracking-tighter">Full
-                                        Stack</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">.NET •
-                                        Python • GenAI</h4>
-                                    <p
-                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
-                                        Desenvolvimento com C#, Next.js, LangChain e modelos Gemini.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Footer Tag -->
-                            <div
-                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                                <span
-                                    class="text-[9px] font-mono text-primary uppercase font-bold tracking-widest px-2.5 py-1 bg-primary/10 rounded-full border border-primary/20">AI
-                                    & Automation</span>
-                                <iconify-icon icon="solar:arrow-right-up-linear"
-                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
-                            </div>
-
-                            <!-- Background ambient glow -->
-                            <div
-                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            </div>
-                        </div>
+                        <EvidenceCard
+                            icon="solar:cpu-bold"
+                            metric="Full Stack"
+                            title=".NET • Python • GenAI"
+                            description="Desenvolvimento com C#, Next.js, LangChain e modelos Gemini."
+                            tag="AI & Automation"
+                            isPrimary={true}
+                        />
 
                         <!-- Evidence Card 4: Infraestrutura Real -->
-                        <div
-                            class="flashlight-card glass-panel bg-[#08080d] border border-white/10 rounded-3xl p-7 group hover:border-primary/50 transition-all duration-500 relative overflow-hidden flex flex-col justify-between h-full">
-                            <!-- Top accent bar -->
-                            <div
-                                class="w-full h-1 bg-gradient-to-r from-white/30 via-white/10 to-transparent rounded-full mb-6">
-                            </div>
-
-                            <div class="relative z-10 flex flex-col gap-5">
-                                <div class="flex justify-between items-center">
-                                    <div
-                                        class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:shadow-[0_0_25px_rgba(255,92,0,0.4)] transition-all duration-500">
-                                        <iconify-icon icon="solar:server-bold"
-                                            class="text-2xl text-white/80 group-hover:text-white transition-colors"></iconify-icon>
-                                    </div>
-                                    <span class="font-oswald text-2xl font-bold text-white tracking-tighter">Infra &
-                                        Cloud</span>
-                                </div>
-                                <div class="space-y-2">
-                                    <h4 class="font-oswald text-lg uppercase font-bold text-white tracking-wide">
-                                        Experiência Prática</h4>
-                                    <p
-                                        class="font-space text-xs text-white/50 leading-relaxed uppercase tracking-wider">
-                                        Vivência em servidores, Linux, redes, suporte corporativo e Cloudflare.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Footer Tag -->
-                            <div
-                                class="relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                                <span
-                                    class="text-[9px] font-mono text-emerald-400 uppercase font-bold tracking-widest px-2.5 py-1 bg-emerald-500/10 rounded-full border border-emerald-500/20">Linux
-                                    & Networking</span>
-                                <iconify-icon icon="solar:arrow-right-up-linear"
-                                    class="text-white/20 group-hover:text-primary transition-colors text-sm"></iconify-icon>
-                            </div>
-
-                            <!-- Background ambient glow -->
-                            <div
-                                class="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            </div>
-                        </div>
+                        <EvidenceCard
+                            icon="solar:server-bold"
+                            metric="Infra & Cloud"
+                            title="Experiência Prática"
+                            description="Vivência em servidores, Linux, redes, suporte corporativo e Cloudflare."
+                            tag="Linux & Networking"
+                            isPrimary={false}
+                        />
                     </div>
 
                 </div>
@@ -869,54 +571,7 @@ import EducationCard from '../components/EducationCard.astro';
 
                     <!-- Right: Interactive Visual (Flashlight Reveal Style) -->
                     <div class="relative flex justify-center lg:justify-end">
-                        <div
-                            class="flashlight-card glass-panel bg-[#0A0A0A] border-white/10 rounded-[3rem] p-12 max-w-md w-full group cursor-crosshair shadow-[0_40px_100px_rgba(0,0,0,0.8)] hover:border-primary/40 transition-all">
-                            <div class="relative z-10 flex flex-col gap-8">
-                                <div
-                                    class="w-20 h-20 rounded-3xl bg-primary shadow-[0_0_40px_rgba(255,77,0,0.3)] flex items-center justify-center group-hover:scale-110 transition-all duration-700">
-                                    <iconify-icon icon="solar:mailbox-bold" class="text-4xl text-white"></iconify-icon>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="flex items-center gap-3">
-                                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                        <h4
-                                            class="font-oswald text-4xl uppercase font-bold text-white tracking-tighter">
-                                            Status: Ativo</h4>
-                                    </div>
-                                    <p
-                                        class="font-space text-sm text-white/30 uppercase tracking-[0.2em] leading-relaxed">
-                                        Monitorando novas oportunidades em engenharia de software, IA, automação e
-                                        segurança.
-                                    </p>
-                                </div>
-
-                                <!-- Decorative Tech Info -->
-                                <div class="pt-8 border-t border-white/10 flex flex-col gap-6">
-                                    <div class="flex justify-between items-center group/item">
-                                        <span
-                                            class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Protocolo</span>
-                                        <span
-                                            class="text-[11px] font-mono text-primary uppercase font-bold tracking-wider">Secure_Connect.v5</span>
-                                    </div>
-                                    <div class="flex justify-between items-center group/item">
-                                        <span
-                                            class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Disponibilidade</span>
-                                        <span
-                                            class="text-[11px] font-mono text-emerald-400 uppercase font-bold tracking-wider px-3 py-1 bg-emerald-500/10 rounded-full">100%
-                                            ONLINE</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Background grid reveal on hover -->
-                            <div class="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"
-                                style="background-image: radial-gradient(circle at 1px 1px, #FF5C00 1px, transparent 0); background-size: 32px 32px; transform: translateZ(10px);">
-                            </div>
-
-                            <!-- Internal Glow -->
-                            <div
-                                class="absolute -inset-20 bg-primary/5 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
-                            </div>
-                        </div>
+                        <EvidenceCard protocol="Secure_Connect.v5" availability="100% ONLINE" />
                     </div>
                 </div>
 

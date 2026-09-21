@@ -207,29 +207,29 @@ import EvidenceCard from '../components/EvidenceCard.astro';
             <div class="floating-blob w-[400px] h-[400px] bg-primary/20 top-0 -left-48"></div>
             <div class="floating-blob w-[300px] h-[300px] bg-blue-500/10 bottom-0 -right-24"></div>
 
-            <div class="max-w-[1300px] mx-auto px-6 relative z-10">
+            <div class="max-w-[1300px] mx-auto px-4 sm:px-6 relative z-10">
                 <!-- Headline -->
-                <div class="text-center mb-24 reveal-in">
+                <div class="text-center mb-16 sm:mb-20 md:mb-24 reveal-in">
                     <h2
-                        class="text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-none mb-6 text-white">
-                        Do design e infraestrutura à <br>
+                        class="text-3xl sm:text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-tight sm:leading-none mb-4 sm:mb-6 text-white">
+                        Do design e infraestrutura à <br class="hidden sm:inline">
                         <span
                             class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">
                             Engenharia de Software, IA e Automação.</span>
                     </h2>
-                    <p class="text-white/60 text-lg md:text-xl max-w-3xl mx-auto uppercase tracking-widest font-space">
+                    <p class="text-white/60 text-sm sm:text-base md:text-xl max-w-3xl mx-auto uppercase tracking-wider sm:tracking-widest font-space">
                         Uma trajetória construída através de evolução contínua, desenvolvimento full stack, automação
                         inteligente e soluções modernas focadas em performance, experiência e segurança.
                     </p>
                 </div>
 
                 <!-- Timeline Path -->
-                <div class="relative">
+                <div class="relative pl-8 sm:pl-10 lg:pl-0">
                     <div class="timeline-line"></div>
                     <div class="timeline-progress"></div>
 
                     <!-- Career Phases -->
-                    <div class="space-y-32">
+                    <div class="space-y-16 sm:space-y-24 lg:space-y-32">
                         <!-- Phase 1: Freelancer -->
                         <TimelineCard
                             id="timeline-start"
@@ -320,7 +320,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                 </div>
 
                 <!-- Technical Summary / Competencies -->
-                <div class="mt-48 grid grid-cols-1 md:grid-cols-2 gap-12 reveal-in">
+                <div class="mt-20 sm:mt-28 md:mt-36 lg:mt-48 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 reveal-in">
                     <CompetencyCard />
                     <EducationCard />
                 </div>

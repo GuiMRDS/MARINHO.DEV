@@ -85,7 +85,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         class="flashlight-card glass-panel rounded-[4rem] overflow-visible aspect-[4/5] w-full max-w-[500px] group">
                         <!-- Main Image Container -->
                         <div class="w-full h-full rounded-[4rem] overflow-hidden relative">
-                            <img src="/raw-files/image.png" class="profile-img w-full h-full object-cover"
+                            <img src="/images/profile.jpg" class="profile-img w-full h-full object-cover"
                                 alt="Guilherme Marinho">
 
                             <!-- Decorative Frame -->
@@ -98,14 +98,14 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         <div class="badge top-[8%] -right-[5%] shadow-2xl scale-90" style="animation-delay: 0s;">
                             <iconify-icon icon="solar:shield-check-bold"
                                 style="color: #FF5C00; font-size: 18px;"></iconify-icon>
-                            Security Protocol Active
+                            Foco em Segurança
                         </div>
 
                         <!-- Floating Badge 2 (Bottom Left) -->
                         <div class="badge badge-dark bottom-[12%] -left-[8%] shadow-2xl scale-90"
                             style="animation-delay: -3s;">
                             <iconify-icon icon="solar:cpu-bold" style="color: #FFFFFF; font-size: 18px;"></iconify-icon>
-                            Full Stack Expert
+                            Full Stack Developer
                         </div>
                     </div>
                 </div>
@@ -143,8 +143,8 @@ import EvidenceCard from '../components/EvidenceCard.astro';
 
                     <div
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
-                        <iconify-icon icon="simple-icons:microsoftazure" class="text-4xl"></iconify-icon>
-                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Azure</span>
+                        <iconify-icon icon="simple-icons:python" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Python</span>
                     </div>
                     <div
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
@@ -155,6 +155,11 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:react" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">React</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:nextdotjs" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Next.js</span>
                     </div>
                     <div
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
@@ -182,8 +187,8 @@ import EvidenceCard from '../components/EvidenceCard.astro';
 
                     <div
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
-                        <iconify-icon icon="simple-icons:microsoftazure" class="text-4xl"></iconify-icon>
-                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Azure</span>
+                        <iconify-icon icon="simple-icons:python" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Python</span>
                     </div>
                     <div
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
@@ -194,6 +199,11 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:react" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">React</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        <iconify-icon icon="simple-icons:nextdotjs" class="text-4xl"></iconify-icon>
+                        <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Next.js</span>
                     </div>
                     <div
                         class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
@@ -352,22 +362,25 @@ import EvidenceCard from '../components/EvidenceCard.astro';
 
                     <!-- PRIMARY FEATURED PROJECTS GRID -->
                     <div class="mb-24 reveal-in flex flex-col gap-12">
-                        <!-- LLM-LANGCHAIN -->
+                        <!-- NEXUS-AI -->
                         <ProjectCard
-                            category="// INTELIGÊNCIA ARTIFICIAL"
-                            title="Vision"
-                            highlightTitle="Mind"
+                            category="// IA APLICADA & RAG"
+                            title="Nexus"
+                            highlightTitle="AI"
                             status="🧠 AI Project"
                             statusClass="production"
-                            problem="Interpretar imagens e gerar explicações inteligentes de forma automatizada."
-                            description="Aplicação baseada em IA capaz de analisar imagens utilizando LangChain e Gemini, gerando descrições e respostas contextuais."
-                            image="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop"
-                            imageAlt="LLM-LangChain"
-                            link="https://github.com/GuiMRDS/Vision-Mind"
+                            problem="Responder perguntas sobre uma base de documentos sem inventar informações."
+                            description="Assistente com RAG, busca semântica, reranqueamento e controle de alucinação, sempre citando as fontes. Testes com pytest e deploy em Docker na Oracle Cloud via GitHub Actions."
+                            image="/images/projects/nexus-ai.png"
+                            imagePosition="53% 50%"
+                            imageAlt="Nexus AI"
+                            link="https://github.com/GuiMRDS/Nexus-AI"
                             tags={[
                                 { icon: "simple-icons:python", label: "Python" },
+                                { icon: "simple-icons:fastapi", label: "FastAPI" },
                                 { icon: "simple-icons:langchain", label: "LangChain" },
-                                { icon: "simple-icons:googlegemini", label: "Gemini" }
+                                { label: "ChromaDB" },
+                                { icon: "simple-icons:docker", label: "Docker" }
                             ]}
                         />
 
@@ -376,16 +389,38 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                             category="// FULL STACK & SISTEMAS"
                             title="WebPrime"
                             highlightTitle="Motors"
-                            status="🌐 Production"
+                            status="🌐 Online"
                             statusClass="production"
-                            problem="Gerenciar catálogo de veículos, clientes e vendas em uma plataforma web."
-                            description="Sistema completo de gestão automotiva com autenticação, CRUD e arquitetura MVC."
-                            image="/raw-files/Screenshot 2026-05-12 192758.png"
+                            problem="Gerenciar catálogo de veículos, usuários e vendas em uma plataforma web."
+                            description="Sistema de gestão de concessionária com ASP.NET Core MVC, Entity Framework Core (Code First), perfis de acesso Administrador e Padrão, e CRUD completo de usuários e veículos."
+                            image="/images/projects/webprime-motors.png"
+                            imagePosition="27% 50%"
                             imageAlt="WebPrime Motors"
                             link="https://webprimemotors.somee.com/"
                             tags={[
                                 { icon: "simple-icons:dotnet", label: "ASP.NET MVC" },
-                                { icon: "simple-icons:microsoftsqlserver", label: "SQL Server" }
+                                { label: "EF Core" },
+                                { icon: "simple-icons:microsoftsqlserver", label: "SQL Server" },
+                                { icon: "simple-icons:bootstrap", label: "Bootstrap" }
+                            ]}
+                        />
+
+                        <!-- XEDIT -->
+                        <ProjectCard
+                            category="// FULL STACK & BACK-END"
+                            highlightTitle="Xedit"
+                            status="🛠️ Full Stack"
+                            statusClass="production"
+                            problem="Construir do zero uma plataforma web com cadastro, autenticação e ativação de contas."
+                            description="Projeto desenvolvido de ponta a ponta no curso.dev: API com Next.js, PostgreSQL com migrations, sessões, ativação por e-mail, testes com Jest e CI no GitHub Actions. No ar em xedit.com.br."
+                            image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+                            imageAlt="Xedit"
+                            link="https://github.com/GuiMRDS/xedit"
+                            tags={[
+                                { icon: "simple-icons:nextdotjs", label: "Next.js" },
+                                { icon: "simple-icons:postgresql", label: "PostgreSQL" },
+                                { icon: "simple-icons:jest", label: "Jest" },
+                                { icon: "simple-icons:githubactions", label: "GitHub Actions" }
                             ]}
                         />
                     </div>
@@ -404,41 +439,90 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                                 class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.4em] font-bold">
                                 // FEATURED HIGHLIGHTS
                             </h3>
+
+                            <!-- Setas do carrossel -->
+                            <div class="flex items-center gap-3">
+                                <button type="button" id="highlights-prev" aria-label="Projeto anterior" aria-controls="highlights-slider"
+                                    class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-colors disabled:opacity-30 disabled:pointer-events-none">
+                                    <iconify-icon icon="solar:arrow-left-linear" class="text-xl"></iconify-icon>
+                                </button>
+                                <button type="button" id="highlights-next" aria-label="Próximo projeto" aria-controls="highlights-slider"
+                                    class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/50 hover:bg-primary/10 transition-colors disabled:opacity-30 disabled:pointer-events-none">
+                                    <iconify-icon icon="solar:arrow-right-linear" class="text-xl"></iconify-icon>
+                                </button>
+                            </div>
                         </div>
 
                         <div id="highlights-slider" class="highlights-slider">
-                            <!-- HIGHLIGHT: Xedit -->
+                            <!-- HIGHLIGHT: Biblioteca Virtual -->
                             <HighlightProjectCard
-                                badge="🛠️ Highlight"
-                                codeTag="[ 03 // NEXT.JS ]"
-                                title="Xedit"
-                                problem="Criar uma plataforma de conteúdo com qualidade de produção."
-                                description="Plataforma de conteúdo construída com Next.js, TDD e deploy contínuo."
-                                image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
-                                link="https://github.com/GuiMRDS/xedit"
+                                badge="📚 .NET"
+                                codeTag="[ 04 // C# ]"
+                                title="Biblioteca Virtual"
+                                problem="Controlar acervo, usuários e empréstimos de uma biblioteca."
+                                description="Sistema em C# com .NET: cadastro de livros e usuários, empréstimos, devoluções e consulta ao acervo, aplicando POO. Projeto PIM da UNIP."
+                                image="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200&auto=format&fit=crop"
+                                link="https://github.com/GuiMRDS/Biblioteca_Virtual"
+                            />
+
+                            <!-- HIGHLIGHT: FilmsPro -->
+                            <HighlightProjectCard
+                                badge="🎬 API"
+                                codeTag="[ 05 // FASTAPI ]"
+                                title="FilmsPro"
+                                problem="Recomendar filmes a partir de preferências em linguagem natural."
+                                description="API REST com FastAPI e agente Agno + Groq que consulta a OMDB e devolve recomendações."
+                                image="/images/projects/filmspro.png"
+                                link="https://github.com/GuiMRDS/FilmsPro"
+                                highlightClass="project-card-highlight"
+                            />
+
+                            <!-- HIGHLIGHT: Banco Digital -->
+                            <HighlightProjectCard
+                                badge="🏦 Java"
+                                codeTag="[ 06 // POO ]"
+                                title="Banco Digital"
+                                problem="Simular as operações de um banco digital com regras de negócio."
+                                description="Sistema em Java via terminal: contas corrente e poupança, depósito, saque, transferência e extrato, com herança, polimorfismo e interfaces."
+                                image="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=1200&auto=format&fit=crop"
+                                link="https://github.com/GuiMRDS/Banco_Digital"
+                            />
+
+                            <!-- HIGHLIGHT: Agente Agno -->
+                            <HighlightProjectCard
+                                badge="🤖 Agents"
+                                codeTag="[ 07 // RAG ]"
+                                title="Agente Agno"
+                                problem="Criar agentes de IA com memória e consulta a documentos."
+                                description="Plataforma modular com Agno, Groq, FastAPI, Streamlit e ChromaDB: RAG com PDFs e memória persistente."
+                                image="/images/projects/agente-agno.png"
+                                imagePosition="62% 50%"
+                                link="https://github.com/GuiMRDS/Agente_Agno"
+                                highlightClass="project-card-highlight"
+                            />
+
+                            <!-- HIGHLIGHT: Vision Mind -->
+                            <HighlightProjectCard
+                                badge="🧠 GenAI"
+                                codeTag="[ 08 // LANGCHAIN ]"
+                                title="Vision Mind"
+                                problem="Interpretar imagens e gerar explicações de forma automatizada."
+                                description="Assistente multimodal com Python, LangChain e Gemini Vision, com agente orquestrador e ferramentas."
+                                image="/images/projects/vision-mind.jpg"
+                                imagePosition="26% 50%"
+                                link="https://github.com/GuiMRDS/Vision_Mind"
                             />
 
                             <!-- HIGHLIGHT: Ransomware Shield -->
                             <HighlightProjectCard
                                 badge="🔒 Cyber"
-                                codeTag="[ 04 // SECURITY ]"
+                                codeTag="[ 09 // SECURITY ]"
                                 title="Ransomware Shield"
-                                problem="Entender como malware opera para construir defesas eficazes."
-                                description="Simulação controlada de ransomware e keylogger com contramedidas ativas."
+                                problem="Entender na prática como ransomware e keylogger operam."
+                                description="Simulação educacional, em ambiente isolado, de criptografia de arquivos com recuperação por chave e captura de teclas."
                                 image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
                                 link="https://github.com/GuiMRDS/Ransomware_and_Keylogger_Shield"
                                 highlightClass="project-card-highlight"
-                            />
-
-                            <!-- HIGHLIGHT: Brute Force Study -->
-                            <HighlightProjectCard
-                                badge="🛡️ Cyber"
-                                codeTag="[ 05 // INFRA ]"
-                                title="Brute Force Study"
-                                problem="Avaliar vulnerabilidades de autenticação em redes."
-                                description="Estudo prático de ataques brute force com Medusa e Kali Linux para hardening de infraestrutura."
-                                image="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop"
-                                link="https://github.com/GuiMRDS/Ataque-de-Brute-Force-de-Senhas-com-Medusa-e-Kali-Linux"
                             />
                         </div>
                     </div>
@@ -450,7 +534,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                     <iconify-icon icon="solar:add-circle-bold"
                         class="text-4xl md:text-5xl text-white/10 mb-4 md:mb-6 group-hover:text-primary/30 transition-colors"></iconify-icon>
                     <p class="text-muted text-xs uppercase tracking-[0.4em]">Explore mais no GitHub</p>
-                    <a href="https://github.com/GuiMRDS" target="_blank"
+                    <a href="https://github.com/GuiMRDS" target="_blank" rel="noopener noreferrer"
                         class="text-white font-oswald uppercase text-xl md:text-2xl mt-3 md:mt-4 hover:text-primary transition-colors">@GuiMRDS</a>
                 </div>
 
@@ -469,20 +553,20 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         <!-- Evidence Card 1: Projetos Publicados -->
                         <EvidenceCard
                             icon="solar:rocket-bold"
-                            metric="+10"
-                            title="Projetos Publicados"
-                            description="Soluções web, automações e APIs deployed e funcionais no GitHub e nuvem."
-                            tag="Production Ready"
+                            metric="15"
+                            title="Repositórios Públicos"
+                            description="Projetos próprios no GitHub: APIs, sistemas web, agentes de IA e estudos de segurança."
+                            tag="3 no ar"
                             isPrimary={true}
                         />
 
                         <!-- Evidence Card 2: Trajetória Prática -->
                         <EvidenceCard
                             icon="solar:code-circle-bold"
-                            metric="+5 Anos"
-                            title="Criando Soluções"
-                            description="Atuação contínua desde 2019 evoluindo de web design a engenharia de software."
-                            tag="Desde 2019"
+                            metric="+3 Anos"
+                            title="Experiência em TI"
+                            description="Atuação contínua em TI desde 2023, do laboratório da UNIP ao suporte corporativo na FADI."
+                            tag="Desde 2023"
                             isPrimary={false}
                         />
 
@@ -491,7 +575,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                             icon="solar:cpu-bold"
                             metric="Full Stack"
                             title=".NET • Python • GenAI"
-                            description="Desenvolvimento com C#, Next.js, LangChain e modelos Gemini."
+                            description="Desenvolvimento com C#, Next.js, FastAPI, LangChain e RAG."
                             tag="AI & Automation"
                             isPrimary={true}
                         />
@@ -571,7 +655,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
 
                     <!-- Right: Interactive Visual (Flashlight Reveal Style) -->
                     <div class="relative flex justify-center lg:justify-end">
-                        <EvidenceCard protocol="Secure_Connect.v5" availability="100% ONLINE" />
+                        <EvidenceCard protocolLabel="Contato" protocol="WhatsApp · E-mail" availability="Aberto a propostas" />
                     </div>
                 </div>
 
@@ -582,215 +666,245 @@ import EvidenceCard from '../components/EvidenceCard.astro';
     </main>
 
     <script is:inline>
-        // Initialize Lucide Icons
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+        // Click Ripple: desenhado dentro de um "host" que recorta o efeito,
+        // sem alterar o overflow do elemento clicado (antes cortava os badges do hero).
+        if (!prefersReducedMotion) {
+            document.addEventListener('pointerdown', (e) => {
+                const target = e.target.closest('button, a, .flashlight-card');
+                if (!target) return;
+
+                if (getComputedStyle(target).position === 'static') {
+                    target.style.position = 'relative';
+                }
+
+                const rect = target.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+
+                const host = document.createElement('span');
+                host.className = 'ripple-host';
+                const ripple = document.createElement('span');
+                ripple.className = 'click-ripple';
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+                ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+
+                host.appendChild(ripple);
+                target.appendChild(host);
+                setTimeout(() => host.remove(), 750);
+            });
         }
 
-        // Navbar Scroll state
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('main-nav');
-            if (nav) {
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
+        // Flashlight + rotação 3D: um cálculo por frame (rAF), lendo as posições
+        // antes de escrever estilos e ignorando cards fora da tela.
+        // Desligado em telas touch e com movimento reduzido.
+        const interactiveCards = Array.from(document.querySelectorAll('.flashlight-card, .project-card'));
+
+        if (hasFinePointer && !prefersReducedMotion) {
+            let pointer = null;
+            let frameQueued = false;
+
+            const updateCards = () => {
+                frameQueued = false;
+                if (!pointer) return;
+
+                const { x, y } = pointer;
+                const viewportHeight = window.innerHeight;
+                const measured = interactiveCards.map((card) => ({ card, rect: card.getBoundingClientRect() }));
+
+                measured.forEach(({ card, rect }) => {
+                    if (rect.bottom < 0 || rect.top > viewportHeight) return;
+
+                    card.style.setProperty('--mouse-x', `${x - rect.left}px`);
+                    card.style.setProperty('--mouse-y', `${y - rect.top}px`);
+
+                    const isNear = x >= rect.left - 100 && x <= rect.right + 100 &&
+                        y >= rect.top - 100 && y <= rect.bottom + 100;
+
+                    if (isNear) {
+                        const moveX = (x - (rect.left + rect.width / 2)) / 25;
+                        const moveY = (y - (rect.top + rect.height / 2)) / 25;
+                        const lift = card.classList.contains('project-card') ? ' translateY(-15px)' : '';
+                        card.style.transform = `rotateX(${-moveY}deg) rotateY(${moveX}deg)${lift}`;
+                    }
+                });
+            };
+
+            document.addEventListener('mousemove', (e) => {
+                pointer = { x: e.clientX, y: e.clientY };
+                if (!frameQueued) {
+                    frameQueued = true;
+                    requestAnimationFrame(updateCards);
                 }
-            }
-        });
+            }, { passive: true });
 
-        // Click Ripple Effect
-        document.addEventListener('mousedown', (e) => {
-            const target = e.target.closest('button, a, .flashlight-card');
-            if (!target) return;
-
-            const ripple = document.createElement('div');
-            ripple.className = 'click-ripple';
-
-            const rect = target.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-
-            ripple.style.width = ripple.style.height = `${size}px`;
-            ripple.style.left = `${x}px`;
-            ripple.style.top = `${y}px`;
-
-            if (getComputedStyle(target).position === 'static') {
-                target.style.position = 'relative';
-            }
-            target.style.overflow = 'hidden';
-
-            target.appendChild(ripple);
-
-            setTimeout(() => ripple.remove(), 700);
-        });
-
-        // Flashlight effect and 3D Rotation
-        document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.flashlight-card, .project-card');
-
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-
-                if (e.clientX >= rect.left - 100 && e.clientX <= rect.right + 100 &&
-                    e.clientY >= rect.top - 100 && e.clientY <= rect.bottom + 100) {
-
-                    const centerX = rect.left + rect.width / 2;
-                    const centerY = rect.top + rect.height / 2;
-                    const moveX = (e.clientX - centerX) / 25;
-                    const moveY = (e.clientY - centerY) / 25;
-
-                    card.style.transform = `rotateX(${-moveY}deg) rotateY(${moveX}deg) ${card.classList.contains('project-card') ? 'translateY(-15px)' : ''}`;
-
-                    const elements = card.querySelectorAll('.badge, .project-content, .status-badge, .floating-trigger, h3, p, a, .w-16, .w-20');
-                    elements.forEach(el => {
-                        el.style.transform = `translate3d(0, 0, 0)`;
-                    });
-                }
+            interactiveCards.forEach((card) => {
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                });
             });
-        });
-
-        // Reset rotation when mouse leaves
-        const allInteractiveCards = document.querySelectorAll('.flashlight-card, .project-card');
-        allInteractiveCards.forEach(card => {
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
-            });
-        });
+        }
 
         // Intersection Observer for Scroll Reveals
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.reveal-in, .reveal-stagger, .image-reveal').forEach(el => revealObserver.observe(el));
+        document.querySelectorAll('.reveal-in, .reveal-stagger, .image-reveal').forEach((el) => revealObserver.observe(el));
 
-        // Preloader Logic
-        const initPreloader = () => {
+        // Preloader: sai assim que as fontes carregam (mínimo de ~1s para a animação
+        // e máximo de ~2,5s), em vez de esperar o "load" de todas as imagens + 2s fixos.
+        (() => {
             const preloader = document.getElementById('preloader');
             const logo = document.getElementById('loader-logo');
             const bar = document.getElementById('loader-bar');
             const status = document.getElementById('loader-status');
-
             if (!preloader || !logo || !bar || !status) return;
+
+            const startedAt = performance.now();
+            const minVisible = prefersReducedMotion ? 0 : 1000;
 
             setTimeout(() => {
                 logo.style.transform = 'translateY(0)';
                 status.style.transform = 'translateY(0)';
                 bar.style.width = '100%';
-            }, 200);
+            }, 100);
 
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
+            const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+            const maxWait = new Promise((resolve) => setTimeout(resolve, 2500));
 
-                const heroContent = document.getElementById('hero-content');
-                const heroImage = document.getElementById('hero-image');
-                if (heroContent) heroContent.classList.add('active');
-                if (heroImage) heroImage.classList.add('active');
-            }, 2000);
-        };
+            Promise.race([fontsReady, maxWait]).then(() => {
+                const remaining = Math.max(0, minVisible - (performance.now() - startedAt));
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
 
-        if (document.readyState === 'complete') {
-            initPreloader();
-        } else {
-            window.addEventListener('load', initPreloader);
-        }
+                    const heroContent = document.getElementById('hero-content');
+                    const heroImage = document.getElementById('hero-image');
+                    if (heroContent) heroContent.classList.add('active');
+                    if (heroImage) heroImage.classList.add('active');
+                }, remaining);
+            });
+        })();
 
-        // Initialize Lenis Smooth Scroll
-        let lenis;
-        if (typeof Lenis !== 'undefined') {
+        // Smooth Scroll (Lenis) — desligado com movimento reduzido
+        let lenis = null;
+        if (!prefersReducedMotion && typeof Lenis !== 'undefined') {
             lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                direction: 'vertical',
-                gestureDirection: 'vertical',
-                smooth: true,
-                mouseMultiplier: 1,
+                orientation: 'vertical',
+                gestureOrientation: 'vertical',
+                smoothWheel: true,
+                wheelMultiplier: 1,
                 smoothTouch: false,
                 touchMultiplier: 2,
                 infinite: false,
             });
 
-            function raf(time) {
+            const raf = (time) => {
                 lenis.raf(time);
                 requestAnimationFrame(raf);
+            };
+            requestAnimationFrame(raf);
+        }
+
+        const scrollToTarget = (selector) => {
+            if (selector === '#hero') {
+                if (lenis) lenis.scrollTo(0);
+                else window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+                return;
             }
 
-            requestAnimationFrame(raf);
+            const el = document.querySelector(selector);
+            if (!el) return;
 
-            // Handle Anchor Links with Lenis
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = this.getAttribute('href');
-                    if (target === '#hero') {
-                        lenis.scrollTo(0);
-                    } else {
-                        lenis.scrollTo(target, {
-                            offset: -50,
-                            duration: 1.5
-                        });
-                    }
-                });
+            if (lenis) {
+                lenis.scrollTo(el, { offset: -50, duration: 1.5 });
+            } else {
+                const top = el.getBoundingClientRect().top + window.scrollY - 50;
+                window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+            }
+        };
+
+        // Handle Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', (e) => {
+                const selector = anchor.getAttribute('href');
+                if (!selector || selector.length < 2) return;
+                e.preventDefault();
+                scrollToTarget(selector);
             });
+        });
 
-            // Sync scroll logic with Lenis
-            lenis.on('scroll', (e) => {
-                const timeline = document.querySelector('.timeline-container');
-                const progress = document.querySelector('.timeline-progress');
-                const startTrigger = document.getElementById('timeline-start');
-                const endTrigger = document.getElementById('timeline-end');
-
-                if (timeline && progress && startTrigger && endTrigger) {
-                    const startRect = startTrigger.getBoundingClientRect();
-                    const endRect = endTrigger.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
-
-                    const scrollPoint = windowHeight * 0.5;
-                    const currentDist = scrollPoint - startRect.top;
-                    const totalDist = endRect.top - startRect.top;
-
-                    const percent = Math.min(Math.max((currentDist / totalDist) * 100, 0), 100);
-                    progress.style.height = `${percent}%`;
-                }
-
-                const nav = document.getElementById('main-nav');
-                if (nav) {
-                    if (e.scroll > 50) {
-                        nav.classList.add('scrolled');
-                    } else {
-                        nav.classList.remove('scrolled');
-                    }
-                }
-            });
-        }
-
-        // Back to Top button listener
+        // Back to Top button
         const backToTopBtn = document.getElementById('back-to-top-btn');
         if (backToTopBtn) {
-            backToTopBtn.addEventListener('click', () => {
-                if (lenis) {
-                    lenis.scrollTo(0);
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            });
+            backToTopBtn.addEventListener('click', () => scrollToTarget('#hero'));
         }
+
+        // Setas do carrossel de destaques
+        (() => {
+            const slider = document.getElementById('highlights-slider');
+            const prev = document.getElementById('highlights-prev');
+            const next = document.getElementById('highlights-next');
+            if (!slider || !prev || !next) return;
+
+            const step = () => {
+                const item = slider.querySelector('.slider-item');
+                const gap = parseFloat(getComputedStyle(slider).columnGap) || 0;
+                return item ? item.getBoundingClientRect().width + gap : slider.clientWidth;
+            };
+
+            const updateArrows = () => {
+                const maxScroll = slider.scrollWidth - slider.clientWidth - 2;
+                prev.disabled = slider.scrollLeft <= 2;
+                next.disabled = slider.scrollLeft >= maxScroll;
+            };
+
+            const behavior = prefersReducedMotion ? 'auto' : 'smooth';
+            prev.addEventListener('click', () => slider.scrollBy({ left: -step(), behavior }));
+            next.addEventListener('click', () => slider.scrollBy({ left: step(), behavior }));
+            slider.addEventListener('scroll', updateArrows, { passive: true });
+            window.addEventListener('resize', updateArrows);
+            updateArrows();
+        })();
+
+        // Navbar + progresso da timeline: um único listener de scroll
+        // (o Lenis rola a janela nativamente, então o evento dispara nos dois casos).
+        const nav = document.getElementById('main-nav');
+        const timelineProgress = document.querySelector('.timeline-progress');
+        const timelineStart = document.getElementById('timeline-start');
+        const timelineEnd = document.getElementById('timeline-end');
+
+        const onScroll = () => {
+            if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+
+            if (timelineProgress && timelineStart && timelineEnd) {
+                const startTop = timelineStart.getBoundingClientRect().top;
+                const endTop = timelineEnd.getBoundingClientRect().top;
+                const playhead = window.innerHeight * 0.5;
+                const percent = Math.min(Math.max(((playhead - startTop) / (endTop - startTop)) * 100, 0), 100);
+                timelineProgress.style.height = `${percent}%`;
+            }
+        };
+
+        let scrollQueued = false;
+        window.addEventListener('scroll', () => {
+            if (scrollQueued) return;
+            scrollQueued = true;
+            requestAnimationFrame(() => {
+                scrollQueued = false;
+                onScroll();
+            });
+        }, { passive: true });
+        onScroll();
     </script>
 </Layout>

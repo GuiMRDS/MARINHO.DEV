@@ -1,46 +1,66 @@
-# Astro Starter Kit: Basics
+# MARINHO.DEV
 
-```sh
-npm create astro@latest -- --template basics
+Portfólio pessoal de **Guilherme Marinho**, desenvolvedor full stack com foco em back-end (.NET e Python), IA aplicada e segurança.
+
+🌐 **[marinho-dev.vercel.app](https://marinho-dev.vercel.app)**
+
+## Seções
+
+- **Hero**: apresentação, foto e chamadas para projetos e contato
+- **Sobre**: stack, linha do tempo da carreira, competências e formação
+- **Projetos**: Nexus-AI, WebPrime Motors e Xedit em destaque, além de Biblioteca Virtual, FilmsPro, Banco Digital, Agente Agno, Vision Mind e Ransomware Shield
+- **Contato**: WhatsApp, e-mail e redes
+
+## Tecnologias
+
+| Camada | Ferramentas |
+| --- | --- |
+| Framework | [Astro](https://astro.build) (site estático) |
+| Estilo | [Tailwind CSS 3](https://v3.tailwindcss.com) via PostCSS + CSS global (`src/styles/global.css`) |
+| Interação | JavaScript puro |
+| Scroll suave | [Lenis](https://github.com/darkroomengineering/lenis) |
+| Ícones | [Iconify](https://iconify.design) |
+| Fontes | Oswald, Space Grotesk e Space Mono (Google Fonts) |
+| Deploy | Vercel |
+
+Animações, efeito *flashlight* e inclinação 3D nos cards respeitam `prefers-reduced-motion` e ficam desligados em telas touch.
+
+## Rodando localmente
+
+Pré-requisito: Node.js 22.12 ou superior.
+
+```bash
+npm install
+npm run dev       # servidor de desenvolvimento em http://localhost:4321
+npm run build     # gera o site estático em dist/
+npm run preview   # serve o build localmente
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Estrutura
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
+```
+.
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+│   ├── favicon.svg
+│   └── images/               # foto de perfil e prints dos projetos
+├── src/
+│   ├── components/           # Header, Footer, cards de projeto, timeline etc.
+│   ├── layouts/Layout.astro  # <head>, SEO e scripts externos
+│   ├── pages/index.astro     # página única
+│   └── styles/global.css     # Tailwind + estilos do design system
+├── astro.config.mjs
+├── tailwind.config.mjs       # cores, fontes e animações do tema
+└── postcss.config.mjs
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Design system
 
-## 🧞 Commands
+- **Cores**: `primary` `#FF5C00`, `dark` `#050505`, `dark-surface` `#121212`, `muted` `#666666`
+- **Tipografia**: `font-oswald` (títulos), `font-space` (texto), `font-mono` (rótulos)
+- **Componentes base**: `.glass-panel`, `.flashlight-card`, `.project-card`, `.badge`, `.status-badge`
 
-All commands are run from the root of the project, from a terminal:
+## Contato
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- LinkedIn: [guilherme-marinho04](https://www.linkedin.com/in/guilherme-marinho04/)
+- GitHub: [@GuiMRDS](https://github.com/GuiMRDS)
+- E-mail: [guimars22@gmail.com](mailto:guimars22@gmail.com)

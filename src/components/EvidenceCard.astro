@@ -10,6 +10,7 @@ interface Props {
   statusTitle?: string;
   statusDescription?: string;
   protocol?: string;
+  protocolLabel?: string;
   availability?: string;
 }
 
@@ -23,6 +24,7 @@ const {
   statusTitle = "Status: Ativo",
   statusDescription = "Monitorando novas oportunidades em engenharia de software, IA, automação e segurança.",
   protocol,
+  protocolLabel = "Protocolo",
   availability
 } = Astro.props;
 
@@ -67,7 +69,7 @@ const displayDescription = description || statusDescription;
         {protocol && (
             <div class="pt-6 border-t border-white/10 flex flex-col gap-4">
                 <div class="flex justify-between items-center group/item">
-                    <span class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">Protocolo</span>
+                    <span class="text-[10px] font-mono text-white/20 uppercase tracking-widest group-hover/item:text-white/40 transition-colors">{protocolLabel}</span>
                     <span class="text-[11px] font-mono text-primary uppercase font-bold tracking-wider">{protocol}</span>
                 </div>
                 {availability && (

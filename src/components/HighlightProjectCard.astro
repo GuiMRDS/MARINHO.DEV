@@ -9,6 +9,8 @@ interface Props {
   description: string;
   link: string;
   highlightClass?: string;
+  /** ponto da imagem que fica no centro do card (CSS object-position), ex.: '30% 50%' */
+  imagePosition?: string;
 }
 
 const {
@@ -20,14 +22,15 @@ const {
   problem,
   description,
   link,
-  highlightClass = ''
+  highlightClass = '',
+  imagePosition = '50% 50%'
 } = Astro.props;
 ---
 
 <div class="slider-item">
     <div class={`project-card group aspect-[3/4] ${highlightClass}`}>
         <span class="status-badge">{badge}</span>
-        <img src={image} class="project-image" alt={imageAlt} />
+        <img src={image} class="project-image" style={`object-position: ${imagePosition};`} alt={imageAlt} loading="lazy" decoding="async" />
 
         <div class="project-overlay">
             <div class="project-content">
@@ -43,7 +46,7 @@ const {
                 <p class="text-white/60 text-[10px] mb-6 uppercase line-clamp-2 font-space">
                     {description}
                 </p>
-                <a href={link} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                <a href={link} target="_blank" rel="noopener noreferrer" class="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-2">
                     View Repo <iconify-icon icon="solar:arrow-right-bold"></iconify-icon>
                 </a>
             </div>

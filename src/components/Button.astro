@@ -55,14 +55,14 @@ const combinedClasses = `${baseStyles} ${variant !== 'icon' ? sizeStyles[size] :
 {variant === 'beam' ? (
   <div class="border-beam-container group">
     <div class="border-beam"></div>
-    <Element href={href} target={target} id={id} class={combinedClasses} {...rest}>
+    <Element href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined} id={id} class={combinedClasses} {...rest}>
       {icon && iconPosition === 'left' && <iconify-icon icon={icon} class="text-xl"></iconify-icon>}
       <slot />
       {icon && iconPosition === 'right' && <iconify-icon icon={icon} class="text-xl"></iconify-icon>}
     </Element>
   </div>
 ) : (
-  <Element href={href} target={target} id={id} class={combinedClasses} {...rest}>
+  <Element href={href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined} id={id} class={combinedClasses} {...rest}>
     {variant === 'primary' && <div class="absolute inset-0 bg-white opacity-0 hover:opacity-10 transition-opacity"></div>}
     {variant === 'glass' && <div class="absolute inset-0 bg-primary/5 translate-y-full hover:translate-y-0 transition-transform duration-500 pointer-events-none"></div>}
     {icon && iconPosition === 'left' && <iconify-icon icon={icon} class="text-xl relative z-10"></iconify-icon>}

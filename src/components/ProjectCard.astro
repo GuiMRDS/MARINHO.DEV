@@ -8,7 +8,8 @@ interface Tag {
 
 interface Props {
   category: string;
-  title: string;
+  /** parte branca do título (opcional) */
+  title?: string;
   highlightTitle: string;
   status: string;
   statusClass?: string;
@@ -19,18 +20,21 @@ interface Props {
   link: string;
   tags: Tag[];
   height?: string;
+  /** ponto da imagem que fica no centro do card (CSS object-position), ex.: '30% 50%' */
+  imagePosition?: string;
 }
 
 const {
   category,
-  title,
+  title = '',
   highlightTitle,
   status,
   statusClass = 'production',
   problem,
   description,
   image,
-  imageAlt = `${title} ${highlightTitle}`,
+  imagePosition = '50% 50%',
+  imageAlt = `${title} ${highlightTitle}`.trim(),
   link,
   tags,
   height = 'h-[500px] md:h-[600px]'
@@ -44,8 +48,10 @@ const {
     <div class="absolute inset-0">
         <img
             src={image}
+            loading="lazy"
+            decoding="async"
             class="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 group-hover:brightness-110"
-            style="image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);"
+            style={`object-position: ${imagePosition}; image-rendering: -webkit-optimize-contrast; filter: contrast(1.1) saturate(1.1);`}
             alt={imageAlt}
         />
 
@@ -64,7 +70,7 @@ const {
                         {category}
                     </span>
                     <h3 class="text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
-                        {title} <span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">{highlightTitle}</span>
+                        {title && `${title} `}<span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">{highlightTitle}</span>
                     </h3>
                     <p class="text-white/50 text-[10px] uppercase tracking-widest font-mono mb-3">
                         Problema: {problem}
@@ -81,7 +87,7 @@ const {
                         ))}
                     </div>
                 </div>
-                <Button href={link} target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label={`Ver ${title} ${highlightTitle}`}>
+                <Button href={link} target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label={`Ver ${imageAlt}`}>
                 </Button>
             </div>
         </div>

@@ -1,5 +1,5 @@
 {
-  "name": "galactic-gamma",
+  "name": "marinho-dev",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -16,5 +16,8 @@
   },
   "allowScripts": {
     "esbuild": true
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
   }
 }

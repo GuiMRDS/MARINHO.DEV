@@ -85,7 +85,8 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         class="flashlight-card glass-panel rounded-[4rem] overflow-visible aspect-[4/5] w-full max-w-[500px] group">
                         <!-- Main Image Container -->
                         <div class="w-full h-full rounded-[4rem] overflow-hidden relative">
-                            <img src="/images/profile.jpg" class="profile-img w-full h-full object-cover"
+                            <img src="/images/profile.webp" class="profile-img w-full h-full object-cover"
+                                width="640" height="641" fetchpriority="high" decoding="async"
                                 alt="Guilherme Marinho">
 
                             <!-- Decorative Frame -->
@@ -371,7 +372,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                             statusClass="production"
                             problem="Responder perguntas sobre uma base de documentos sem inventar informações."
                             description="Assistente com RAG, busca semântica, reranqueamento e controle de alucinação, sempre citando as fontes. Testes com pytest e deploy em Docker na Oracle Cloud via GitHub Actions."
-                            image="/images/projects/nexus-ai.png"
+                            image="/images/projects/nexus-ai.webp"
                             imagePosition="53% 50%"
                             imageAlt="Nexus AI"
                             link="https://github.com/GuiMRDS/Nexus-AI"
@@ -393,7 +394,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                             statusClass="production"
                             problem="Gerenciar catálogo de veículos, usuários e vendas em uma plataforma web."
                             description="Sistema de gestão de concessionária com ASP.NET Core MVC, Entity Framework Core (Code First), perfis de acesso Administrador e Padrão, e CRUD completo de usuários e veículos."
-                            image="/images/projects/webprime-motors.png"
+                            image="/images/projects/webprime-motors.webp"
                             imagePosition="27% 50%"
                             imageAlt="WebPrime Motors"
                             link="https://webprimemotors.somee.com/"
@@ -413,7 +414,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                             statusClass="production"
                             problem="Construir do zero uma plataforma web com cadastro, autenticação e ativação de contas."
                             description="Projeto desenvolvido de ponta a ponta no curso.dev: API com Next.js, PostgreSQL com migrations, sessões, ativação por e-mail, testes com Jest e CI no GitHub Actions. No ar em xedit.com.br."
-                            image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+                            image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop"
                             imageAlt="Xedit"
                             link="https://github.com/GuiMRDS/xedit"
                             tags={[
@@ -472,7 +473,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                                 title="FilmsPro"
                                 problem="Recomendar filmes a partir de preferências em linguagem natural."
                                 description="API REST com FastAPI e agente Agno + Groq que consulta a OMDB e devolve recomendações."
-                                image="/images/projects/filmspro.png"
+                                image="/images/projects/filmspro.webp"
                                 link="https://github.com/GuiMRDS/FilmsPro"
                                 highlightClass="project-card-highlight"
                             />
@@ -495,7 +496,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                                 title="Agente Agno"
                                 problem="Criar agentes de IA com memória e consulta a documentos."
                                 description="Plataforma modular com Agno, Groq, FastAPI, Streamlit e ChromaDB: RAG com PDFs e memória persistente."
-                                image="/images/projects/agente-agno.png"
+                                image="/images/projects/agente-agno.webp"
                                 imagePosition="62% 50%"
                                 link="https://github.com/GuiMRDS/Agente_Agno"
                                 highlightClass="project-card-highlight"
@@ -508,7 +509,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                                 title="Vision Mind"
                                 problem="Interpretar imagens e gerar explicações de forma automatizada."
                                 description="Assistente multimodal com Python, LangChain e Gemini Vision, com agente orquestrador e ferramentas."
-                                image="/images/projects/vision-mind.jpg"
+                                image="/images/projects/vision-mind.webp"
                                 imagePosition="26% 50%"
                                 link="https://github.com/GuiMRDS/Vision_Mind"
                             />
@@ -520,7 +521,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                                 title="Ransomware Shield"
                                 problem="Entender na prática como ransomware e keylogger operam."
                                 description="Simulação educacional, em ambiente isolado, de criptografia de arquivos com recuperação por chave e captura de teclas."
-                                image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+                                image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop"
                                 link="https://github.com/GuiMRDS/Ransomware_and_Keylogger_Shield"
                                 highlightClass="project-card-highlight"
                             />
@@ -664,6 +665,9 @@ import EvidenceCard from '../components/EvidenceCard.astro';
             </div>
         </section>
     </main>
+
+    <!-- Smooth Scroll (Lenis): carregado aqui para não bloquear a renderização -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 
     <script is:inline>
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

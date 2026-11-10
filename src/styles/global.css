@@ -292,14 +292,21 @@ a:active {
 }
 
 .profile-img {
-    filter: grayscale(100%) contrast(110%);
     transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     transform: translateZ(20px);
 }
 
-.flashlight-card:hover .profile-img {
-    filter: grayscale(0%) contrast(100%);
-    transform: translateZ(40px) scale(1.05);
+/* Foto em P&B que ganha cor no hover: só em telas com mouse.
+   No celular/tablet não existe hover, então a foto fica colorida. */
+@media (hover: hover) and (pointer: fine) {
+    .profile-img {
+        filter: grayscale(100%) contrast(110%);
+    }
+
+    .flashlight-card:hover .profile-img {
+        filter: grayscale(0%) contrast(100%);
+        transform: translateZ(40px) scale(1.05);
+    }
 }
 
 /* --- Floating Badges --- */
@@ -432,10 +439,12 @@ body {
     perspective: 1200px;
 }
 
-.project-card:hover {
-    transform: translateY(-15px);
-    border-color: rgba(255, 92, 0, 0.3);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+@media (hover: hover) and (pointer: fine) {
+    .project-card:hover {
+        transform: translateY(-15px);
+        border-color: rgba(255, 92, 0, 0.3);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    }
 }
 
 .project-image {
@@ -450,16 +459,18 @@ body {
     border-radius: 32px;
 }
 
-.project-card:hover .project-image {
-    transform: scale(1.1);
-    filter: brightness(1) grayscale(0%);
+@media (hover: hover) and (pointer: fine) {
+    .project-card:hover .project-image {
+        transform: scale(1.1);
+        filter: brightness(1) grayscale(0%);
+    }
 }
 
 .project-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
-    padding: 30px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -468,24 +479,38 @@ body {
     border-radius: 32px;
 }
 
+@media (min-width: 768px) {
+    .project-overlay {
+        padding: 30px;
+    }
+}
+
+/* Texto dos cards: sempre visível em telas touch (sem hover);
+   com mouse, aparece no hover ou quando o card recebe foco pelo teclado. */
 .project-content {
-    transform: translateY(20px);
-    opacity: 0;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     overflow: visible !important;
     transform-style: preserve-3d;
     pointer-events: auto;
 }
 
-.project-card:hover .project-content {
-    transform: translateY(0);
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    .project-content {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    .project-card:hover .project-content,
+    .project-card:focus-within .project-content {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .status-badge {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 16px;
+    right: 16px;
     padding: 6px 12px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -519,9 +544,19 @@ body {
     animation: slideshow 16s infinite;
 }
 
-.project-card:hover .slideshow-image {
-    transform: scale(1.1);
-    filter: brightness(1) grayscale(0%);
+@media (hover: hover) and (pointer: fine) {
+    .project-card:hover .slideshow-image {
+        transform: scale(1.1);
+        filter: brightness(1) grayscale(0%);
+    }
+}
+
+/* Gradiente em texto itálico: cada linha quebrada ganha o próprio padding,
+   evitando que a última letra seja cortada no celular. */
+.text-gradient-fix {
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-right: 0.15em;
 }
 
 .slideshow-image:nth-child(1) {
@@ -584,8 +619,8 @@ body {
 }
 
 .slider-item {
-    flex: 0 0 100%;
-    scroll-snap-align: center;
+    flex: 0 0 88%;
+    scroll-snap-align: start;
 }
 
 @media (min-width: 768px) {

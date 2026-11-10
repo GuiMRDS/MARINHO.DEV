@@ -39,7 +39,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
     <main>
         <!-- Hero Section -->
         <section id="hero"
-            class="min-h-screen relative flex items-center justify-center px-6 pt-24 pb-12 overflow-hidden bg-white">
+            class="min-h-screen relative flex items-center justify-center px-5 sm:px-6 pt-28 sm:pt-32 pb-12 overflow-hidden bg-white">
             <div class="max-w-[1300px] w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Left Content -->
                 <div class="relative z-10 reveal-stagger" id="hero-content">
@@ -52,7 +52,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                     </div>
 
                     <h1
-                        class="text-[10vw] lg:text-[6.5rem] font-oswald font-bold leading-[0.85] uppercase tracking-tighter mb-8">
+                        class="text-[12vw] sm:text-[10vw] lg:text-[7vw] xl:text-[6.5rem] font-oswald font-bold leading-[0.85] uppercase tracking-tighter mb-8">
                         <span class="block">Código que</span>
                         <span
                             class="block bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent">resolve.</span>
@@ -82,28 +82,28 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                 <!-- Right Visual -->
                 <div class="relative flex justify-center lg:justify-end image-reveal" id="hero-image">
                     <div
-                        class="flashlight-card glass-panel rounded-[4rem] overflow-visible aspect-[4/5] w-full max-w-[500px] group">
+                        class="flashlight-card glass-panel rounded-[2.5rem] sm:rounded-[4rem] overflow-visible aspect-[4/5] w-full max-w-[420px] lg:max-w-[500px] group">
                         <!-- Main Image Container -->
-                        <div class="w-full h-full rounded-[4rem] overflow-hidden relative">
+                        <div class="w-full h-full rounded-[2.5rem] sm:rounded-[4rem] overflow-hidden relative">
                             <img src="/images/profile.webp" class="profile-img w-full h-full object-cover"
                                 width="640" height="641" fetchpriority="high" decoding="async"
                                 alt="Guilherme Marinho">
 
                             <!-- Decorative Frame -->
                             <div
-                                class="absolute inset-6 border border-black/10 rounded-[3rem] pointer-events-none group-hover:border-primary/30 transition-colors duration-500 z-20">
+                                class="absolute inset-4 sm:inset-6 border border-black/10 rounded-[2rem] sm:rounded-[3rem] pointer-events-none group-hover:border-primary/30 transition-colors duration-500 z-20">
                             </div>
                         </div>
 
                         <!-- Floating Badge 1 (Top Right) -->
-                        <div class="badge top-[8%] -right-[5%] shadow-2xl scale-90" style="animation-delay: 0s;">
+                        <div class="badge top-[6%] right-3 xl:-right-[5%] shadow-2xl scale-[0.8] sm:scale-90 origin-right" style="animation-delay: 0s;">
                             <iconify-icon icon="solar:shield-check-bold"
                                 style="color: #FF5C00; font-size: 18px;"></iconify-icon>
                             Foco em Segurança
                         </div>
 
                         <!-- Floating Badge 2 (Bottom Left) -->
-                        <div class="badge badge-dark bottom-[12%] -left-[8%] shadow-2xl scale-90"
+                        <div class="badge badge-dark bottom-[8%] left-3 xl:-left-[8%] shadow-2xl scale-[0.8] sm:scale-90 origin-left"
                             style="animation-delay: -3s;">
                             <iconify-icon icon="solar:cpu-bold" style="color: #FFFFFF; font-size: 18px;"></iconify-icon>
                             Full Stack Developer
@@ -126,88 +126,88 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                 <div class="flex animate-marquee whitespace-nowrap gap-24 items-center w-max">
                     <!-- Set 1 -->
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:csharp" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">C#</span>
                     </div>
 
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:microsoftsqlserver" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">SQL Server</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:docker" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Docker</span>
                     </div>
 
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:python" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Python</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:postgresql" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">PostgreSQL</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:react" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">React</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:nextdotjs" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Next.js</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:nodedotjs" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Node.js</span>
                     </div>
 
                     <!-- Set 2 (Identical for seamless loop) -->
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:csharp" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">C#</span>
                     </div>
 
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:microsoftsqlserver" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">SQL Server</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:docker" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Docker</span>
                     </div>
 
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:python" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Python</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:postgresql" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">PostgreSQL</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:react" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">React</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:nextdotjs" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Next.js</span>
                     </div>
                     <div
-                        class="flex items-center gap-4 text-white/10 hover:text-primary/40 transition-colors cursor-default">
+                        class="flex items-center gap-4 text-white/25 hover:text-primary/50 transition-colors cursor-default">
                         <iconify-icon icon="simple-icons:nodedotjs" class="text-4xl"></iconify-icon>
                         <span class="text-2xl font-oswald font-medium uppercase tracking-[0.2em]">Node.js</span>
                     </div>
@@ -225,7 +225,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         class="text-3xl sm:text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-tight sm:leading-none mb-4 sm:mb-6 text-white">
                         Do design e infraestrutura à <br class="hidden sm:inline">
                         <span
-                            class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">
+                            class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic text-gradient-fix drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">
                             Engenharia de Software, IA e Automação.</span>
                     </h2>
                     <p class="text-white/60 text-sm sm:text-base md:text-xl max-w-3xl mx-auto uppercase tracking-wider sm:tracking-widest font-space">
@@ -342,27 +342,27 @@ import EvidenceCard from '../components/EvidenceCard.astro';
         <section id="projetos" class="projects-container">
             <div class="max-w-[1300px] mx-auto px-6 relative z-10">
                 <!-- Headline -->
-                <div class="mb-16 reveal-in">
+                <div class="mb-12 md:mb-16 reveal-in">
                     <h2
-                        class="text-4xl md:text-6xl font-oswald font-medium uppercase tracking-tighter leading-none mb-6 text-white">
+                        class="text-[2.6rem] leading-[0.95] sm:text-5xl md:text-6xl font-oswald font-medium uppercase tracking-tighter md:leading-none mb-6 text-white">
                         Problemas reais, <span
                             class="bg-gradient-to-r from-white via-white/90 to-white/40 bg-clip-text text-transparent">soluções
                             reais.</span> <br>
                         <span
-                            class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">Full
+                            class="bg-gradient-to-r from-[#FF5C00] via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic text-gradient-fix drop-shadow-[0_0_15px_rgba(255,92,0,0.3)]">Full
                             Stack, IA e Automação.</span>
                     </h2>
-                    <p class="text-white/60 text-lg md:text-xl max-w-2xl uppercase tracking-widest font-space">
+                    <p class="text-white/60 text-sm sm:text-lg md:text-xl max-w-2xl uppercase tracking-wider sm:tracking-widest font-space">
                         Cada projeto resolve um problema específico — desde aplicações web completas até automações com
                         inteligência artificial.
                     </p>
                 </div>
 
                 <!-- Projects Content -->
-                <div class="flex flex-col gap-16">
+                <div class="flex flex-col gap-12 md:gap-20">
 
                     <!-- PRIMARY FEATURED PROJECTS GRID -->
-                    <div class="mb-24 reveal-in flex flex-col gap-12">
+                    <div class="reveal-in flex flex-col gap-8 md:gap-12">
                         <!-- NEXUS-AI -->
                         <ProjectCard
                             category="// IA APLICADA & RAG"
@@ -448,19 +448,12 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         />
                     </div>
 
-                    <!-- Header for Slider -->
-                    <div class="mb-12 reveal-in">
-                        <h4 class="text-xs font-mono text-white/20 uppercase tracking-[0.5em] mb-4">// Outros Destaques
-                        </h4>
-                        <div class="h-[1px] w-full bg-gradient-to-r from-white/10 to-transparent"></div>
-                    </div>
-
                     <!-- HIGHLIGHTS SLIDER -->
                     <div class="slider-mask reveal-in">
-                        <div class="flex justify-between items-center mb-8">
+                        <div class="flex justify-between items-center gap-4 mb-6 md:mb-8 pb-4 border-b border-white/10">
                             <h3
-                                class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.4em] font-bold">
-                                // FEATURED HIGHLIGHTS
+                                class="text-xs font-mono bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold">
+                                // Outros destaques
                             </h3>
 
                             <!-- Setas do carrossel -->
@@ -563,7 +556,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
 
                 <!-- ARCHIVE: Evidence Metrics -->
                 <div
-                    class="pt-12 md:pt-16 pb-24 md:pb-36 border-t border-white/5 reveal-in max-w-6xl mx-auto px-4 sm:px-6">
+                    class="pt-12 md:pt-16 pb-16 md:pb-36 border-t border-white/5 reveal-in max-w-6xl mx-auto">
                     <div class="flex items-center gap-4 mb-12 md:mb-16 justify-center text-center">
                         <div class="h-[1px] w-8 md:w-12 bg-white/10"></div>
                         <span
@@ -572,7 +565,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         <div class="h-[1px] w-8 md:w-12 bg-white/10"></div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 justify-items-center">
                         <!-- Evidence Card 1: Projetos Publicados -->
                         <EvidenceCard
                             icon="solar:rocket-bold"
@@ -621,7 +614,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
 
         <!-- SECTION 4/5: CONTACT MASTERPIECE (Inspired by Future UI v5) -->
         <section id="contato"
-            class="min-h-screen py-24 flex items-center px-6 bg-[#050505] overflow-hidden reveal-in relative z-20">
+            class="min-h-screen py-16 md:py-24 flex items-center px-5 sm:px-6 bg-[#050505] overflow-hidden reveal-in relative z-20">
             <!-- Advanced Transition Mask -->
             <div
                 class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent">
@@ -635,8 +628,8 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                 class="absolute bottom-1/4 right-1/4 w-[800px] h-[800px] bg-primary/5 blur-[180px] rounded-full pointer-events-none -z-10 animate-pulse">
             </div>
 
-            <div class="max-w-[1300px] mx-auto relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div class="max-w-[1300px] w-full mx-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 items-center">
 
                     <!-- Left: Large Typography & CTA -->
                     <div class="flex flex-col gap-10">
@@ -648,33 +641,33 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                                     para o Próximo Nível?</span>
                             </div>
                             <h2
-                                class="font-oswald text-6xl md:text-8xl uppercase font-bold tracking-tighter leading-[0.85] text-white">
+                                class="font-oswald text-[15vw] sm:text-7xl md:text-8xl uppercase font-bold tracking-tighter leading-[0.85] text-white">
                                 Vou elevar <br />
                                 <span
-                                    class="bg-gradient-to-r from-primary via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic drop-shadow-[0_0_30px_rgba(255,92,0,0.5)]">sua
+                                    class="bg-gradient-to-r from-primary via-[#FF8A00] to-[#FF2E00] bg-clip-text text-transparent italic text-gradient-fix drop-shadow-[0_0_30px_rgba(255,92,0,0.5)]">sua
                                     visão.</span>
                             </h2>
 
                         </div>
 
-                        <p class="font-space text-lg text-white/40 leading-relaxed uppercase tracking-widest max-w-xl">
+                        <p class="font-space text-sm sm:text-lg text-white/50 leading-relaxed uppercase tracking-wider sm:tracking-widest max-w-xl">
                             Do desenvolvimento full stack e soluções inteligentes com IA à segurança e automação,
                             transformo desafios em resultados escaláveis.
                         </p>
 
-                        <div class="flex flex-wrap gap-8">
+                        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4">
                             <!-- WhatsApp Button -->
-                            <Button href="https://wa.me/5515991195225" target="_blank" variant="beam" size="lg" icon="logos:whatsapp-icon">
+                            <Button href="https://wa.me/5515991195225" target="_blank" variant="beam" size="lg" icon="logos:whatsapp-icon" class="w-full sm:w-auto">
                                 WhatsApp
                             </Button>
 
                             <!-- Email Button -->
-                            <Button href="mailto:guimars22@gmail.com" variant="glass" size="lg" icon="solar:letter-bold">
+                            <Button href="mailto:guimars22@gmail.com" variant="glass" size="lg" icon="solar:letter-bold" class="w-full sm:w-auto">
                                 Enviar E-mail
                             </Button>
 
                             <!-- LinkedIn Button -->
-                            <Button href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank" variant="glass" size="lg" icon="simple-icons:linkedin">
+                            <Button href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank" variant="glass" size="lg" icon="simple-icons:linkedin" class="w-full sm:w-auto">
                                 LinkedIn
                             </Button>
                         </div>

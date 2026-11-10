@@ -41,15 +41,15 @@ const {
   link,
   demo,
   tags,
-  height = 'h-[500px] md:h-[600px]'
+  height = 'md:h-[600px]'
 } = Astro.props;
 ---
 
 <div class={`project-card group border-primary/20 bg-[#08080c] ${height}`}>
     <span class={`status-badge ${statusClass}`}>{status}</span>
 
-    <!-- Full-Bleed Image Container -->
-    <div class="absolute inset-0">
+    <!-- Imagem: no celular fica no topo do card; a partir do md cobre o card inteiro -->
+    <div class="relative h-56 sm:h-72 md:absolute md:inset-0 md:h-auto">
         <img
             src={image}
             loading="lazy"
@@ -66,25 +66,25 @@ const {
         <div class="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-transparent"></div>
     </div>
 
-    <div class="project-overlay opacity-100 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+    <div class="project-overlay max-md:relative max-md:bg-none max-md:bg-[#08080c] max-md:pt-2 opacity-100 md:bg-gradient-to-t md:from-black md:via-black/75 md:to-black/10">
         <div class="project-content w-full">
-            <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
                 <div class="max-w-2xl">
-                    <span class="text-primary font-mono text-[10px] uppercase tracking-[0.4em] mb-4 block">
+                    <span class="text-primary font-mono text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] mb-3 md:mb-4 block">
                         {category}
                     </span>
-                    <h3 class="text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
-                        {title && `${title} `}<span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic pr-6">{highlightTitle}</span>
+                    <h3 class="text-3xl sm:text-4xl md:text-6xl font-oswald font-bold uppercase tracking-tighter text-white mb-4">
+                        {title && `${title} `}<span class="bg-gradient-to-r from-[#FF5C00] to-[#FF8A00] bg-clip-text text-transparent italic text-gradient-fix">{highlightTitle}</span>
                     </h3>
-                    <p class="text-white/50 text-[10px] uppercase tracking-widest font-mono mb-3">
+                    <p class="text-white/60 text-[10px] uppercase tracking-wide md:tracking-widest font-mono mb-3">
                         Problema: {problem}
                     </p>
-                    <p class="text-white/60 text-xs md:text-sm uppercase tracking-widest font-space mb-6 max-w-xl">
+                    <p class="text-white/70 md:text-white/60 text-xs md:text-sm uppercase tracking-wide md:tracking-widest leading-relaxed font-space mb-6 max-w-xl">
                         {description}
                     </p>
-                    <div class="flex flex-wrap gap-3">
+                    <div class="flex flex-wrap gap-2 md:gap-3">
                         {tags.map((tag) => (
-                            <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
+                            <span class="px-3 py-1.5 md:px-4 md:py-2 bg-white/5 border border-white/10 rounded-full text-[9px] uppercase font-mono flex items-center gap-2 text-white/80">
                                 {tag.icon && <iconify-icon icon={tag.icon}></iconify-icon>}
                                 {tag.label}
                             </span>

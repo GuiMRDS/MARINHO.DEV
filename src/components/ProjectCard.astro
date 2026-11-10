@@ -17,7 +17,10 @@ interface Props {
   description: string;
   image: string;
   imageAlt?: string;
+  /** link do código (GitHub) */
   link: string;
+  /** link da aplicação no ar (opcional) */
+  demo?: string;
   tags: Tag[];
   height?: string;
   /** ponto da imagem que fica no centro do card (CSS object-position), ex.: '30% 50%' */
@@ -36,6 +39,7 @@ const {
   imagePosition = '50% 50%',
   imageAlt = `${title} ${highlightTitle}`.trim(),
   link,
+  demo,
   tags,
   height = 'h-[500px] md:h-[600px]'
 } = Astro.props;
@@ -87,8 +91,15 @@ const {
                         ))}
                     </div>
                 </div>
-                <Button href={link} target="_blank" variant="icon" icon="solar:arrow-right-up-bold" class="mb-2" aria-label={`Ver ${imageAlt}`}>
-                </Button>
+                <div class="flex items-center gap-3 mb-2">
+                    {demo && (
+                        <Button href={demo} target="_blank" variant="glass" size="sm" icon="solar:global-bold" aria-label={`Abrir ${imageAlt} no ar`}>
+                            Ver ao vivo
+                        </Button>
+                    )}
+                    <Button href={link} target="_blank" variant="icon" icon="simple-icons:github" aria-label={`Ver código de ${imageAlt} no GitHub`}>
+                    </Button>
+                </div>
             </div>
         </div>
     </div>

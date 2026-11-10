@@ -385,19 +385,40 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                             ]}
                         />
 
+                        <!-- NEWS ANALYTICS PLATFORM -->
+                        <ProjectCard
+                            category="// AGENTES DE IA & DADOS DE MERCADO"
+                            title="News"
+                            highlightTitle="Analytics"
+                            status="📈 Multiagentes"
+                            statusClass="production"
+                            problem="Explicar ao investidor o que move o mercado, sem notícia inventada nem número errado."
+                            description="Redação de agentes (Agno + Groq) que pesquisa, apura em várias fontes, checa os fatos contra dados reais da B3, Selic, CDI, IPCA e dólar e entrega a matéria com referências. Painel Quantum Terminal com telemetria do pipeline em tempo real."
+                            image="/images/projects/news-analytics.webp"
+                            imagePosition="0% 50%"
+                            imageAlt="News Analytics Platform"
+                            link="https://github.com/GuiMRDS/News_Analytics_Platform"
+                            tags={[
+                                { icon: "simple-icons:python", label: "Python" },
+                                { label: "Agno" },
+                                { label: "Groq" },
+                                { icon: "simple-icons:javascript", label: "JavaScript" }
+                            ]}
+                        />
+
                         <!-- WEBPRIME MOTORS -->
                         <ProjectCard
                             category="// FULL STACK & SISTEMAS"
                             title="WebPrime"
                             highlightTitle="Motors"
-                            status="🌐 Online"
+                            status="💻 .NET MVC"
                             statusClass="production"
                             problem="Gerenciar catálogo de veículos, usuários e vendas em uma plataforma web."
                             description="Sistema de gestão de concessionária com ASP.NET Core MVC, Entity Framework Core (Code First), perfis de acesso Administrador e Padrão, e CRUD completo de usuários e veículos."
                             image="/images/projects/webprime-motors.webp"
                             imagePosition="27% 50%"
                             imageAlt="WebPrime Motors"
-                            link="https://webprimemotors.somee.com/"
+                            link="https://github.com/GuiMRDS/WebPrimeMotors"
                             tags={[
                                 { icon: "simple-icons:dotnet", label: "ASP.NET MVC" },
                                 { label: "EF Core" },
@@ -410,13 +431,14 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         <ProjectCard
                             category="// FULL STACK & BACK-END"
                             highlightTitle="Xedit"
-                            status="🛠️ Full Stack"
+                            status="🌐 Online"
                             statusClass="production"
                             problem="Construir do zero uma plataforma web com cadastro, autenticação e ativação de contas."
                             description="Projeto desenvolvido de ponta a ponta no curso.dev: API com Next.js, PostgreSQL com migrations, sessões, ativação por e-mail, testes com Jest e CI no GitHub Actions. No ar em xedit.com.br."
                             image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop"
                             imageAlt="Xedit"
                             link="https://github.com/GuiMRDS/xedit"
+                            demo="https://xedit.com.br"
                             tags={[
                                 { icon: "simple-icons:nextdotjs", label: "Next.js" },
                                 { icon: "simple-icons:postgresql", label: "PostgreSQL" },
@@ -554,10 +576,10 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                         <!-- Evidence Card 1: Projetos Publicados -->
                         <EvidenceCard
                             icon="solar:rocket-bold"
-                            metric="15"
-                            title="Repositórios Públicos"
+                            metric="10"
+                            title="Projetos em Destaque"
                             description="Projetos próprios no GitHub: APIs, sistemas web, agentes de IA e estudos de segurança."
-                            tag="3 no ar"
+                            tag="Com testes & CI"
                             isPrimary={true}
                         />
 
@@ -649,6 +671,11 @@ import EvidenceCard from '../components/EvidenceCard.astro';
                             <!-- Email Button -->
                             <Button href="mailto:guimars22@gmail.com" variant="glass" size="lg" icon="solar:letter-bold">
                                 Enviar E-mail
+                            </Button>
+
+                            <!-- LinkedIn Button -->
+                            <Button href="https://www.linkedin.com/in/guilherme-marinho04/" target="_blank" variant="glass" size="lg" icon="simple-icons:linkedin">
+                                LinkedIn
                             </Button>
                         </div>
 
@@ -772,8 +799,16 @@ import EvidenceCard from '../components/EvidenceCard.astro';
             const status = document.getElementById('loader-status');
             if (!preloader || !logo || !bar || !status) return;
 
+            // A animação completa só roda na primeira visita da sessão;
+            // nas seguintes o preloader sai logo que as fontes estiverem prontas.
+            let seenBefore = false;
+            try {
+                seenBefore = sessionStorage.getItem('preloader-seen') === '1';
+                sessionStorage.setItem('preloader-seen', '1');
+            } catch (_) { /* storage bloqueado: segue com a animação normal */ }
+
             const startedAt = performance.now();
-            const minVisible = prefersReducedMotion ? 0 : 1000;
+            const minVisible = prefersReducedMotion || seenBefore ? 0 : 1000;
 
             setTimeout(() => {
                 logo.style.transform = 'translateY(0)';
@@ -782,7 +817,7 @@ import EvidenceCard from '../components/EvidenceCard.astro';
             }, 100);
 
             const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-            const maxWait = new Promise((resolve) => setTimeout(resolve, 2500));
+            const maxWait = new Promise((resolve) => setTimeout(resolve, seenBefore ? 600 : 2500));
 
             Promise.race([fontsReady, maxWait]).then(() => {
                 const remaining = Math.max(0, minVisible - (performance.now() - startedAt));

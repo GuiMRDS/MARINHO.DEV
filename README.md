@@ -8,8 +8,8 @@ Portfólio pessoal de **Guilherme Marinho**, desenvolvedor full stack com foco e
 
 - **Hero**: apresentação, foto e chamadas para projetos e contato
 - **Sobre**: stack, linha do tempo da carreira, competências e formação
-- **Projetos**: Nexus-AI, WebPrime Motors e Xedit em destaque, além de Biblioteca Virtual, FilmsPro, Banco Digital, Agente Agno, Vision Mind e Ransomware Shield
-- **Contato**: WhatsApp, e-mail e redes
+- **Projetos**: Nexus-AI, News Analytics Platform, WebPrime Motors e Xedit em destaque, além de Biblioteca Virtual, FilmsPro, Banco Digital, Agente Agno, Vision Mind e Ransomware Shield
+- **Contato**: WhatsApp, e-mail, LinkedIn e redes
 
 ## Tecnologias
 
